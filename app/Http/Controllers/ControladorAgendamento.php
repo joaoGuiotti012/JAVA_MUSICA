@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\agendamentoVisita;
 use Illuminate\Http\Request;
 
 class ControladorAgendamento extends Controller
@@ -45,9 +47,13 @@ class ControladorAgendamento extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show( agendamentoVisita $agendamento)
     {
-        //
+        $agendamento = agendamentoVisita::all();
+
+        return view('saidaAgendamento', compact('agendamento'));
+
+        
     }
 
     /**

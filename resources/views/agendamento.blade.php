@@ -7,53 +7,58 @@
         <br>
         <h1 class="text-left"><i class="far fa-calendar-alt"></i>  Agendamento de Visitas </h1>
         <br>
-        <h3 class="text-left"> Dados Visitante 
-            <p><hr class="text-primary" ></p>
-            <br>
-        </h3>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Nome Completo</label>
-                <input type="text" class="form-control">
+        <div class="jumbotron">
+            <h3 class="text-left"> Dados Visitante 
+                <p><hr class="text-primary" ></p>
+            </h3>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Nome Completo</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Empresa</label>
+                    <input type="text" class="form-control">
+                </div>
+            
+                <div class="form-group col-md-4">
+                    <label for="inputAddress">RG</label>
+                    <input type="text" class="form-control" placeholder="123.432.123-4">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputAddress">Cod Cracha</label>
+                    <input type="number" class="form-control" placeholder="1234 Main St">
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <label for="inputPassword4">Empresa</label>
-                <input type="text" class="form-control">
+        </div>
+
+        <div class="jumbotron">
+            <h3 class="text-left"> Dados Visitado 
+                <p><hr class="text-primary" ></p>
+            </h3>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Nome </label>
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Setor </label>
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>Choose...</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="form-row form-group col-md-6">
-            <label for="inputAddress">RG</label>
-            <input type="text" class="form-control" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-        <label for="inputAddress2">Endereço 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-        </div>
-        <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputCity">Cidade</label>
-            <input type="text" class="form-control" id="inputCity">
-        </div>
-        <div class="form-group col-md-4">
-            <label for="inputState">Estado</label>
-            <select id="inputState" class="form-control">
-            <option selected>Escolha...</option>
-            <option>...</option>
-            </select>
-        </div>
-        <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-        </div>
-        </div>
-        <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-            Check me out
-            </label>
-        </div>
-        </div>
+
         <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="reset" class="btn btn-danger" style="margin-left: 10px;">Cancelar</button>
     </form>
 @endsection
