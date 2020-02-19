@@ -19,9 +19,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::apiResource('agendamento', 'ControladorAgendamento'); 
 
+Route::delete('agendamento/{agendamento}','ProductsController@destroy');
+
+/*
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/agendamento' , 'ControladorAgendamento@index');
 
 Route::get('/agendamento/saida' , 'ControladorAgendamento@show');
+
+Route::post('/agendamento/novo' , 'ControladorAgendamento@store');
+
+
+*/
+

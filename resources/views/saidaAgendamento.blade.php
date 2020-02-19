@@ -26,17 +26,18 @@
                     <td> {{ $ls->nome}} </td>
                     <td> {{ $ls->rg}} </td>
                     <td> {{ $ls->empresa}} </td>
-                    <td> </td> 
-                    <td> </td>
+                    <td> {{ $ls->nome_func }} </td> 
+                    <td>  {{ $ls->setor }} </td>
                     <td> {{ $ls->dataEntrada}} </td>
                     <td> {{ $ls->dataSaida}} </td>
-                    <td class="text-center">  
-                        <button type="button" class="btn btn-success btn-sm">
-                            <i class="fas fa-user-edit"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm" style="margin-left:5px;">
-                            <i class="fas fa-minus-circle"></i>    
-                        </button>  
+                    <td class="text-center " >  
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fas fa-minus-circle"></i> 
+                        </button> 
+                    
+                        <button type="button" class="btn btn-success btn-sm" style="margin-left:5px;">
+                            <i class="fas fa-user-edit"></i> 
+                        </button> 
                     </td>
                 </tr>
                 @endforeach

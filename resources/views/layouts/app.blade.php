@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="icon" href="{{asset('storage/topo.png')}}"  sizes="16x16">
@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/e82d6530bc.js" crossorigin="anonymous"></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -37,7 +38,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="{{ url('/agendamento') }}" class="nav-link"> Agendamento</a>
+                            <a href="{{ url('/agendamento') }}" class="nav-link" style="margin-left: 30px;"> Agendamento</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/agendamento/saida') }}" class="nav-link"> Saida</a>
@@ -45,6 +46,13 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link"> Histórico</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"> Colaboradores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"> Visitantes</a>
+                        </li>
+
 
                     </ul>
 

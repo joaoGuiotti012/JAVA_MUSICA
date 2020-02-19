@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 
-use App\agendamentoVisita;
+use App\agendamentoVisita as Agendamento;
+use App\Funcionario;
+use Carbon\Traits\Timestamp;
+use DB;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ControladorAgendamento extends Controller
 {
@@ -15,9 +19,10 @@ class ControladorAgendamento extends Controller
      */
 
 
-    public function index()
+    public function index(Funcionario $func)
     {
-        return view('agendamento');
+        $func = Funcionario::all();
+        return view('agendamento', compact('func'));
     }
 
     /**
@@ -36,9 +41,24 @@ class ControladorAgendamento extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Agendamento $agendamento)
     {
-        //
+        
+        $agendamento= request()->validate([
+            'nome'           => 'required',
+            'empresa'        => 'required',
+            'rg'             => 'required',
+            'codigo'         => 'required', 
+            'visitado_id'    => 'required',
+            'dataEntrada'    => 'required'   
+        ]);
+        
+        var_dump($agendamento);
+                        
+       
+        DB::table('agendamento_visitas')->insert($agendamento);
+        
+        return redirect('saidaAgendamento')->with('success', 'Agendamento Confirmado !! ');
     }
 
     /**
@@ -47,10 +67,16 @@ class ControladorAgendamento extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( agendamentoVisita $agendamento)
+    public function show( )
     {
-        $agendamento = agendamentoVisita::all();
-
+        /*$agendamento = agendamentoVisita::all();*/
+        $agendamento = DB::table('agendamento_visitas')
+                ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
+                ->select('agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
+                'agendamento_visitas.nome','agendamento_visitas.rg','agendamento_visitas.empresa','agendamento_visitas.guardaResp',
+                'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada')
+                ->get();
+            
         return view('saidaAgendamento', compact('agendamento'));
 
         
@@ -85,8 +111,10 @@ class ControladorAgendamento extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Agendamento $agendamento)
     {
-        //
+        $agendamento->delete();
+        return view('saidaAgendamento');
+        
     }
 }
