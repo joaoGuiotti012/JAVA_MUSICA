@@ -6,7 +6,7 @@
   
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="icon" href="{{asset('storage/topo.png')}}"  sizes="16x16">
+    <link rel="icon" type="icon/x-icon" href="{{asset('img/topo.png')}}"  sizes="16x16">
     <title>Casa Di Conti - Visitantes</title>
 
     <!-- Scripts -->
@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('storage/topo.png') }}" width="50" height="50" >
+                <img src="{{ asset('img/topo.png') }}" width="50" height="50" >
                 Casa Di Conti
                 </a>
 

@@ -21,9 +21,10 @@ Auth::routes();
 
 Route::apiResource('agendamento', 'ControladorAgendamento'); 
 
-Route::delete('agendamento/{agendamento}','ProductsController@destroy');
+
 
 /*
+Route::delete('agendamento/{id}', 'ControladorAgendamento');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/agendamento' , 'ControladorAgendamento@index');
@@ -34,4 +35,7 @@ Route::post('/agendamento/novo' , 'ControladorAgendamento@store');
 
 
 */
+
+
+
 

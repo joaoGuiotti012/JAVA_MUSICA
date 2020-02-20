@@ -13,7 +13,13 @@
     </div>
     @endif
 
-<form class="container" method="POST" action="{{  route('agendamento.store') }}" >
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+<form class="container" method="POST" action="{{  route('agendamento.store') }}">
     @csrf   
         <br>
         <h1 class="text-left"><i class="far fa-calendar-alt"></i>  Agendamento de Visitas </h1>

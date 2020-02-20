@@ -20,24 +20,30 @@
             </thead>
             <tbody>
                 @foreach ($agendamento as $ls)
+                
                 <tr>
-                    <th scope="row">1</th>
-                    <td> {{ $ls->codigo}} </td>
-                    <td> {{ $ls->nome}} </td>
-                    <td> {{ $ls->rg}} </td>
-                    <td> {{ $ls->empresa}} </td>
+                <th scope="row">{{$ls->id}}</th>
+                    <td> {{ $ls->codigo}}    </td>
+                    <td> {{ $ls->nome}}       </td>
+                    <td> {{ $ls->rg}}         </td>
+                    <td> {{ $ls->empresa}}    </td>
                     <td> {{ $ls->nome_func }} </td> 
-                    <td>  {{ $ls->setor }} </td>
-                    <td> {{ $ls->dataEntrada}} </td>
-                    <td> {{ $ls->dataSaida}} </td>
-                    <td class="text-center " >  
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-minus-circle"></i> 
-                        </button> 
-                    
-                        <button type="button" class="btn btn-success btn-sm" style="margin-left:5px;">
-                            <i class="fas fa-user-edit"></i> 
-                        </button> 
+                    <td> {{ $ls->setor }}     </td>
+                    <td> {{ $ls->dataEntrada}}</td>
+                    <td> {{ $ls->dataSaida}}  </td>
+                    <td class="text-center inline" >  
+                        <form  action="{{ route('agendamento.destroy' , $ls->id ) }}" method="POST"  class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger ">
+                                <i class="fas fa-minus-circle"></i>
+                            </button> 
+                        </form>
+                        <form action="" class="d-inline">
+                            <button type="button" class="btn btn-success btn-sm d-inline" style="margin-left:5px;">
+                                <i class="fas fa-user-edit"></i> 
+                            </button> 
+                        </form>
                     </td>
                 </tr>
                 @endforeach

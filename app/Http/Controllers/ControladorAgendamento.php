@@ -52,13 +52,11 @@ class ControladorAgendamento extends Controller
             'visitado_id'    => 'required',
             'dataEntrada'    => 'required'   
         ]);
-        
-        var_dump($agendamento);
-                        
+                               
        
         DB::table('agendamento_visitas')->insert($agendamento);
         
-        return redirect('saidaAgendamento')->with('success', 'Agendamento Confirmado !! ');
+        return redirect('agendamento/saida')->with('success', 'Agendamento Confirmado !! ');
     }
 
     /**
@@ -72,7 +70,7 @@ class ControladorAgendamento extends Controller
         /*$agendamento = agendamentoVisita::all();*/
         $agendamento = DB::table('agendamento_visitas')
                 ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
-                ->select('agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
+                ->select('agendamento_visitas.id','agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
                 'agendamento_visitas.nome','agendamento_visitas.rg','agendamento_visitas.empresa','agendamento_visitas.guardaResp',
                 'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada')
                 ->get();
@@ -111,10 +109,12 @@ class ControladorAgendamento extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Agendamento $agendamento)
+    public function destroy( $id)
     {
+        $agendamento = Agendamento::find($id);
         $agendamento->delete();
-        return view('saidaAgendamento');
+        
+        return redirect('agendamento/saida')->with('success', 'Agendamento Confirmado !! ');
         
     }
 }
