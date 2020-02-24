@@ -19,13 +19,31 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::apiResource('agendamento', 'ControladorAgendamento'); 
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('agendamento/saida', 'ControladorAgendamento@show')->name('agendamento.saida'); 
+
+Route::get('agendamento', 'ControladorAgendamento@index')->name('agendamento'); 
+
+Route::get('agendamento/search', 'ControladorAgendamento@search')->name('agendamento.search'); 
+
+Route::post('agendamento/novo', 'ControladorAgendamento@store')->name('agendamento.novo'); 
+
+Route::delete('agendamento/deletar{id}', 'ControladorAgendamento@destroy')->name('agendamento.destroy'); 
+
+Route::patch('agendamento/editar{id}', 'ControladorAgendamento@update')->name('agendamento.update'); 
+
+
+
+
+
+
 
 
 
 /*
 Route::delete('agendamento/{id}', 'ControladorAgendamento');
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('/agendamento' , 'ControladorAgendamento@index');
 

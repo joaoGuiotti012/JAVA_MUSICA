@@ -15,7 +15,7 @@ class CreateAgendamentoVisitasTable extends Migration
     {
         Schema::create('agendamento_visitas', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->string('foto');
             $table->integer('visitado_id')->unsigned();
             $table->foreign('visitado_id')->references('id')->on('funcionarios');
 

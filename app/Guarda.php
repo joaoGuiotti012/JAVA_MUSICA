@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guarda extends Model
 {
+    protected $table = 'guradas';
+
+    
     
 }

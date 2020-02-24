@@ -7,8 +7,12 @@ use App\agendamentoVisita as Agendamento;
 use App\Funcionario;
 use Carbon\Traits\Timestamp;
 use DB;
+use Dotenv\Validator;
+use Faker\Provider\ar_JO\Company;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
+use Symfony\Component\VarDumper\VarDumper;
 
 class ControladorAgendamento extends Controller
 {
@@ -17,13 +21,34 @@ class ControladorAgendamento extends Controller
      *
      *  @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function validarAgendamento($request){
+
+        $validator = Validator::make($request->all(),[
+            'nome'           => 'required',
+            'empresa'        => 'required',
+            'rg'             => 'required',
+            'codigo'         => 'required | numeric  ', 
+            'visitado_id'    => 'required',
+            'dataEntrada'    => 'required'   
+        ]);
+
+        return $validator;
+
+    }
+
 
 
     public function index(Funcionario $func)
     {
-        $func = Funcionario::all();
-        return view('agendamento', compact('func'));
+            $func = Funcionario::all();
+            return view('agendamento', compact('func'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -41,22 +66,22 @@ class ControladorAgendamento extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Agendamento $agendamento)
-    {
-        
-        $agendamento= request()->validate([
+    public function store(Request $request)
+    {   
+        $agendamento = new Agendamento();
+        $agendamento= $request->validate([
             'nome'           => 'required',
             'empresa'        => 'required',
             'rg'             => 'required',
             'codigo'         => 'required', 
             'visitado_id'    => 'required',
-            'dataEntrada'    => 'required'   
+            'dataEntrada'    => 'required'
         ]);
-                               
-       
+
+     
         DB::table('agendamento_visitas')->insert($agendamento);
+        return redirect('agendamento/saida' )->with('success', 'Agendamento Confirmado !! ');
         
-        return redirect('agendamento/saida')->with('success', 'Agendamento Confirmado !! ');
     }
 
     /**
@@ -70,14 +95,20 @@ class ControladorAgendamento extends Controller
         /*$agendamento = agendamentoVisita::all();*/
         $agendamento = DB::table('agendamento_visitas')
                 ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
-                ->select('agendamento_visitas.id','agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
+                ->select('agendamento_visitas.id','agendamento_visitas.visitado_id' , 'agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
                 'agendamento_visitas.nome','agendamento_visitas.rg','agendamento_visitas.empresa','agendamento_visitas.guardaResp',
                 'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada')
                 ->get();
-            
-        return view('saidaAgendamento', compact('agendamento'));
+        $cont = count($agendamento);
+        return view('saidaAgendamento', compact('agendamento'), compact('cont'));
 
         
+    }
+
+    public function search(Request $request){
+        $busca = Agendamento::search($request->get('search'));
+        $cont = count($busca);
+        return view('saidaAgendamento', compact('busca') ,compact('cont'));
     }
 
     /**
@@ -100,7 +131,33 @@ class ControladorAgendamento extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id'             => 'required',
+            'nome'           => 'required',
+            'empresa'        => 'required',
+            'rg'             => 'required',
+            'codigo'         => 'required', 
+            'visitado_id'    => 'required',
+            'dataEntrada'    => 'required',
+            'checkEdit'      => 'required',
+        ]);
+       
+        $agendamento = Agendamento::find($id);
+        $agendamento->nome = $request->get('nome');
+        $agendamento->empresa = $request->get('empresa');
+        $agendamento->rg = $request->get('rg');
+        $agendamento->codigo = $request->get('codigo');
+        $agendamento->visitado_id = $request->get('visitado_id');
+        $agendamento->dataEntrada = $request->get('dataEntrada');
+        $agendamento->save();
+
+        return redirect('agendamento/saida' )->with('success', 'Alterado com Confirmado !! ');
+        
+
+        
+
+
+
     }
 
     /**
@@ -114,7 +171,7 @@ class ControladorAgendamento extends Controller
         $agendamento = Agendamento::find($id);
         $agendamento->delete();
         
-        return redirect('agendamento/saida')->with('success', 'Agendamento Confirmado !! ');
+        return redirect('agendamento/saida')->with('success', 'Agendamento deletado com sucesso !! ');
         
     }
 }

@@ -2,6 +2,7 @@
 
 
 @section('content')
+
    
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -19,10 +20,10 @@
     </div>
     @endif
 
-<form class="container" method="POST" action="{{  route('agendamento.store') }}">
+<form class="container" method="POST" action="{{  route('agendamento.novo') }}"  enctype="multipart/form-data">
     @csrf   
         <br>
-        <h1 class="text-left"><i class="far fa-calendar-alt"></i>  Agendamento de Visitas </h1>
+        <h2 class="text-left"><i class="far fa-calendar-alt"></i>  Agendamento de Visitas </h2>
         <br>
         <div class="jumbotron">
             <h3 class="text-left"> Dados Visitante 
@@ -40,13 +41,15 @@
             
                 <div class="form-group col-md-4">
                     <label for="rg">RG</label>
-                    <input type="text" class="form-control" placeholder="123.432.123-4" name="rg">
+                    <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg">
                     <input type="hidden"  name="dataEntrada" value="{{Carbon\Carbon::now()->toDateTimeString()}}">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="codigo">Cod Cracha</label>
                     <input type="number" class="form-control" placeholder="1234 Main St" name="codigo">
                 </div>
+               
+                
             </div>
         </div>
 
@@ -70,4 +73,14 @@
         <button type="submit" class="btn btn-success">Confirmar</button>
         <button type="reset" class="btn btn-danger" style="margin-left: 10px;">Cancelar</button>
     </form>
+
 @endsection
+
+@section('javascript')
+<script>
+    $(document).ready(function(){
+        $('#rg').mask('000.000.000-0' , {reverse: false });
+    });
+</script>
+@endsection
+
