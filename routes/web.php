@@ -33,26 +33,16 @@ Route::delete('agendamento/deletar{id}', 'ControladorAgendamento@destroy')->name
 
 Route::patch('agendamento/editar{id}', 'ControladorAgendamento@update')->name('agendamento.update'); 
 
+Route::patch('agendamento/saida{id}', 'ControladorAgendamento@saida')->name('agendamento.saida'); 
+
+
+
+Route::get('visitantes', 'ControladorVisitantes@index')->name('visitantes');
 
 
 
 
 
-
-
-
-/*
-Route::delete('agendamento/{id}', 'ControladorAgendamento');
-
-
-Route::get('/agendamento' , 'ControladorAgendamento@index');
-
-Route::get('/agendamento/saida' , 'ControladorAgendamento@show');
-
-Route::post('/agendamento/novo' , 'ControladorAgendamento@store');
-
-
-*/
 
 
 

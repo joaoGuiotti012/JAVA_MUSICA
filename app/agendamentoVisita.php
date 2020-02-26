@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Traits\Timestamp;
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class agendamentoVisita extends Model
 {
@@ -13,6 +14,18 @@ class agendamentoVisita extends Model
     public function visitado()
     {
         return $this->belongsTo('App\funcionarios' , 'visitado_id'); 
+    }
+    
+    static function valido(Request $request){
+        $re = $request->validate([
+            'nome'           => 'required',
+            'empresa'        => 'required',
+            'rg'             => 'required',
+            'codigo'         => 'required', 
+            'visitado_id'    => 'required',
+            'dataEntrada'    => 'required'
+        ]);
+        return $re;
     }
 
     static function search($search){

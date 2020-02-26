@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\agendamentoVisita as Agendamento;
 use App\Funcionario;
+use Carbon\Carbon;
 use Carbon\Traits\Timestamp;
 use DB;
 use Dotenv\Validator;
@@ -25,22 +26,6 @@ class ControladorAgendamento extends Controller
     {
         $this->middleware('auth');
     }
-
-    public function validarAgendamento($request){
-
-        $validator = Validator::make($request->all(),[
-            'nome'           => 'required',
-            'empresa'        => 'required',
-            'rg'             => 'required',
-            'codigo'         => 'required | numeric  ', 
-            'visitado_id'    => 'required',
-            'dataEntrada'    => 'required'   
-        ]);
-
-        return $validator;
-
-    }
-
 
 
     public function index(Funcionario $func)
@@ -68,17 +53,7 @@ class ControladorAgendamento extends Controller
      */
     public function store(Request $request)
     {   
-        $agendamento = new Agendamento();
-        $agendamento= $request->validate([
-            'nome'           => 'required',
-            'empresa'        => 'required',
-            'rg'             => 'required',
-            'codigo'         => 'required', 
-            'visitado_id'    => 'required',
-            'dataEntrada'    => 'required'
-        ]);
-
-     
+        $agendamento = Agendamento::valido($request);
         DB::table('agendamento_visitas')->insert($agendamento);
         return redirect('agendamento/saida' )->with('success', 'Agendamento Confirmado !! ');
         
@@ -92,7 +67,6 @@ class ControladorAgendamento extends Controller
      */
     public function show( )
     {
-        /*$agendamento = agendamentoVisita::all();*/
         $agendamento = DB::table('agendamento_visitas')
                 ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
                 ->select('agendamento_visitas.id','agendamento_visitas.visitado_id' , 'agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
@@ -101,7 +75,6 @@ class ControladorAgendamento extends Controller
                 ->get();
         $cont = count($agendamento);
         return view('saidaAgendamento', compact('agendamento'), compact('cont'));
-
         
     }
 
@@ -109,6 +82,14 @@ class ControladorAgendamento extends Controller
         $busca = Agendamento::search($request->get('search'));
         $cont = count($busca);
         return view('saidaAgendamento', compact('busca') ,compact('cont'));
+    }
+
+    public function saida($id){
+        $agendamento = Agendamento::find($id);
+        $agendamento->dataSaida = Carbon::now();
+        if( $agendamento->save() ){
+            return redirect('agendamento/saida')->with('primary' , 'Confirmação de saida realizada com sucesso! ');
+        }
     }
 
     /**
@@ -138,8 +119,7 @@ class ControladorAgendamento extends Controller
             'rg'             => 'required',
             'codigo'         => 'required', 
             'visitado_id'    => 'required',
-            'dataEntrada'    => 'required',
-            'checkEdit'      => 'required',
+            'dataEntrada'    => 'required'
         ]);
        
         $agendamento = Agendamento::find($id);
@@ -149,13 +129,13 @@ class ControladorAgendamento extends Controller
         $agendamento->codigo = $request->get('codigo');
         $agendamento->visitado_id = $request->get('visitado_id');
         $agendamento->dataEntrada = $request->get('dataEntrada');
-        $agendamento->save();
+        $update = $agendamento->save();
 
-        return redirect('agendamento/saida' )->with('success', 'Alterado com Confirmado !! ');
-        
-
-        
-
+        if($update){
+            return redirect('agendamento/saida' )->with('success', 'Agendamento atualizado :) ');
+        }else{
+            return redirect('agendamento/saida')->with('fail', 'Falha ao editar este agendamento :(');
+        }
 
 
     }

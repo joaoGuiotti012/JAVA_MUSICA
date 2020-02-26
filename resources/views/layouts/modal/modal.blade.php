@@ -8,7 +8,7 @@
           </button>
         </div>
         <div class="modal-body">
-          
+
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
