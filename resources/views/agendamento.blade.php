@@ -41,7 +41,6 @@
                     <div class="form-group col-md-4">
                         <label for="rg">RG</label>
                         <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg">
-                        <input type="hidden"  name="dataEntrada" value="{{Carbon\Carbon::now()->toDateTimeString()}}">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="codigo">Cod Cracha</label>

@@ -20,6 +20,12 @@
      <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
   
 </head>
+<style>
+    tr{
+        font-size: 14px;
+    }
+    button{ border-radius: 4px; }
+</style>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container">

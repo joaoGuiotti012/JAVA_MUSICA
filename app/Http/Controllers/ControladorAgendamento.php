@@ -11,6 +11,7 @@ use DB;
 use Dotenv\Validator;
 use Faker\Provider\ar_JO\Company;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Component\Console\Input\Input;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\VarDumper\VarDumper;
@@ -53,25 +54,33 @@ class ControladorAgendamento extends Controller
      */
     public function store(Request $request)
     {   
+        $agendamento = new Agendamento();
+        $request->validate([
+            'nome'           => 'required',
+            'empresa'        => 'required',
+            'rg'             => 'required|string|min:11',
+            'codigo'         => 'required|numeric', 
+            'visitado_id'    => 'required',
+            'foto'           => 'required|file|max:800',   
+        ]);
+       
         if($request->file('foto')->isValid()){
             $nameFile = Carbon::now() . '.' . $request->foto->extension();
             $request->file('foto')->storeAs('visitantes' , $nameFile);
+            
         }
-        $agendamento = new Agendamento();
 
         $agendamento->nome = $request->nome;
-        $agendamento->foto = $nameFile;
         $agendamento->empresa = $request->empresa;
+        $agendamento->foto = $nameFile;
         $agendamento->rg = $request->rg;
         $agendamento->codigo = $request->codigo;
         $agendamento->visitado_id = $request->visitado_id;
-        $agendamento->dataEntrada = $request->dataEntrada;
+        $agendamento->dataEntrada = Carbon::now();
     
         if ($agendamento->save()){
             return redirect('agendamento/saida' )->with('success', 'Agendamento Confirmado !! ');
         }
-        
-        
         
     }
 
@@ -140,13 +149,12 @@ class ControladorAgendamento extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id'             => 'required',
             'nome'           => 'required',
             'empresa'        => 'required',
-            'rg'             => 'required',
-            'codigo'         => 'required', 
+            'rg'             => 'required|string|min:11',
+            'codigo'         => 'required|numeric', 
             'visitado_id'    => 'required',
-            'dataEntrada'    => 'required'
+            'foto'           => 'file|max:800',   
         ]);
        
         $agendamento = Agendamento::find($id);

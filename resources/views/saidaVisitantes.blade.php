@@ -15,44 +15,45 @@
 
     <br>
     <div class="container">
-        <table class="table table-sm table-hover table-bordered table-striped">
-            <thead>
-            <tr class="text-center">
-                <th scope="col">Código</th>
-                <th scope="col">Nome</th>
-                <th scope="col">RG</th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Ações</th>
-            </thead>
-            <tbody>
-                <?php $i = 0; ?>
-                @foreach ($visitantes as $ls)
-               <tr>
-                    <th scope="row"># {{$ls->codigo}}  </th>
-                    <td> {{ $ls->nome}}       </td>
-                    <td> {{ $ls->rg}}         </td>
-                    <td> {{ $ls->empresa}}    </td>
-                    <td class="text-center" >  
-                        <a type="button" class="text-danger " data-toggle="modal" data-target="#exampleModal{{$ls->id}}">
-                            <i class="fas fa-minus-circle"></i>
-                        </a> 
-                       
-                        <a type="button" class="text-success" data-toggle="modal" data-target="#staticBackdrop{{$ls->id}}">
-                            <i class="fas fa-user-edit"></i> 
-                        </a> 
+        <nav style="max-height: 350px; overflow: scroll; ">
+            <table class="table table-sm table-hover table-bordered table-striped">
+                <thead>
+                <tr class="text-center">
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">RG</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Ações</th>
+                </thead>
+                <tbody>
+                    <?php $i = 0; ?>
+                    @foreach ($visitantes as $ls)
+                <tr>
+                        <th scope="row"># {{$ls->codigo}}  </th>
+                        <td> {{ $ls->nome}}       </td>
+                        <td> {{ $ls->rg}}         </td>
+                        <td> {{ $ls->empresa}}    </td>
+                        <td class="text-center" >  
+                            <button type="button" class="btn-danger " data-toggle="modal" data-target="#exampleModal{{$ls->id}}">
+                                <i class="fas fa-minus-circle"></i>
+                            </button> 
+                        
+                            <button type="button" class="btn-success" data-toggle="modal" data-target="#staticBackdrop{{$ls->id}}">
+                                <i class="fas fa-user-edit"></i> 
+                            </button> 
 
-                        <a type="button"  class="text-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
-                            <i class="fas fa-check-circle"></i>
-                        </a>  
-                    </td>
-                </tr>
-                <?php $i++ ?>
-                @endforeach
-            </tbody>
-        </table>
-        <p class="text-monospace text-small" style="margin-left:8px;">   N° Total: <b>{{$i}} </b> </p>
-        <br>
-
+                            <button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
+                                <i class="fas fa-check-circle"></i>
+                            </button>  
+                        </td>
+                    </tr>
+                    <?php $i++ ?>
+                    @endforeach
+                </tbody>
+            </table>
+            <p class="text-monospace text-small" style="margin-left:8px;">   N° Total: <b>{{$i}} </b> </p>
+            <br>
+        </nav>
     </div>
 
 @endsection
