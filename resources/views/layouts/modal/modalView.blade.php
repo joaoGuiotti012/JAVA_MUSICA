@@ -9,12 +9,16 @@
           </button>
         </div>
         <div class="modal-body text-left">
-          <img src="{{asset('img/topo.png')}}" alt="User" class="rounded mx-auto d-block" width="100" height="100">
+          @if ( $ls->foto != null)
+            <img src="{{asset("storage/visitantes/" . $ls->foto)}}" alt="User" class="rounded mx-auto d-block" width="100" height="100">
+          @else
+            <img src="{{ asset("img/topo.png") }}" alt="User" class="rounded mx-auto d-block" width="100" height="100" >
+          @endif
           <p><b> Código: </b>{{$ls->codigo}}</p>
           <p><b> Visitante: </b>{{$ls->nome}}</p>
           <p><b> RG: </b>{{$ls->rg}}</p>
           <p><b> Empresa: </b>{{$ls->empresa}}</p>
-          <p><b> Visitado </b>{{$ls->nome_func}}</p>
+          <p><b> Visitado: </b>{{$ls->nome_func}}</p>
           <p><b> Setor: </b>{{$ls->setor}}</p>
           <p><b> Data Entrada: </b>{{$ls->dataEntrada}}  </p>
           <p><b> Data Saida: </b>{{$ls->dataSaida}} </p>

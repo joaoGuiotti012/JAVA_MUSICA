@@ -34,19 +34,16 @@
                     <td> {{ $ls->empresa}}    </td>
                     <td class="text-center" >  
                         <a type="button" class="text-danger " data-toggle="modal" data-target="#exampleModal{{$ls->id}}">
-                            <i class="fas fa-minus-circle"> X </i>
+                            <i class="fas fa-minus-circle"></i>
                         </a> 
                        
-            
                         <a type="button" class="text-success" data-toggle="modal" data-target="#staticBackdrop{{$ls->id}}">
-                            <i class="fas fa-user-edit">editar</i> 
+                            <i class="fas fa-user-edit"></i> 
                         </a> 
-                        
 
                         <a type="button"  class="text-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
-                            <i class="fas fa-check-circle">saida</i>
-                        </a>
-                        
+                            <i class="fas fa-check-circle"></i>
+                        </a>  
                     </td>
                 </tr>
                 <?php $i++ ?>

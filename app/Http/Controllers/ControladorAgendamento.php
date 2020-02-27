@@ -53,9 +53,25 @@ class ControladorAgendamento extends Controller
      */
     public function store(Request $request)
     {   
-        $agendamento = Agendamento::valido($request);
-        DB::table('agendamento_visitas')->insert($agendamento);
-        return redirect('agendamento/saida' )->with('success', 'Agendamento Confirmado !! ');
+        if($request->file('foto')->isValid()){
+            $nameFile = Carbon::now() . '.' . $request->foto->extension();
+            $request->file('foto')->storeAs('visitantes' , $nameFile);
+        }
+        $agendamento = new Agendamento();
+
+        $agendamento->nome = $request->nome;
+        $agendamento->foto = $nameFile;
+        $agendamento->empresa = $request->empresa;
+        $agendamento->rg = $request->rg;
+        $agendamento->codigo = $request->codigo;
+        $agendamento->visitado_id = $request->visitado_id;
+        $agendamento->dataEntrada = $request->dataEntrada;
+    
+        if ($agendamento->save()){
+            return redirect('agendamento/saida' )->with('success', 'Agendamento Confirmado !! ');
+        }
+        
+        
         
     }
 
@@ -69,10 +85,21 @@ class ControladorAgendamento extends Controller
     {
         $agendamento = DB::table('agendamento_visitas')
                 ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
-                ->select('agendamento_visitas.id','agendamento_visitas.visitado_id' , 'agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
-                'agendamento_visitas.nome','agendamento_visitas.rg','agendamento_visitas.empresa','agendamento_visitas.guardaResp',
-                'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada')
-                ->get();
+                ->select(
+                'agendamento_visitas.id',
+                'agendamento_visitas.visitado_id' , 
+                'agendamento_visitas.foto',  
+                'agendamento_visitas.codigo', 
+                'funcionarios.nome as nome_func',
+                'funcionarios.setor', 
+                'agendamento_visitas.codigo',
+                'agendamento_visitas.nome',
+                'agendamento_visitas.rg',
+                'agendamento_visitas.empresa',
+                'agendamento_visitas.guardaResp',
+                'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada'
+                )->get();
+                
         $cont = count($agendamento);
         return view('saidaAgendamento', compact('agendamento'), compact('cont'));
         

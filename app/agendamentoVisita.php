@@ -31,9 +31,20 @@ class agendamentoVisita extends Model
     static function search($search){
 
         $busca = DB::table('agendamento_visitas')->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
-                ->select('agendamento_visitas.id','agendamento_visitas.visitado_id' , 'agendamento_visitas.codigo', 'funcionarios.nome as nome_func','funcionarios.setor', 'agendamento_visitas.codigo',
-                'agendamento_visitas.nome','agendamento_visitas.rg','agendamento_visitas.empresa','agendamento_visitas.guardaResp',
-                'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada')
+                ->select(
+                'agendamento_visitas.id',
+                'agendamento_visitas.foto',
+                'agendamento_visitas.visitado_id' , 
+                'agendamento_visitas.codigo', 
+                'funcionarios.nome as nome_func',
+                'funcionarios.setor', 
+                'agendamento_visitas.codigo',
+                'agendamento_visitas.nome',
+                'agendamento_visitas.rg',
+                'agendamento_visitas.empresa',
+                'agendamento_visitas.guardaResp',
+                'agendamento_visitas.dataSaida',
+                'agendamento_visitas.dataEntrada')
                 ->where('agendamento_visitas.nome','LIKE' , '%'.$search.'%' )
                 ->orwhere('agendamento_visitas.codigo','LIKE' , '%'.$search.'%' )
                 ->orWhere('agendamento_visitas.rg','LIKE' , '%'.$search.'%' )
