@@ -15,6 +15,7 @@ class CreateVisitantesTable extends Migration
     {
         Schema::create('visitantes', function (Blueprint $table) {
             $table->bigIncrements('codigo');
+            $table->string('foto', 100);
             $table->string('nome', 80);
             $table->string('rg', 14);
             $table->string('empresa', 80);

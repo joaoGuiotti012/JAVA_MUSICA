@@ -18,14 +18,10 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class ControladorAgendamento extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     *  @return \Illuminate\Http\Response
-     */
+    
     public function __construct()
     {
-        $this->middleware('auth');
+        /*$this->middleware('auth');*/
     }
 
 
@@ -35,39 +31,23 @@ class ControladorAgendamento extends Controller
             return view('agendamento', compact('func'));
     }
 
+    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(Request $request)
     {   
         $agendamento = new Agendamento();
-        $request->validate([
-            'nome'           => 'required',
-            'empresa'        => 'required',
-            'rg'             => 'required|string|min:11',
-            'codigo'         => 'required|numeric', 
-            'visitado_id'    => 'required',
-            'foto'           => 'required|file|max:800',   
-        ]);
+        $request = Agendamento::valido($request);
        
         if($request->file('foto')->isValid()){
             $nameFile = Carbon::now() . '.' . $request->foto->extension();
             $request->file('foto')->storeAs('visitantes' , $nameFile);
-            
         }
 
         $agendamento->nome = $request->nome;
@@ -84,12 +64,6 @@ class ControladorAgendamento extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show( )
     {
         $agendamento = DB::table('agendamento_visitas')
@@ -114,10 +88,40 @@ class ControladorAgendamento extends Controller
         
     }
 
+    public function showHistorico( )
+    {
+        $agendamento = DB::table('agendamento_visitas')
+                ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
+                ->select(
+                'agendamento_visitas.id',
+                'agendamento_visitas.visitado_id' , 
+                'agendamento_visitas.foto',  
+                'agendamento_visitas.codigo', 
+                'funcionarios.nome as nome_func',
+                'funcionarios.setor', 
+                'agendamento_visitas.codigo',
+                'agendamento_visitas.nome',
+                'agendamento_visitas.rg',
+                'agendamento_visitas.empresa',
+                'agendamento_visitas.guardaResp',
+                'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada'
+                )->get();
+                
+        $cont = count($agendamento);
+        return view('historicoAgendamento', compact('agendamento'), compact('cont'));
+        
+    }
+
     public function search(Request $request){
         $busca = Agendamento::search($request->get('search'));
         $cont = count($busca);
         return view('saidaAgendamento', compact('busca') ,compact('cont'));
+    }
+
+    public function histSearch(Request $request){
+        $busca = Agendamento::histSearch($request);
+        $cont = count($busca);
+        return view('historicoAgendamento',  compact('busca'), compact('cont'));
     }
 
     public function saida($id){
@@ -128,34 +132,14 @@ class ControladorAgendamento extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nome'           => 'required',
-            'empresa'        => 'required',
-            'rg'             => 'required|string|min:11',
-            'codigo'         => 'required|numeric', 
-            'visitado_id'    => 'required',
-            'foto'           => 'file|max:800',   
-        ]);
+        $request = Agendamento::valido($request);
        
         $agendamento = Agendamento::find($id);
         $agendamento->nome = $request->get('nome');
@@ -168,19 +152,10 @@ class ControladorAgendamento extends Controller
 
         if($update){
             return redirect('agendamento/saida' )->with('success', 'Agendamento atualizado :) ');
-        }else{
-            return redirect('agendamento/saida')->with('fail', 'Falha ao editar este agendamento :(');
         }
-
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function destroy( $id)
     {
         $agendamento = Agendamento::find($id);

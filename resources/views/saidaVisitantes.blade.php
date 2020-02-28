@@ -15,11 +15,22 @@
 
     <br>
     <div class="container">
-        <nav style="max-height: 350px; overflow: scroll; ">
+        <div class="d-inline ">
+            @csrf
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#novo" > 
+                <i class="fas fa-user-plus"></i>
+                Novo
+            </button>
+            <br>
+            @include('layouts.modal.visitantes.novo')
+        </div>
+     <br>
+        <nav style="max-height: 450px; overflow: scroll; ">
             <table class="table table-sm table-hover table-bordered table-striped">
                 <thead>
                 <tr class="text-center">
                     <th scope="col">Código</th>
+                    <th scope="col">Foto</th>
                     <th scope="col">Nome</th>
                     <th scope="col">RG</th>
                     <th scope="col">Empresa</th>
@@ -29,31 +40,38 @@
                     <?php $i = 0; ?>
                     @foreach ($visitantes as $ls)
                 <tr>
-                        <th scope="row"># {{$ls->codigo}}  </th>
+                        <th scope="row"># {{$ls->id}}  </th>
+                        <td> 
+                            <a href="{{url("storage/visitantes/" . $ls->foto )}}">
+                            @if ($ls->foto != null )
+                                <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " style="border-radius: 100%;" width="30" height="30">
+                            @else
+                                <img src="{{ asset("img/topo.png") }}" style="border-radius: 100%;" width="30" height="30">
+                            @endif
+                            </a> 
+                        </td>
                         <td> {{ $ls->nome}}       </td>
                         <td> {{ $ls->rg}}         </td>
                         <td> {{ $ls->empresa}}    </td>
                         <td class="text-center" >  
-                            <button type="button" class="btn-danger " data-toggle="modal" data-target="#exampleModal{{$ls->id}}">
+                            <button type="button" class="btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
                                 <i class="fas fa-minus-circle"></i>
                             </button> 
-                        
-                            <button type="button" class="btn-success" data-toggle="modal" data-target="#staticBackdrop{{$ls->id}}">
+                            @include('layouts.modal.visitantes.rem')
+                            <button type="button" class="btn-success" data-toggle="modal" data-target="#{{$ls->id}}">
                                 <i class="fas fa-user-edit"></i> 
                             </button> 
+                           
 
-                            <button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
-                                <i class="fas fa-check-circle"></i>
-                            </button>  
                         </td>
                     </tr>
-                    <?php $i++ ?>
+                  
                     @endforeach
                 </tbody>
             </table>
-            <p class="text-monospace text-small" style="margin-left:8px;">   N° Total: <b>{{$i}} </b> </p>
-            <br>
         </nav>
+        <p class="text-monospace text-small" style="margin-left:8px;">   N° ultimos: <b>{{$cont}} </b> </p>
+        <br>
     </div>
 
 @endsection

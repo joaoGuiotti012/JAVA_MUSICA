@@ -50,7 +50,7 @@
                         <a href="{{ url('/agendamento/saida') }}" class="nav-link"> Saida</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/agendamento/saida#historico" class="nav-link"> Histórico</a>
+                        <a href="{{ url('agendamento/saida/historico') }}" class="nav-link"> Histórico</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -115,7 +115,15 @@
         @yield('content')
     </main>
 </body>
-@yield('javascript')
+
+
+<script>
+    $(document).ready(function(){
+        $('#rg').mask('000.000.000-0' , {reverse: false });
+    });
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/e82d6530bc.js" crossorigin="anonymous"></script>
 
