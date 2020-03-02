@@ -71,7 +71,7 @@
                 </thead>
                 
                 <tbody >
-                    
+                    <?php $i =0 ?>
                     @foreach ($agendamento as $ls) 
                     @if( $ls->dataSaida != null)             
                 <tr>
@@ -91,12 +91,13 @@
                             @include('layouts.modal.modalView')
                         </td>
                     </tr>
+                    <?php $i++ ?>
                     @endif
                     @endforeach
                 </tbody>
             </table> 
         </nav>
-        <p class="text-monospace text-small" style="margin-left:8px;">   N° Total: <b>{{$cont}} </b> </p>
+        <p class="text-monospace text-small" style="margin-left:8px;">   N° Total: <b>{{$i}} </b> </p>
         <br>
     </div>
 

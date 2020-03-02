@@ -9,7 +9,6 @@ use DB;
 
 class Visitantes extends Model
 {
-
     protected $fillable = [];
 
     static function valido(Request $request){
@@ -22,7 +21,6 @@ class Visitantes extends Model
 
         return $request;
     }
-
 
     static function selectAll( ){
 

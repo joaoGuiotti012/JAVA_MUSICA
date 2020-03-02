@@ -34,14 +34,6 @@
                             <input type="number" class="form-control"  id="id" name="id" disabled>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <input type="text" class="form-control" placeholder="Nome ou RG" name="search">
-                        </div>
-                        <button type="button" class="btn-success btn-sm" data-toggle="modal" data-target="#buscaVisitantes">
-                            <i class="fas fa-search"></i> 
-                        </button>
-                    </div>
                     
                 </div>
             <br>
