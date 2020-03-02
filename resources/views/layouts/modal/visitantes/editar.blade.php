@@ -21,7 +21,9 @@
             </div>
             @endif
             
-           
+        <form action="{{ route('agendamento.update' , $ls->id  ) }}" method="POST">
+            @method('PATCH') 
+            @csrf
                 <br>
                 <h4 class="text-left"> Dados Visitante 
                     <p><hr class="text-primary" ></p>

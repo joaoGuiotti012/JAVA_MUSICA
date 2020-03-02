@@ -26,7 +26,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-2">
                             <label for="ID">Cod Cracha</label>
-                            <input type="number" class="form-control" placeholder="1234 Main St" name="codigo"> 
+                            <input type="number" class="form-control" id="codigo" name="codigo"> 
                             
                         </div>
                         <div class="form-group col-md-2" >
@@ -36,7 +36,7 @@
 
                         <div class="form-group col-md-2" >
                             <label for="a"> .</label>
-                            <button type="reset" class="bnt btn-primary form-control" data-toggle="modal" data-target="#buscaVisitantes" > Buscar </button>
+                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#buscaVisitantes" > Buscar </button>
                         </div>
                     </div>
                     @include('layouts.modal.buscaVisitantes')
@@ -65,13 +65,5 @@
             <button type="reset" class="btn btn-danger" style="margin-left: 10px;">Cancelar</button>
             <br><br>
     </form>
-@endsection
-
-@section('javascript')
-<script>
-    $(document).ready(function(){
-        $('#rg').mask('000.000.000-0' , {reverse: false });
-    });
-</script>
 @endsection
 

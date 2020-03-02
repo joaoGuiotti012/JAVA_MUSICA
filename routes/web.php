@@ -53,6 +53,8 @@ Route::get('visitantes', 'ControladorVisitantes@index')->name('visitantes');
 
 Route::post('visitantes/novo', 'ControladorVisitantes@store')->name('visitantes.novo'); 
 
+Route::patch('agendamento/editar{id}', 'ControladorVisitantes@update')->name('agendamento.update'); 
+
 Route::get('visitantes/saida', 'ControladorVisitantes@show'); 
 
 Route::get('visitantes/search' , 'ControladorVisitantes@search')->name('visitantes.search'); 

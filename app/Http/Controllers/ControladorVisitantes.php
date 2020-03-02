@@ -22,6 +22,14 @@ class ControladorVisitantes extends Controller
 
     }
 
+    public function show( Visitantes $visitantes)
+    {
+        $visitantes = Visitantes::selectAll();
+        $cont = count($visitantes);
+        return view('saidaVisitantes' , compact('visitantes') , compact('cont'));
+
+    }
+
     public function store( Request $request){
 
         $visitantes = new Visitantes();
@@ -50,6 +58,22 @@ class ControladorVisitantes extends Controller
         $cont = count($visitantes);
         return view('saidaVisitantes' , compact('visitantes' , 'cont'));
       
+    }
+
+    public function update(Request $request, $id){
+
+        $request = Visitantes::valido($request);
+
+        $visitantes = Visitantes::find($id);
+        $visitantes->nome = $request->get('nome');
+        $visitantes->empresa = $request->get('empresa');
+        $visitantes->rg = $request->get('rg');
+        $update = $visitantes->save();
+
+        if($update){
+            return redirect('visitantes')->with('success', 'Agendamento alterado com sucesso ! ');
+        }
+
     }
 
     public function destroy($id)

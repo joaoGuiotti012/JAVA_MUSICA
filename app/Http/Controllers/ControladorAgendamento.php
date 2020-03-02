@@ -107,7 +107,7 @@ class ControladorAgendamento extends Controller
         $agendamento->nome = $request->get('nome');
         $agendamento->empresa = $request->get('empresa');
         $agendamento->rg = $request->get('rg');
-        $agendamento->ID = $request->get('ID');
+        $agendamento->codigo = $request->get('codigo');
         $agendamento->visitado_id = $request->get('visitado_id');
         $agendamento->dataEntrada = $request->get('dataEntrada');
         $update = $agendamento->save();

@@ -55,25 +55,12 @@
                     <li class="nav-item">
                         <a href="{{ url('agendamento/saida/historico') }}" class="nav-link"> Histórico</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Colaboradores
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="#" class="dropdown-item">Lista</a>
-                            <a href="#" class="dropdown-item">Novo</a>
-                        </div>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> Colaboradores</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Visitantes
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="{{ url('/visitantes') }}" class="dropdown-item">Lista</a>
-                            <a href="#" class="dropdown-item">Novo</a>
-                        </div>
+                    <li class="nav-item">
+                        <a href="{{ url('/visitantes') }}" class="nav-link"> Visitantes</a>
                     </li>
-
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -133,10 +120,7 @@
 
 
     // <+================ ANIMAÇÔES ================+>
-  
-
     $(document).ready(function (){
-
         $("#btn-filtrar").click(function (){
             $("#btn-ocultar").show(1000);
             $("#btn-filtrar").hide(1000);
@@ -155,22 +139,19 @@
             $("#danger").hide(1500);
         });
 
+        // <+============= MASK ===================+>
         $('#rg').mask('000.000.000-0' , {reverse: false });
-
+        $('#codigo').mask('0000' , {reverse: false });
     });
 
+    // <+================ SET TIME ALERT ================+>
     $().ready(function() {
         setTimeout(function () {
             $('#alert').hide(1000); // "foo" é o id do elemento que seja manipular.
         }, 2500); // O valor é representado em milisegundos.
     });
 
-
-
-
 </script>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/e82d6530bc.js" crossorigin="anonymous"></script>
