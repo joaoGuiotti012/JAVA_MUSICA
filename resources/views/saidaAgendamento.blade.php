@@ -61,7 +61,7 @@
                     @if ( $ls->dataSaida == null )
                     
                 <tr>
-                    <th scope="row">{{$ls->codigo}}  </th>
+                    <th scope="row">{{$ls->id}}  </th>
                         <td> {{ $ls->codigo}}    </td>
                         <td> 
                             <a href="{{url("storage/visitantes/" . $ls->foto )}}">
@@ -80,15 +80,15 @@
                         <td> {{ $ls->dataEntrada}}</td>
                         <td> {{ $ls->dataSaida}}  </td>
                         <td class="text-center" >  
-                            <button type="button" class="btn-danger " data-toggle="modal" data-target="#exampleModal{{$ls->id}}">
+                            <button type="button" class="btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
                                 <i class="fas fa-minus-circle"></i>
                             </button> 
                             @include('layouts.modal.modalrem')
                 
-                            <button type="button" class="btn-success" data-toggle="modal" data-target="#staticBackdrop{{$ls->id}}">
+                            <!--button type="button" class="btn-success" data-toggle="modal" data-target="#staticBackdrop{{$ls->id}}">
                                 <i class="fas fa-user-edit"></i> 
                             </button> 
-                            @include('layouts.modal.modal')
+                            @include('layouts.modal.modal') -->
 
                             <button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
                                 <i class="fas fa-check-circle"></i>

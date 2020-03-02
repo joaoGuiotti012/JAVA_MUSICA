@@ -23,8 +23,8 @@
                 <tbody>
                     <?php $i = 0; ?>
                     @foreach ($visitantes as $ls)
-                <tr>
-                        <th scope="row"># {{$ls->id}}  </th>
+                <tr class="table-row">
+                        <th scope="row" id="{{$ls->id}}"># {{$ls->id}}  </th>
                         <td> 
                             <a href="{{url("storage/visitantes/" . $ls->foto )}}">
                             @if ($ls->foto != null )
@@ -47,8 +47,7 @@
         </nav>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-success btn-sm">Sim</button>
-            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Não</button>
+            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">OK</button>
       
         </div>
       </div>

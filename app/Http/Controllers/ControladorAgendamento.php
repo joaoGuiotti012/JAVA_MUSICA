@@ -29,7 +29,8 @@ class ControladorAgendamento extends Controller
     public function index(Funcionario $func)
     {
             $func = Funcionario::all();
-            return view('agendamento', compact('func'));
+            $visitantes = Visitantes::all();
+            return view('agendamento', compact('func' , 'visitantes'));
     }
 
     
@@ -82,8 +83,7 @@ class ControladorAgendamento extends Controller
 
     public function histSearch(Request $request){
         $busca = Agendamento::histSearch($request);
-        $cont = count($busca);
-        return view('historicoAgendamento',  compact('busca'), compact('cont'));
+        return view('historicoAgendamento',  compact('busca'));
     }
 
     public function saida($id){

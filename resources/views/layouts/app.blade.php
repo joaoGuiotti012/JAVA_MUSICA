@@ -25,6 +25,9 @@
         font-size: 14px;
     }
     button{ border-radius: 4px; }
+
+    .table-row{cursor:pointer;}
+
 </style>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
@@ -118,8 +121,19 @@
 
 
 <script>
+    // <+================ click table row ================+>
+    $(document).ready(function($) {
+        $(".table-row").click(function() {
+            var id = $(this).find("th").attr("id");
+            if(id){
+                document.getElementById("id-select").value = id;
+            }
+        });
+    });
+
 
     // <+================ ANIMAÇÔES ================+>
+  
 
     $(document).ready(function (){
 

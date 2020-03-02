@@ -29,11 +29,18 @@
                             <input type="number" class="form-control" placeholder="1234 Main St" name="codigo"> 
                             
                         </div>
-                        <div class="form-group col-md-4" >
+                        <div class="form-group col-md-2" >
                             <label for="ID">ID</label>
-                            <input type="number" class="form-control"  id="id" name="id" disabled>
+                            <input type="number" class="form-control"  id="id-select" name="visitante_id" >
+                        </div>
+
+                        <div class="form-group col-md-2" >
+                            <label for="a"> .</label>
+                            <button type="reset" class="bnt btn-primary form-control" data-toggle="modal" data-target="#buscaVisitantes" > Buscar </button>
                         </div>
                     </div>
+                    @include('layouts.modal.buscaVisitantes')
+
                     
                 </div>
             <br>

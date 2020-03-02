@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="ID">Cod Cracha</label>
-                        <input type="number" class="form-control" value="{{$ls->codigo}}" placeholder="1234 Main St" name="codigo" value="$ls->">
+                        <input type="number" class="form-control" value="{{$ls->codigo}}" placeholder="1234 Main St" name="codigo" value="{{$ls->codigo}}">
                     </div>
                     </div>
             

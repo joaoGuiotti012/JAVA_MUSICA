@@ -34,7 +34,7 @@
                         @csrf
                         <th></th>
                         <th><button class="btn btn-sm btn-success" type=" submit"><i class="fas fa-search-plus"></i></button></th>
-                        <th><input type="text" class="form-sm" placeholder="Nome Visitante" name="nome"></th>
+                        <th><input type="text" class="form-sm" placeholder="Nome Visitante" name="nome" id="nome"></th>
                         <th><input type="text" class="form-sm" placeholder="RG" id="rg" name="rg" ></th>
                         <th><input type="text" class="form-sm" placeholder="Empressa" name="empresa"></th>
                         <th></th>
@@ -53,8 +53,8 @@
                 <tbody>
                     <?php $i = 0; ?>
                     @foreach ($visitantes as $ls)
-                <tr>
-                        <th scope="row"># {{$ls->id}}  </th>
+                    <tr class="table-row" >
+                        <th scope="row" ># {{$ls->id}}  </th>
                         <td> 
                             <a href="{{url("storage/visitantes/" . $ls->foto )}}">
                             @if ($ls->foto != null )
