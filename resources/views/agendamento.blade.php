@@ -17,60 +17,54 @@
         {{ session('success') }}
     </div>
     @endif
-
+    <br>
     <form class="container" method="POST" action="{{  route('agendamento.novo') }}"  enctype="multipart/form-data">
-        @csrf   
-        <br>
-        <h2 class="text-center">
-            <i class="far fa-calendar-alt"></i>  
-            Agendamento de Visitas 
-        </h2>
-        <br>
-        <div class="card">
-            <div class="card-header text-white bg-dark"><h5>Dados Visitantes</h5></div>
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="nome">Nome Completo</label>
-                        <input type="text" class="form-control" name="nome">
+        @csrf  
+            <div class="card">
+                <div class="card-header text-white bg-dark"><h5>Dados Visitantes</h5></div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label for="ID">Cod Cracha</label>
+                            <input type="number" class="form-control" placeholder="1234 Main St" name="codigo"> 
+                            
+                        </div>
+                        <div class="form-group col-md-4" >
+                            <label for="ID">ID</label>
+                            <input type="number" class="form-control"  id="id" name="id" disabled>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="empresa">Empresa</label>
-                        <input type="text" class="form-control" name="empresa">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" placeholder="Nome ou RG" name="search">
+                        </div>
+                        <button type="button" class="btn-success btn-sm" data-toggle="modal" data-target="#buscaVisitantes">
+                            <i class="fas fa-search"></i> 
+                        </button>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="rg">RG</label>
-                        <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="codigo">Cod Cracha</label>
-                        <input type="number" class="form-control" placeholder="1234 Main St" name="codigo">
+                    
+                </div>
+            <br>
+                <div class="card-header text-white bg-dark"><h5>Dados Visitado </h5></div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="visitado_id">Nome  /  Setor </label>
+                            <select class="custom-select" id="inputGroupSelect01" name="visitado_id">
+                                <option selected>Choose...</option>
+                                @foreach ($func as $f)
+                                    <option value="{{$f->id}}" >{{ $f->nome }} / {{ $f->setor }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    
                     </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <div class="card">
-            <div class="card-header text-white bg-dark"><h5>Dados Visitado </h5></div>
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="visitado_id">Nome  /  Setor </label>
-                        <select class="custom-select" id="inputGroupSelect01" name="visitado_id">
-                            <option selected>Choose...</option>
-                            @foreach ($func as $f)
-                                <option value="{{$f->id}}" >{{ $f->nome }} / {{ $f->setor }} </option>
-                            @endforeach
-                        </select>
-                    </div>
-                   
-                </div>
-            </div>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-success">Confirmar</button>
-        <button type="reset" class="btn btn-danger" style="margin-left: 10px;">Cancelar</button>
-        <br><br>
+            <br>
+            <button type="submit" class="btn btn-success">Confirmar</button>
+            <button type="reset" class="btn btn-danger" style="margin-left: 10px;">Cancelar</button>
+            <br><br>
     </form>
 @endsection
 

@@ -3,17 +3,17 @@
 @section('content')
 
     @if (session('success'))
-    <div class="alert alert-success">
+    <div id="alert" class="alert alert-success">
         <p>{{ session('success') }} </p>
     </div>
     @endif
     @if (session('fail'))
-    <div class="alert alert-success">
+    <div id="alert" class="alert alert-success">
         <p>{{ session('success') }} </p>
     </div>
     @endif
     @if (session('primary'))
-        <div class="alert alert-primary">
+        <div id="alert" class="alert alert-primary">
             <p>{{ session('primary') }}  </p>
         </div>
     @endif
@@ -21,31 +21,40 @@
     @if (isset($busca))
       <?php $agendamento = $busca; ?>
       @if (session('search'))
-        <div class="alert alert-info alert-fixed" role="alert">
+        <div id="alert" class="alert alert-info alert-fixed" role="alert">
             {{ session('search') }}
         </div>
       @endif
     @endif
     <br>
-    <div class="container">
+    <div class="container-fluid">
         <br>
         <h2 class="text-center" id="historico"><i class="far fa-calendar-alt"></i>  Histórico de Agendamentos </h2>
         <br>
-        <form class="form-inline" action="{{ route('agendamento.histSearch') }}" method="GET">
-            @csrf
-              <div class="form-group mx-sm-1 mb-2">
-                <label for="dataentrada" class="sr-only">Entrada</label>
-                <input type="date" class="form-control form-control-sm" name="dataEntrada" >
-              </div>
-              <div class="form-group mx-sm-1 mb-2">
-                <label for="dataSaida" class="sr-only">Saida</label>
-                <input type="date" class="form-control form-control-sm" name="dataSaida" >
-              </div>
-              <button type="submit" class="btn btn-primary btn-sm mb-2">Buscar</button> 
-        </form>
-
+        
+        <button id="btn-filtrar" class="btn btn-primary btn-sm mb-2">
+            <i class="fas fa-filter"></i>
+        </button> 
+ 
         <nav style="max-height: 350px; overflow: scroll; ">
             <table class="table table-sm table-hover table-bordered table-striped">
+                <thead id="div-search" class="bg-secondary" style="display:none">
+                    <tr>
+                    <form id="div-search" action="{{ route('agendamento.histSearch') }}" method="GET" style="display:none">
+                        @csrf
+                        <th></th>
+                        <th><button class="btn btn-sm btn-success" type=" submit"><i class="fas fa-search-plus"></i></button></th>
+                        <th><input type="text" class="form-sm" placeholder="Nome Visitante" name="nome_visitante"></th>
+                        <th><input type="text" class="form-sm" placeholder="RG" id="rg" name="rg" ></th>
+                        <th><input type="text" class="form-sm" placeholder="Empressa" name="empresa"></th>
+                        <th><input type="text" class="form-sm" placeholder="Visitado" name="nome_visitado"></th>
+                        <th><input type="text" class="form-sm" placeholder="Setor" name="setor" ></th>
+                        <th><input type="date" class="form-sm" name="dataEntrada" ></th>
+                        <th><input type="date" class="form-sm" name="dataSaida" ></th>
+                        <th></th>
+                    </form>
+                    </tr>
+                </thead>
                 <thead>
                 <tr class="text-center">
                     <th scope="col">#</th>

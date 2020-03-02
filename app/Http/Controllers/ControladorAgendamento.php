@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\agendamentoVisita as Agendamento;
 use App\Funcionario;
+use App\Visitantes;
 use Carbon\Carbon;
 use Carbon\Traits\Timestamp;
 use DB;
@@ -44,18 +45,10 @@ class ControladorAgendamento extends Controller
     {   
         $agendamento = new Agendamento();
         $request = Agendamento::valido($request);
-       
-        if($request->file('foto')->isValid()){
-            $nameFile = Carbon::now() . '.' . $request->foto->extension();
-            $request->file('foto')->storeAs('visitantes' , $nameFile);
-        }
 
-        $agendamento->nome = $request->nome;
-        $agendamento->empresa = $request->empresa;
-        $agendamento->foto = $nameFile;
-        $agendamento->rg = $request->rg;
         $agendamento->codigo = $request->codigo;
         $agendamento->visitado_id = $request->visitado_id;
+        $agendamento->visitante_id = $request->visitante_id;
         $agendamento->dataEntrada = Carbon::now();
     
         if ($agendamento->save()){
@@ -66,23 +59,7 @@ class ControladorAgendamento extends Controller
 
     public function show( )
     {
-        $agendamento = DB::table('agendamento_visitas')
-                ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
-                ->select(
-                'agendamento_visitas.id',
-                'agendamento_visitas.visitado_id' , 
-                'agendamento_visitas.foto',  
-                'agendamento_visitas.codigo', 
-                'funcionarios.nome as nome_func',
-                'funcionarios.setor', 
-                'agendamento_visitas.codigo',
-                'agendamento_visitas.nome',
-                'agendamento_visitas.rg',
-                'agendamento_visitas.empresa',
-                'agendamento_visitas.guardaResp',
-                'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada'
-                )->get();
-                
+        $agendamento = Agendamento::selectAll();
         $cont = count($agendamento);
         return view('saidaAgendamento', compact('agendamento'), compact('cont'));
         
@@ -90,22 +67,7 @@ class ControladorAgendamento extends Controller
 
     public function showHistorico( )
     {
-        $agendamento = DB::table('agendamento_visitas')
-                ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
-                ->select(
-                'agendamento_visitas.id',
-                'agendamento_visitas.visitado_id' , 
-                'agendamento_visitas.foto',  
-                'agendamento_visitas.codigo', 
-                'funcionarios.nome as nome_func',
-                'funcionarios.setor', 
-                'agendamento_visitas.codigo',
-                'agendamento_visitas.nome',
-                'agendamento_visitas.rg',
-                'agendamento_visitas.empresa',
-                'agendamento_visitas.guardaResp',
-                'agendamento_visitas.dataSaida','agendamento_visitas.dataEntrada'
-                )->get();
+        $agendamento = Agendamento::selectAll();
                 
         $cont = count($agendamento);
         return view('historicoAgendamento', compact('agendamento'), compact('cont'));
@@ -145,7 +107,7 @@ class ControladorAgendamento extends Controller
         $agendamento->nome = $request->get('nome');
         $agendamento->empresa = $request->get('empresa');
         $agendamento->rg = $request->get('rg');
-        $agendamento->codigo = $request->get('codigo');
+        $agendamento->ID = $request->get('ID');
         $agendamento->visitado_id = $request->get('visitado_id');
         $agendamento->dataEntrada = $request->get('dataEntrada');
         $update = $agendamento->save();

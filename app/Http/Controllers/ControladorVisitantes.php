@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\agendamentoVisita;
 use App\Visitantes;
 
 use Illuminate\Http\Request;
@@ -42,14 +44,22 @@ class ControladorVisitantes extends Controller
        
     }
 
+    public function search(Request $request){
+       
+        $visitantes = Visitantes::search($request);
+        $cont = count($visitantes);
+        return view('saidaVisitantes' , compact('visitantes' , 'cont'));
+      
+    }
+
     public function destroy($id)
     {
      
         $visitantes = Visitantes::find($id);
         $visitantes->delete();
-        
         return redirect('visitantes')->with('success', 'Agendamento deletado com sucesso !! ');
         
     }
+
 
 }

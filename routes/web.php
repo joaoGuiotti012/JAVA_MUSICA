@@ -10,7 +10,7 @@
 
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('home');
 });
 
 
@@ -54,6 +54,8 @@ Route::get('visitantes', 'ControladorVisitantes@index')->name('visitantes');
 Route::post('visitantes/novo', 'ControladorVisitantes@store')->name('visitantes.novo'); 
 
 Route::get('visitantes/saida', 'ControladorVisitantes@show'); 
+
+Route::get('visitantes/search' , 'ControladorVisitantes@search')->name('visitantes.search'); 
 
 Route::delete('visitantes/delete{id}', 'ControladorVisitantes@destroy')->name('visitantes.destroy'); ; 
 

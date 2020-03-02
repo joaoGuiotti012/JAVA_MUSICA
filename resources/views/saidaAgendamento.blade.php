@@ -3,17 +3,17 @@
 @section('content')
 
     @if (session('success'))
-    <div class="alert alert-success">
+    <div id="alert" class="alert alert-success">
         <p>{{ session('success') }} </p>
     </div>
     @endif
     @if (session('fail'))
-    <div class="alert alert-success">
+    <div id="alert" class="alert alert-success">
         <p>{{ session('success') }} </p>
     </div>
     @endif
     @if (session('primary'))
-        <div class="alert alert-primary">
+        <div id="alert" class="alert alert-primary">
             <p>{{ session('primary') }}  </p>
         </div>
     @endif
@@ -21,7 +21,7 @@
     @if (isset($busca))
       <?php $agendamento = $busca; ?>
       @if (session('search'))
-        <div class="alert alert-info alert-fixed" role="alert">
+        <div id="alert" class="alert alert-info alert-fixed" role="alert">
             {{ session('search') }}
         </div>
       @endif
@@ -61,7 +61,7 @@
                     @if ( $ls->dataSaida == null )
                     
                 <tr>
-                    <th scope="row">{{$ls->id}}  </th>
+                    <th scope="row">{{$ls->codigo}}  </th>
                         <td> {{ $ls->codigo}}    </td>
                         <td> 
                             <a href="{{url("storage/visitantes/" . $ls->foto )}}">

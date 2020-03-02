@@ -43,7 +43,7 @@
                         <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" value="{{$ls->rg}}">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="codigo">Cod Cracha</label>
+                        <label for="ID">Cod Cracha</label>
                         <input type="number" class="form-control" value="{{$ls->codigo}}" placeholder="1234 Main St" name="codigo" value="$ls->">
                     </div>
                     </div>

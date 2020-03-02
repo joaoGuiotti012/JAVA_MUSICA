@@ -14,7 +14,7 @@ class CreateVisitantesTable extends Migration
     public function up()
     {
         Schema::create('visitantes', function (Blueprint $table) {
-            $table->bigIncrements('codigo');
+            $table->increments('id');
             $table->string('foto', 100);
             $table->string('nome', 80);
             $table->string('rg', 14);

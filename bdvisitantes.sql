@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `agendamento_visitas` (
   `id` int(10) UNSIGNED NOT NULL,
   `visitado_id` int(10) UNSIGNED NOT NULL,
-  `codigo` int(11) NOT NULL,
+  `ID` int(11) NOT NULL,
   `nome` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rg` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
   `empresa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `agendamento_visitas` (
 -- Despejando dados para a tabela `agendamento_visitas`
 --
 
-INSERT INTO `agendamento_visitas` (`id`, `visitado_id`, `codigo`, `nome`, `rg`, `empresa`, `guardaResp`, `dataEntrada`, `dataSaida`, `created_at`, `updated_at`) VALUES
+INSERT INTO `agendamento_visitas` (`id`, `visitado_id`, `ID`, `nome`, `rg`, `empresa`, `guardaResp`, `dataEntrada`, `dataSaida`, `created_at`, `updated_at`) VALUES
 (1, 1, 225, 'João Otavio guotti', '141.154.154.45', 'dsada', 'Tomé', '2020-02-18 03:00:00', '2020-02-18 03:00:00', NULL, NULL),
 (2, 1, 123, 'dasdasdasd', '123131', 'dasdadasdasd', NULL, NULL, NULL, NULL, NULL),
 (3, 1, 1231323, 'dasdasd', '12312321312', 'dasdasd', NULL, NULL, NULL, NULL, NULL),
@@ -108,7 +108,7 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(14, '2020_02_18_140824_create_agendamento_visitantes', 1),
+(14, '2020_02_18_140824_create_agendamento_visitas', 1),
 (15, '2014_10_12_000000_create_users_table', 2),
 (16, '2014_10_12_100000_create_password_resets_table', 2),
 (17, '2020_02_18_112316_create_guarda', 2),

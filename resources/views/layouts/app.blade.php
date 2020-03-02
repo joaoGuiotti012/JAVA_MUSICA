@@ -13,7 +13,7 @@
      <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
      <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-  
+
     
     <!-- styles -->
      <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -118,10 +118,44 @@
 
 
 <script>
-    $(document).ready(function(){
+
+    // <+================ ANIMAÇÔES ================+>
+
+    $(document).ready(function (){
+
+        $("#btn-filtrar").click(function (){
+            $("#btn-ocultar").show(1000);
+            $("#btn-filtrar").hide(1000);
+            $("#div-search").show(1000);
+        });
+
+        $("#btn-ocultar").click(function (){
+            $("#btn-ocultar").hide(1000);
+            $("#btn-filtrar").show(1000);
+            $("#div-search").hide(1000);
+        });
+
+        $("#btn-filtrar").click(function (){
+            $("#success").hide(1500);
+            $("#primary").hide(1500);
+            $("#danger").hide(1500);
+        });
+
         $('#rg').mask('000.000.000-0' , {reverse: false });
+
     });
+
+    $().ready(function() {
+        setTimeout(function () {
+            $('#alert').hide(1000); // "foo" é o id do elemento que seja manipular.
+        }, 2500); // O valor é representado em milisegundos.
+    });
+
+
+
+
 </script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

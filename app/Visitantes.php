@@ -33,6 +33,25 @@ class Visitantes extends Model
                 
         return $busca;
 
+    }
+
+    static function search( Request $request ){
+
+        $busca = DB::table('visitantes')
+                    ->select(
+                        'visitantes.id',
+                        'visitantes.foto',
+                        'visitantes.nome',
+                        'visitantes.rg',
+                        'visitantes.empresa'
+                    )
+                    ->where('visitantes.nome','LIKE' , '%'.$request->nome.'%' )
+                    ->where('visitantes.rg','LIKE' , '%'.$request->rg.'%' )
+                    ->where('visitantes.empresa','LIKE' , '%'.$request->empresa.'%' )
+                    ->orderBy('id', 'DESC')
+                    ->take(250)
+                    ->get();
+        return $busca;
 
     }
 
