@@ -18,7 +18,6 @@
     
     <!-- styles -->
      <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/datables.min.css') }}" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
   
 </head>
