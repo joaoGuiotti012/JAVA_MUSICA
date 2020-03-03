@@ -12,6 +12,9 @@
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/camera', function () {
+    return view('camera');
+});
 
 Route::get('/home', function () {
     return view('home');

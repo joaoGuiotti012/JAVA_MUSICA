@@ -56,10 +56,12 @@
                     <tr class="table-row" >
                         <th scope="row" ># {{$ls->id}}  </th>
                         <td> 
-                            <a href="{{url("storage/visitantes/" . $ls->foto )}}">
+                            
                             @if ($ls->foto != null )
+                                <a href="{{url("storage/visitantes/" . $ls->foto )}}">
                                 <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " style="border-radius: 100%;" width="30" height="30">
                             @else
+                                <a href="{{url("img/topo.png") }}">
                                 <img src="{{ asset("img/topo.png") }}" style="border-radius: 100%;" width="30" height="30">
                             @endif
                             </a> 

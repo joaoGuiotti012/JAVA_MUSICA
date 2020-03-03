@@ -14,8 +14,8 @@
      <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
      <script src="{{ asset('js/datatables.min.js') }}"></script>
+     
 
-    
     <!-- styles -->
      <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -177,6 +177,10 @@
             $('#alert').hide(1000); // "foo" é o id do elemento que seja manipular.
         }, 2500); // O valor é representado em milisegundos.
     });
+
+        
+    
+
 
 </script>
 

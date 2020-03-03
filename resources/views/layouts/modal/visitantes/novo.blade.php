@@ -43,7 +43,14 @@
                     </div>
 
                     <div class="form-group col-md-8">
-                       
+                        <div class="container" id="camera"><b>Câmera:</b>
+                            <div id="minha_camera" ></div><form><input type="button" value="Tirar Foto" onClick="bater_foto()"></form>
+                        </div>
+                        <div class="container" id="previa">
+                            <b>Prévia:</b><div id="results"></div>
+                            </div>
+                            <div class="container" id="salva">
+                            <span id="carregando"></span><img id="completado" src=""/>
                         <input type="file" class="text-center center-block file-upload" name="foto">
                     </div>
                     
@@ -57,3 +64,5 @@
       </div>
     </div>
   </div>
+<script src="{{ asset('js/webcam.min.js') }}"></script>
+<script src="{{ asset('js/foto.js') }}"></script>
