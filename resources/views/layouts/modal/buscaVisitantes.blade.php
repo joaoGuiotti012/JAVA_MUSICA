@@ -18,7 +18,6 @@
                     <th scope="col">Nome</th>
                     <th scope="col">RG</th>
                     <th scope="col">Empresa</th>
-                    <th scope="col">Ações</th>
                 </thead>
                 <tbody>
                     <?php $i = 0; ?>
@@ -37,8 +36,7 @@
                         <td> {{ $ls->nome}}       </td>
                         <td> {{ $ls->rg}}         </td>
                         <td> {{ $ls->empresa}}    </td>
-                        <td class="text-center" >  
-                        </td>
+                    
                     </tr>
                   
                     @endforeach
@@ -47,8 +45,7 @@
         </nav>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">OK</button>
-      
+            <button type="button" class="btn btn-danger btn-sm" id="btn-ok" data-dismiss="modal">OK</button>
         </div>
       </div>
     </div>

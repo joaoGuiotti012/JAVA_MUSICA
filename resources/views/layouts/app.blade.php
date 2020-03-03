@@ -114,10 +114,10 @@
             var id = $(this).find("th").attr("id");
             if(id){
                 document.getElementById("id-select").value = id;
+                $('#btn-ok').trigger('click');
             }
         });
     });
-
 
     // <+================ ANIMAÇÔES ================+>
     $(document).ready(function (){

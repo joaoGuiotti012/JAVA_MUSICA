@@ -83,6 +83,7 @@ class ControladorAgendamento extends Controller
 
     public function histSearch(Request $request){
         $busca = Agendamento::histSearch($request);
+
         return view('historicoAgendamento',  compact('busca'));
     }
 

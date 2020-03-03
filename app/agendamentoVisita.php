@@ -99,7 +99,7 @@ class agendamentoVisita extends Model
                 )->where('visitantes.nome','LIKE' , $request->nome_visitante.'%' )
                 ->where('visitantes.rg','LIKE' , $request->rg.'%' )
                 ->where('visitantes.empresa','LIKE' , $request->empresa.'%' )
-                ->where('funcionarios.nome','LIKE' , $request->setor.'%' )
+                ->where('funcionarios.setor','LIKE' , $request->setor.'%' )
                 ->where('funcionarios.nome','LIKE' , $request->nome_visitado.'%' )
                 ->where('agendamento_visitas.dataEntrada','LIKE' , $request->dataEntrada.'%' )
                 ->where('agendamento_visitas.dataSaida','LIKE', $request->dataSaida.'%' )

@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel"><i class="far fa-calendar-alt"></i>  Novo Visitante</h5>
+          <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-user-plus"></i> Novo Visitante</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -25,7 +25,7 @@
                     <p><hr class="text-primary" ></p>
                 </h4>
                 <div class="form-row text-left">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-10">
 
                         <label for="nome">Nome Completo</label>
                         <input type="text" class="form-control" name="nome" >
@@ -39,11 +39,12 @@
                     <div class="form-group col-md-4">
                         <label for="rg">RG</label>
                         <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" >
+
                     </div>
 
                     <div class="form-group col-md-8">
-                        <label for="foto">Foto</label>
-                        <input type="file" class="form-control" name="foto">
+                       
+                        <input type="file" class="text-center center-block file-upload">
                     </div>
                     
                 </div>
