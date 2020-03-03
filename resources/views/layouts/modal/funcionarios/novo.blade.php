@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-user-plus"></i> Novo Visitante</h5>
+          <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-user-plus"></i> Novo Colaborador</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,35 +18,34 @@
             </div>
             @endif
             
-            <form class="container" method="POST" action="{{  route('visitantes.novo') }}"  enctype="multipart/form-data">
+            <form class="container" method="POST" action="{{  route('funcionarios.novo') }}" >
                 @csrf
                 <br>
                 <h4 class="text-left"> Dados Visitante 
                     <p><hr class="text-primary" ></p>
                 </h4>
                 <div class="form-row text-left">
-                    <div class="form-group col-md-10">
+                    <div class="form-group col-md-12">
 
                         <label for="nome">Nome Completo</label>
                         <input type="text" class="form-control" name="nome" >
 
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="empresa">Empresa</label>
-                        <input type="text" class="form-control" name="empresa">
+                            <label for="visitado_id">Nome  /  Setor </label>
+                            <select class="custom-select" id="inputGroupSelect01" name="setor">
+                                <option selected>Choose...</option>
+                                    <option value="T.I" > T.I </option>
+                                    <option value="T.I" > Controladoria </option>
+                                    <option value="T.I" > Comercial </option>
+                                    <option value="T.I" > Infra </option>
+                                    <option value="T.I" > Financeiro </option>
+                                    <option value="T.I" > Compras </option>
+                                    <option value="T.I" > Marketing </option>
+                                   
+                            </select>
                     </div>
-                
-                    <div class="form-group col-md-4">
-                        <label for="rg">RG</label>
-                        <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" >
 
-                    </div>
-
-                    <div class="form-group col-md-8">
-                       
-                        <input type="file" class="text-center center-block file-upload" name="foto">
-                    </div>
-                    
                 </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success btn-sm">Confirmar</button>

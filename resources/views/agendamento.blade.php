@@ -17,7 +17,7 @@
         {{ session('success') }}
     </div>
     @endif
-    <br>
+    <br> <br>
     <form class="container" method="POST" action="{{  route('agendamento.novo') }}"  enctype="multipart/form-data">
         @csrf  
             <div class="card">
@@ -34,9 +34,9 @@
                             <input type="number" class="form-control"  id="id-select" name="visitante_id" >
                         </div>
 
-                        <div class="form-group col-md-2" >
+                        <div class="form-group " >
                             <label for="a"> .</label>
-                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#buscaVisitantes" > Buscar </button>
+                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#buscaVisitantes" > <i class="fas fa-search"></i> </button>
                         </div>
                     </div>
                     @include('layouts.modal.buscaVisitantes')

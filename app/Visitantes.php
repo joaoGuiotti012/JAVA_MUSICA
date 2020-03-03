@@ -15,7 +15,7 @@ class Visitantes extends Model
         $request->validate([
             'foto'           => 'file|max:600',  
             'nome'           => 'required',
-            'rg'             => 'required|string|min:11',
+            'rg'             => 'required|string',
             'empresa'        => 'required',
         ]);
 

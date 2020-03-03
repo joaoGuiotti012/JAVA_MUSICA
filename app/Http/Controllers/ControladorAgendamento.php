@@ -29,19 +29,15 @@ class ControladorAgendamento extends Controller
     public function index(Funcionario $func)
     {
             $func = Funcionario::all();
-            $visitantes = Visitantes::all();
+            $visitantes = Visitantes::all()->sortByDesc("id");
             return view('agendamento', compact('func' , 'visitantes'));
     }
-
-    
-
   
     public function create()
     {
         //
     }
 
- 
     public function store(Request $request)
     {   
         $agendamento = new Agendamento();
@@ -69,7 +65,6 @@ class ControladorAgendamento extends Controller
     public function showHistorico( )
     {
         $agendamento = Agendamento::selectAll();
-                
         $cont = count($agendamento);
         return view('historicoAgendamento', compact('agendamento'), compact('cont'));
         

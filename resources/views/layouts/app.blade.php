@@ -13,10 +13,12 @@
      <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
      <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+     <script src="{{ asset('js/datatables.min.js') }}"></script>
 
     
     <!-- styles -->
      <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/datables.min.css') }}" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
   
 </head>
@@ -56,7 +58,7 @@
                         <a href="{{ url('agendamento/saida/historico') }}" class="nav-link"> Histórico</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"> Colaboradores</a>
+                        <a href="{{ url('/funcionarios') }}" class="nav-link"> Colaboradores</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('/visitantes') }}" class="nav-link"> Visitantes</a>
@@ -108,6 +110,33 @@
 
 
 <script>
+  
+   $(document).ready(function() {
+        $('#table-view').DataTable({ 
+            "bJQueryUI": true,
+                "oLanguage": {
+                    "sProcessing":   "Processando...",
+                    "sLengthMenu":   "Linhas _MENU_ ",
+                    "sZeroRecords":  "Não foram encontrados resultados",
+                    "sInfo":         "_START_ até _END_ ",
+                    "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registros",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "Buscar:",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext":     "Proximo",
+                        "sLast":     "Último"
+                    }
+                }
+        });
+            
+   
+    });
+
+
     // <+================ click table row ================+>
     $(document).ready(function($) {
         $(".table-row").click(function() {
@@ -141,7 +170,6 @@
 
         // <+============= MASK ===================+>
         $('#rg').mask('000.000.000-0' , {reverse: false });
-        $('#codigo').mask('0000' , {reverse: false });
     });
 
     // <+================ SET TIME ALERT ================+>

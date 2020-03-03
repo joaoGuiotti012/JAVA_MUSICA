@@ -36,7 +36,7 @@
             <i class="fas fa-filter"></i>
         </button> 
  
-        <nav style="max-height: 350px; overflow: scroll; ">
+        <nav style="max-height: 350px; overflow: scroll ">
             <table class="table table-sm table-hover table-bordered table-striped">
                 <thead id="div-search" class="bg-secondary" style="display:none">
                     <tr>

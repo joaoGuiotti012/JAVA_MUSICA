@@ -13,6 +13,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/home', function () {
+    return view('home');
+});
+
 
 Auth::routes();
 
@@ -59,8 +63,17 @@ Route::get('visitantes/saida', 'ControladorVisitantes@show');
 
 Route::get('visitantes/search' , 'ControladorVisitantes@search')->name('visitantes.search'); 
 
-Route::delete('visitantes/delete{id}', 'ControladorVisitantes@destroy')->name('visitantes.destroy'); ; 
+Route::delete('visitantes/delete{id}', 'ControladorVisitantes@destroy')->name('visitantes.destroy'); 
 
+/*============================== ROUTES COLABORADORES ======================================*/ 
+
+
+
+Route::get('funcionarios', 'ControladorFuncionario@index')->name('funcionarios');
+
+Route::post('funcionarios/novo', 'ControladorFuncionario@store')->name('funcionarios.novo'); 
+
+Route::patch('funcionarios/editar{id}', 'ControladorFuncionario@update')->name('funcionarios.update'); 
 
 
 

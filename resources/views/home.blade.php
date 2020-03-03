@@ -61,6 +61,7 @@ h2 {
 @section('content')
 <br>
     <div class="container">
+        <br>
             <div class="row mbr-justify-content-center">
     
                 <div class="col-lg-6 mbr-col-md-10">

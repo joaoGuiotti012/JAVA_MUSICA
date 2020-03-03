@@ -8,84 +8,51 @@ use PhpParser\Builder\Function_;
 
 class ControladorFuncionario extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
+
+        $func = Funcionario::all()->sortByDesc("id");
+        return view('funcionarios' , compact('func'));
         
     }
-    public function select_all( $id)
-    {
-        # code...
-        $func = Funcionario::find()->where( 'id' , $id );
-        return $func;
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $func = new Funcionario();
+        $request = Funcionario::valido($request);
+
+        $func->nome = mb_strtoupper($request->nome , 'UTF-8');
+        $func->setor = mb_strtoupper($request->setor , 'UTF-8');
+    
+        if ($func->save()){
+            return redirect('funcionarios' )->with('success', 'Funcionarios Confirmado !! ');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        $request = Funcionario::valido($request);
+       
+        $func = Funcionario::find($id);
+        $func->nome = mb_strtoupper($request->get('nome'), 'UTF-8' );
+        $func->setor = mb_strtoupper($request->get('setor'), 'UTF-8' );
+
+        $update = $func->save();
+
+        if($update){
+            return redirect('funcionarios' )->with('success', 'Colaborador editado :) ');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
-        //
+        $func = Funcionario::find($id);
+        $func->delete();
+        
+        return view('funcionarios')->with('success', 'Agendamento deletado com sucesso !! ');
     }
 }

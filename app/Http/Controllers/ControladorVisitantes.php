@@ -34,17 +34,18 @@ class ControladorVisitantes extends Controller
 
         $visitantes = new Visitantes();
         $request = Visitantes::valido($request);
-        
+      
    
         if($request->file('foto')->isValid()){
             $nameFile = Carbon::now() . '.' . $request->foto->extension();
             $request->file('foto')->storeAs('visitantes' , $nameFile);
         }
-
+        
         $visitantes->foto = $nameFile;
-        $visitantes->nome = $request->nome;
+        $visitantes->nome = mb_strtoupper($request->nome , 'UTF-8');
         $visitantes->rg = $request->rg;
-        $visitantes->empresa = $request->empresa;
+        $visitantes->empresa = mb_strtoupper($request->empresa, 'UTF-8');
+
         $add = $visitantes->save();
         if($add > 0){
             return redirect('visitantes')->with('success' , 'visitante cadastro com sucesso !');
@@ -63,10 +64,9 @@ class ControladorVisitantes extends Controller
     public function update(Request $request, $id){
 
         $request = Visitantes::valido($request);
-
         $visitantes = Visitantes::find($id);
-        $visitantes->nome = $request->get('nome');
-        $visitantes->empresa = $request->get('empresa');
+        $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
+        $visitantes->empresa = mb_strtoupper($request->get('empresa' , 'UTF-8'));
         $visitantes->rg = $request->get('rg');
         $update = $visitantes->save();
 
@@ -78,7 +78,6 @@ class ControladorVisitantes extends Controller
 
     public function destroy($id)
     {
-     
         $visitantes = Visitantes::find($id);
         $visitantes->delete();
         return redirect('visitantes')->with('success', 'Agendamento deletado com sucesso !! ');

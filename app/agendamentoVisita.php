@@ -42,7 +42,8 @@ class agendamentoVisita extends Model
                 'agendamento_visitas.guardaResp',
                 'agendamento_visitas.dataSaida',
                 'agendamento_visitas.dataEntrada'
-                )->get();
+                )->orderBy('agendamento_visitas.id' , 'desc')
+                ->get();
 
                 return $busca;
 
@@ -72,7 +73,7 @@ class agendamentoVisita extends Model
                  ->orWhere('visitantes.empresa','LIKE' , '%'.$search.'%' )
                  ->orWhere('funcionarios.setor','LIKE' , '%'.$search.'%' )
                  ->orWhere('funcionarios.nome','LIKE' , '%'.$search.'%' )
-                 ->orderBy('dataEntrada', 'desc')
+                 ->orderBy('agendamento_visitas.id' , 'desc')
                  ->get();
         return $busca;
     }

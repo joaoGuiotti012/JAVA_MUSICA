@@ -28,18 +28,7 @@
     @endif
     <br>
     <div class="container">
-        <form class="form-inline " action="{{ route('agendamento.search') }}" method="GET">
-        @csrf
-            <div class="input-group mb-3">
-                <input type="text" class="form-control form-control-sm" placeholder="cod, nome, rg ..." aria-label="Buscar.." name="search" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary btn-sm" type="subimit" id="button-addon2"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form>
-    
-        <nav style="max-height: 350px; overflow: scroll; ">
-            <table class="table table-sm table-hover table-bordered table-striped">
+            <table id="table-view" class="table table-sm table-hover table-bordered table-striped">
                 <thead>
                 <tr class="text-center">
                     <th scope="col">#</th>
@@ -56,7 +45,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 0; ?>
                     @foreach ($agendamento as $ls)
                     @if ( $ls->dataSaida == null )
                     
@@ -96,13 +84,10 @@
                             @include('layouts.modal.modalSaida')  
                         </td>
                     </tr>
-                    <?php $i++ ?>
                     @endif
                     @endforeach
                 </tbody>
             </table>
-        </nav>
-        <p class="text-monospace text-small" style="margin-left:8px;">   N° Total: <b>{{$i}} </b> </p>
         <br>
     </div>
     

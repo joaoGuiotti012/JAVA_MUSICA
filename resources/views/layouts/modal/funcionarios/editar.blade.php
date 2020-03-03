@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel"><i class="far fa-calendar-alt"></i>  Editar Registro</h5>
+          <h5 class="modal-title" id="staticBackdropLabel"><i class="far fa-calendar-alt"></i>  editar Registro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -21,37 +21,33 @@
             </div>
             @endif
             
-        <form action="{{ route('agendamento.update' , $ls->id  ) }}" method="POST">
+        <form action="{{ route('funcionarios.update' , $ls->id  ) }}" method="POST">
             @method('PATCH') 
             @csrf
                 <br>
-                <h4 class="text-left"> Dados Visitante 
-                    <p><hr class="text-primary" ></p>
-                </h4>
-                <div class="text-center">
-                @if ($ls->foto != null )
-                    <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " class="avatar img-thumbnail" alt="avatar" width="300" height="300">
-                @else
-                    <img src="{{ asset("img/topo.png") }}" class="avatar img-thumbnail" alt="avatar"  width="300" height="300">
-                @endif
-        
+             
+                
                 <div class="form-row text-left">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
 
                         <label for="nome">Nome Completo</label>
                         <input type="text" class="form-control" name="nome" value="{{$ls->nome}}">
 
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="empresa">Empresa</label>
-                        <input type="text" class="form-control" name="empresa" value="{{$ls->empresa}}">
+                        <label for="empresa">Setor</label>
+                        <select class="custom-select" id="inputGroupSelect01" name="setor">
+                                <option selected>{{$ls->setor}}</option>
+                                <option value="T.I" > T.I </option>
+                                <option value="Controladoria" > Controladoria </option>
+                                <option value="Comercial" > Comercial </option>
+                                <option value="Infra" > Infra </option>
+                                <option value="Financeiro" > Financeiro </option>
+                                <option value="Compras" > Compras </option>
+                                <option value="Marketing" > Marketing </option>
+                        </select>
                     </div>
-                
-                    <div class="form-group col-md-4">
-                        <label for="rg">RG</label>
-                        <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" value="{{$ls->rg}}">
-                    </div>
-                    
+            
                 </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success btn-sm">Confirmar</button>

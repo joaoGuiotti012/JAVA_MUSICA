@@ -1,4 +1,5 @@
 <!-- Modal -->
+
 <div class="modal fade" id="buscaVisitantes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -8,9 +9,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <nav style="max-height: 450px; overflow: scroll; ">
-            <table class="table table-sm table-hover table-striped">
+        <div class="modal-body container">
+            <table id="table-view" class="table table-sm table-hover table-striped">
                 <thead>
                 <tr class="text-center" href="#">
                     <th scope="col">Código</th>
@@ -42,7 +42,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </nav>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-sm" id="btn-ok" data-dismiss="modal">OK</button>
