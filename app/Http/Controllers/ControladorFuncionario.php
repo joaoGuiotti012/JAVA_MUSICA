@@ -52,11 +52,11 @@ class ControladorFuncionario extends Controller
     {
         $func = Funcionario::find($id);
         $del = $func->delete();
-        
+
         if($del){
-            return view('funcionarios')->with('success', 'Agendamento deletado com sucesso !! ');
+            return redirect('funcionarios')->with('success', 'Agendamento deletado com sucesso !! ');
         }else{
-            return view('funcionarios')->with('faill', '<b> Falha </b> ao deletar este Colaborador !');
+            return redirect('funcionarios')->with('faill', '<b> Falha </b> ao deletar este Colaborador !');
         }
 
         
