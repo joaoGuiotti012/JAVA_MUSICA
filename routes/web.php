@@ -81,7 +81,8 @@ Route::patch('funcionarios/editar{id}', 'ControladorFuncionario@update')->name('
 
 
 
+/*===================================== RAMAIS ===========================================*/ 
 
 
 
-
+Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 

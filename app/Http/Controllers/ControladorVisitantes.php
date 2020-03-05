@@ -31,24 +31,27 @@ class ControladorVisitantes extends Controller
     }
 
     public function store( Request $request){
-
+        
         $visitantes = new Visitantes();
         $request = Visitantes::valido($request);
-      
-   
-        if($request->file('foto')->isValid()){
-            $nameFile = Carbon::now() . '.' . $request->foto->extension();
-            $request->file('foto')->storeAs('visitantes' , $nameFile);
-        }
-        
-        $visitantes->foto = $nameFile;
-        $visitantes->nome = mb_strtoupper($request->nome , 'UTF-8');
-        $visitantes->rg = $request->rg;
-        $visitantes->empresa = mb_strtoupper($request->empresa, 'UTF-8');
 
-        $add = $visitantes->save();
-        if($add > 0){
-            return redirect('visitantes')->with('success' , 'visitante cadastro com sucesso !');
+        if($request->file('foto')->isValid()){
+            
+            $nameFile = Carbon::now() . '.' . $request->foto->extension(); // seta novo nome ao arquivo
+            $request->file('foto')->storeAs('visitantes' , $nameFile);
+
+            $visitantes->foto = $nameFile;
+            $visitantes->nome = mb_strtoupper($request->nome , 'UTF-8');
+            $visitantes->rg = $request->rg;
+            $visitantes->empresa = mb_strtoupper($request->empresa, 'UTF-8');
+
+            $add = $visitantes->save();
+            if($add > 0){
+                return redirect('visitantes')->with('success' , 'visitante cadastro com sucesso !');
+            }
+
+        }else{
+            return redirect('visitantes')->with('faill' , 'imgagem não é valida, falha no upload olhe o tipo apenas: jpg, jpeg, png !');
         }
        
     }

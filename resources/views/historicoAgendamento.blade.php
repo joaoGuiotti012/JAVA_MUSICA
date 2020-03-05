@@ -36,8 +36,8 @@
             <i class="fas fa-filter"></i>
         </button> 
  
-        <nav style="max-height: 350px; overflow: scroll ">
-            <table class="table table-sm table-hover table-bordered table-striped">
+         <div class="table-responsive" style="max-height: 450px">
+            <table class="table table-sm table-hover table-bordered table-striped ">
                 <thead id="div-search" class="bg-secondary" style="display:none">
                     <tr>
                     <form id="div-search" action="{{ route('agendamento.histSearch') }}" method="GET" style="display:none">
@@ -96,7 +96,7 @@
                     @endforeach
                 </tbody>
             </table> 
-        </nav>
+        </div>
         <p class="text-monospace text-small" style="margin-left:8px;">   N° Total: <b>{{$i}} </b> </p>
         <br>
     </div>

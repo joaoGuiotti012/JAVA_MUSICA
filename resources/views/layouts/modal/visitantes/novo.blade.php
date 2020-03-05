@@ -41,28 +41,46 @@
                         <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" >
 
                     </div>
-
-                    <div class="form-group col-md-8">
-                        <div class="container" id="camera"><b>Câmera:</b>
-                            <div id="minha_camera" ></div><form><input type="button" value="Tirar Foto" onClick="bater_foto()"></form>
+                    <br>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupFileAddon01"><i class="fas fa-photo-video"></i></span>
                         </div>
-                        <div class="container" id="previa">
-                            <b>Prévia:</b><div id="results"></div>
-                            </div>
-                            <div class="container" id="salva">
-                            <span id="carregando"></span><img id="completado" src=""/>
-                        <input type="file" class="text-center center-block file-upload" name="foto">
+                        <div class="custom-file">
+                          <input type="file" name="foto" id="foto" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="inputGroupFile01">
+                              selecione ou tire uma foto...
+                          </label>
+                        </div>
                     </div>
-                    
                 </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-sm">Confirmar</button>
-                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fechar</button>
-                    </div>
+                <div class="text-center" style="display:none;" id="preview">
+                    <img id ="Tela" Name ="Tela"  class="avatar img-thumbnail"  width="150" height="150" >
+                </div><br>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-sm" id="confirmar">Confirmar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fechar</button>
+                </div>
             </form>
         </div>
       </div>
     </div>
   </div>
-<script src="{{ asset('js/webcam.min.js') }}"></script>
-<script src="{{ asset('js/foto.js') }}"></script>
+  <script>
+function enviar_imagem(input) {
+  if (input.files && input.files[0]) {
+     var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#preview').show(600);
+            $('#Tela').attr('src', e.target.result);
+        }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#foto").change(function(){
+  enviar_imagem(this);
+});
+  </script>

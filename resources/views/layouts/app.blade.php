@@ -29,6 +29,10 @@
 
     .table-row{cursor:pointer;}
 
+    td .td-row{
+        padding: 0 auto ;
+        display: inline-table;
+    }
 </style>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
@@ -131,8 +135,6 @@
                     }
                 }
         });
-            
-   
     });
 
 
@@ -145,6 +147,14 @@
                 $('#btn-ok').trigger('click');
             }
         });
+        $(".table-row-visitado").click(function() {
+            var id = $(this).find("th").attr("id");
+            if(id){
+                document.getElementById("id-visitado").value = id;
+                $('#btn-okk').trigger('click');
+            }
+        });
+
     });
 
     // <+================ ANIMAÇÔES ================+>

@@ -46,13 +46,11 @@
                 </thead>
                 <tbody>
                     @foreach ($agendamento as $ls)
-                    @if ( $ls->dataSaida == null )
-                    
+                    @if ( $ls->dataSaida == null )   
                 <tr>
                     <th scope="row">{{$ls->id}}  </th>
                         <td> {{ $ls->codigo}}    </td>
                         <td> 
-                            
                             @if ($ls->foto != null )
                                 <a href="{{url("storage/visitantes/" . $ls->foto )}}">
                                 <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " style="border-radius: 100%;" width="30" height="30">
@@ -69,27 +67,25 @@
                         <td> {{ $ls->setor }}     </td>
                         <td> {{ $ls->dataEntrada}}</td>
                         <td> {{ $ls->dataSaida}}  </td>
-                        <td class="text-center" >  
-                            <button type="button" class="btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
-                                <i class="fas fa-minus-circle"></i>
-                            </button> 
-                            @include('layouts.modal.modalrem')
-                
-                            <!--button type="button" class="btn-success" data-toggle="modal" data-target="#staticBackdrop{{$ls->id}}">
-                                <i class="fas fa-user-edit"></i> 
-                            </button> 
-                            @include('layouts.modal.modal') -->
+                        <td class="text-center">  
+                            <div class="row td-row">
+                                <button type="button" class="btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                    <i class="fas fa-minus-circle"></i>
+                                </button> 
+                                @include('layouts.modal.modalrem')
 
-                            <button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
-                                <i class="fas fa-check-circle"></i>
-                            </button>
-                            @include('layouts.modal.modalSaida')  
+                                <button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
+                                    <i class="fas fa-check-circle"></i>
+                                </button>
+                                @include('layouts.modal.modalSaida')  
+                            </div>
                         </td>
                     </tr>
                     @endif
                     @endforeach
                 </tbody>
             </table>
+
         <br>
     </div>
     

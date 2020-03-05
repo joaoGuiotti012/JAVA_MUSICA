@@ -13,7 +13,7 @@ class Visitantes extends Model
 
     static function valido(Request $request){
         $request->validate([
-            'foto'           => 'file|max:600',  
+            'foto'           => 'required|image|mimes:jpeg,png,jpg|max:5000',  
             'nome'           => 'required',
             'rg'             => 'required|string',
             'empresa'        => 'required',
@@ -26,7 +26,7 @@ class Visitantes extends Model
 
         $busca = DB::table('visitantes')
                 ->orderBy('id', 'DESC')
-                ->take(250)
+                ->take(100)
                 ->get();
                 
         return $busca;
@@ -47,7 +47,7 @@ class Visitantes extends Model
                     ->where('visitantes.rg','LIKE' , '%'.$request->rg.'%' )
                     ->where('visitantes.empresa','LIKE' , '%'.$request->empresa.'%' )
                     ->orderBy('id', 'DESC')
-                    ->take(250)
+                    ->take(50)
                     ->get();
         return $busca;
 

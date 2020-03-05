@@ -47,16 +47,18 @@
                 <div class="card-header text-white bg-dark"><h5>Dados Visitado </h5></div>
                 <div class="card-body">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="visitado_id">Nome  /  Setor </label>
-                            <select class="custom-select" id="inputGroupSelect01" name="visitado_id">
-                                <option selected>Choose...</option>
-                                @foreach ($func as $f)
-                                    <option value="{{$f->id}}" >{{ $f->nome }} / {{ $f->setor }} </option>
-                                @endforeach
-                            </select>
+                        
+                        <div class="form-group col-md-2" >
+                            <label for="ID">ID</label>
+                            <input type="number" class="form-control"  id="id-visitado" name="visitado_id" >
                         </div>
-                    
+
+                        <div class="form-group " >
+                            <label for="a"> .</label>
+                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#visitados" > <i class="fas fa-search"></i> </button>
+                        </div>
+                        @include('layouts.modal.buscaVisitados')
+
                     </div>
                 </div>
             </div>
