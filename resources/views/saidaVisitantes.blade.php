@@ -54,17 +54,18 @@
                     <?php $i = 0; ?>
                     @foreach ($visitantes as $ls)
                     <tr class="table-row" >
-                        <th scope="row" ># {{$ls->id}}  </th>
+                        <th scope="text-center" ># {{$ls->id}}  </th>
                         <td> 
-                            
+                            <div class="text-center" >
                             @if ($ls->foto != null )
                                 <a href="{{url("storage/visitantes/" . $ls->foto )}}">
-                                <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " style="border-radius: 100%;" width="30" height="30">
+                                <img src="{{ asset("storage/visitantes/" . $ls->foto )}} "  width="35" height="35">
                             @else
                                 <a href="{{url("img/topo.png") }}">
-                                <img src="{{ asset("img/topo.png") }}" style="border-radius: 100%;" width="30" height="30">
+                                <img src="{{ asset("img/topo.png") }}" width="35" height="35">
                             @endif
                             </a> 
+                        </div>
                         </td>
                         <td> {{ $ls->nome}}       </td>
                         <td> {{ $ls->rg}}         </td>
