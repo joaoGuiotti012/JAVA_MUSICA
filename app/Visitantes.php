@@ -22,6 +22,15 @@ class Visitantes extends Model
         return $request;
     }
 
+    static function validoEdit(Request $request){
+        $request->validate([
+            'nome'           => 'required',
+            'rg'             => 'required|string',
+            'empresa'        => 'required',
+        ]);
+
+        return $request;
+    }
     static function selectAll( ){
 
         $busca = DB::table('visitantes')

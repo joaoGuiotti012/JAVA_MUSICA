@@ -36,12 +36,12 @@
                             <select class="custom-select" id="inputGroupSelect01" name="setor">
                                 <option selected>Choose...</option>
                                     <option value="T.I" > T.I </option>
-                                    <option value="T.I" > Controladoria </option>
-                                    <option value="T.I" > Comercial </option>
-                                    <option value="T.I" > Infra </option>
-                                    <option value="T.I" > Financeiro </option>
-                                    <option value="T.I" > Compras </option>
-                                    <option value="T.I" > Marketing </option>
+                                    <option value="Controladoria" > Controladoria </option>
+                                    <option value="Comercial" > Comercial </option>
+                                    <option value="Infra" > Infra </option>
+                                    <option value="Financeiro" > Financeiro </option>
+                                    <option value="Compras" > Compras </option>
+                                    <option value="MArketing" > Marketing </option>
                                    
                             </select>
                     </div>

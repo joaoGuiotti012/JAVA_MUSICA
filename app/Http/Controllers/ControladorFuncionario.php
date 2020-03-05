@@ -12,7 +12,7 @@ class ControladorFuncionario extends Controller
     public function index()
     {
 
-        $func = Funcionario::all()->sortByDesc("id");
+        $func = Funcionario::all();
         return view('funcionarios' , compact('func'));
         
     }
@@ -51,8 +51,15 @@ class ControladorFuncionario extends Controller
     public function destroy($id)
     {
         $func = Funcionario::find($id);
-        $func->delete();
+        $del = $func->delete();
         
-        return view('funcionarios')->with('success', 'Agendamento deletado com sucesso !! ');
+        if($del){
+            return view('funcionarios')->with('success', 'Agendamento deletado com sucesso !! ');
+        }else{
+            return view('funcionarios')->with('faill', '<b> Falha </b> ao deletar este Colaborador !');
+        }
+
+        
+        
     }
 }

@@ -12,7 +12,7 @@
           Deseja realmente remover este item ?
         </div>
         <div class="modal-footer">
-          <form action="{{ route('visitantes.destroy' , $ls->id ) }}"  method="POST">
+          <form action="{{ route('funcionarios.destroy' , $ls->id ) }}"  method="POST">
             @csrf
             @method('DELETE') 
             <button type="submit" class="btn btn-success btn-sm">Sim</button>

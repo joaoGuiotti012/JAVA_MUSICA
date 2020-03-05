@@ -66,7 +66,7 @@ class ControladorVisitantes extends Controller
 
     public function update(Request $request, $id){
 
-        $request = Visitantes::valido($request);
+        $request = Visitantes::validoEdit($request);
         $visitantes = Visitantes::find($id);
         $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
         $visitantes->empresa = mb_strtoupper($request->get('empresa' , 'UTF-8'));

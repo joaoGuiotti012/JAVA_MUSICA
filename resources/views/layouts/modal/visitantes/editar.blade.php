@@ -30,9 +30,9 @@
                 </h4>
                 <div class="text-center">
                 @if ($ls->foto != null )
-                    <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " class="avatar img-thumbnail" alt="avatar" width="300" height="300">
+                    <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " class="avatar img-thumbnail" alt="avatar" width="150" height="150">
                 @else
-                    <img src="{{ asset("img/topo.png") }}" class="avatar img-thumbnail" alt="avatar"  width="300" height="300">
+                    <img src="{{ asset("img/topo.png") }}" class="avatar img-thumbnail" alt="avatar"  width="150" height="150">
                 @endif
         
                 <div class="form-row text-left">

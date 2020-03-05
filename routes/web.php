@@ -77,6 +77,9 @@ Route::post('funcionarios/novo', 'ControladorFuncionario@store')->name('funciona
 
 Route::patch('funcionarios/editar{id}', 'ControladorFuncionario@update')->name('funcionarios.update'); 
 
+Route::delete('funcioanrios/delete{id}', 'ControladorFuncionario@destroy')->name('funcionarios.destroy'); 
+
+
 
 
 
