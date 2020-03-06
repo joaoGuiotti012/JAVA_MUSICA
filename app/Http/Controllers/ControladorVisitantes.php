@@ -36,7 +36,7 @@ class ControladorVisitantes extends Controller
         $request = Visitantes::valido($request);
 
         if($request->file('foto')->isValid()){
-            
+           
             $nameFile = Carbon::now() . '.' . $request->foto->extension(); // seta novo nome ao arquivo
             $request->file('foto')->storeAs('visitantes' , $nameFile);
 

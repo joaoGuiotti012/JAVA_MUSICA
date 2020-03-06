@@ -13,7 +13,7 @@ class Visitantes extends Model
 
     static function valido(Request $request){
         $request->validate([
-            'foto'           => 'required|image|mimes:jpeg,png,jpg|max:5000',  
+            'foto'           => 'required|image|mimes:jpeg,png,jpg|max:9000',  
             'nome'           => 'required',
             'rg'             => 'required|string',
             'empresa'        => 'required',

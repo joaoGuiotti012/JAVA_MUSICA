@@ -10,7 +10,7 @@
           </button>
         </div>
         <div class="modal-body container">
-            <table id="table-view" class="table table-sm table-hover table-striped">
+            <table id="table-view02" class="table table-sm table-hover table-striped">
                 <thead>
                 <tr >
                     <th scope="col">ID</th>

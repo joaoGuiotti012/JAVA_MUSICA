@@ -27,7 +27,7 @@
       @endif
     @endif
     <br>
-    <div class="container">
+    <div class="table-responsive">
             <table id="table-view" class="table table-sm table-hover table-bordered table-striped">
                 <thead>
                 <tr class="text-center">

@@ -36,7 +36,9 @@
 
                         <div class="form-group " >
                             <label for="a"> .</label>
-                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#buscaVisitantes" > <i class="fas fa-search"></i> </button>
+                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#buscaVisitantes" > 
+                                Buscar <i class="fas fa-search"></i> 
+                            </button>
                         </div>
                     </div>
                     @include('layouts.modal.buscaVisitantes')
@@ -55,7 +57,8 @@
 
                         <div class="form-group " >
                             <label for="a"> .</label>
-                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#visitados" > <i class="fas fa-search"></i> </button>
+                            <button type="button" class="bnt btn-primary form-control" data-toggle="modal" data-target="#visitados" > 
+                                Buscar <i class="fas fa-search"></i> </button>
                         </div>
                         @include('layouts.modal.buscaVisitados')
 

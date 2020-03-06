@@ -137,6 +137,29 @@
         });
     });
 
+    $(document).ready(function() {
+        $('#table-view02').DataTable({ 
+            "bJQueryUI": true,
+                "oLanguage": {
+                    "sProcessing":   "Processando...",
+                    "sLengthMenu":   "Linhas _MENU_ ",
+                    "sZeroRecords":  "Não foram encontrados resultados",
+                    "sInfo":         "_START_ até _END_ ",
+                    "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registros",
+                    "sInfoFiltered": "",
+                    "sInfoPostFix":  "",
+                    "sSearch":       "Buscar:",
+                    "sUrl":          "",
+                    "oPaginate": {
+                        "sFirst":    "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext":     "Proximo",
+                        "sLast":     "Último"
+                    }
+                }
+        });
+    });
+
 
     // <+================ click table row ================+>
     $(document).ready(function($) {
