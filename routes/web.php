@@ -31,6 +31,11 @@ Route::group(['middleware' => ['auth']], function () {
     /* visitantes*/
 
 
+    /* === RAMAIS === */
+    Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 
+
+
+
 });
 
 /*======================== ROUTES AGENDAMENTO VISITAS ===================================*/ 
@@ -48,6 +53,8 @@ Route::delete('agendamento/deletar{id}', 'ControladorAgendamento@destroy')->name
 Route::patch('agendamento/editar{id}', 'ControladorAgendamento@update')->name('agendamento.update'); 
 
 Route::patch('agendamento/saida{id}', 'ControladorAgendamento@saida')->name('agendamento.saida'); 
+
+Route::get('agendamento/entrada{id}', 'ControladorAgendamento@entrada')->name('agendamento.entrada'); 
 
 
 
@@ -88,4 +95,3 @@ Route::delete('funcioanrios/delete{id}', 'ControladorFuncionario@destroy')->name
 
 
 
-Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 

@@ -40,8 +40,9 @@ class agendamentoVisita extends Model
                 'visitantes.nome',
                 'visitantes.rg',
                 'visitantes.empresa',
-                'agendamento_visitas.guardaResp',
                 'agendamento_visitas.descricao',
+                'agendamento_visitas.dataPrevisao',
+                'agendamento_visitas.horarioPrevisao',
                 'agendamento_visitas.dataSaida',
                 'agendamento_visitas.dataEntrada'
                 )->orderBy('agendamento_visitas.id' , 'desc')
@@ -51,11 +52,14 @@ class agendamentoVisita extends Model
 
     }
 
+
+
     static function search($search){
 
         $busca = DB::table('agendamento_visitas')
                 ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
                 ->join('visitantes', 'visitantes.id', '=' , 'agendamento_visitas.visitante_id')
+                ->join('guarda', 'guarda.id', '=' , 'agendamento_visitas.guarda_id')
                 ->select(
                 'agendamento_visitas.id',
                 'agendamento_visitas.visitado_id' , 

@@ -27,6 +27,8 @@
       @endif
     @endif
     <br>
+    <h2 class="container">  </h2>
+    <br>
     <div class="container table-responsive">
             <table id="table-view" class="table table-sm table-hover table-bordered table-striped">
                 <thead>
@@ -40,8 +42,8 @@
                     <th scope="col">Empresa</th>
                     <th scope="col">Visitado</th>
                     <th scope="col">Setor</th>
-                    <th scope="col">Entrda</th>
-                    <th scope="col">Saida</th>
+                    <th scope="col">Data Prev.</th>
+                    <th scope="col">Hora Prev.</th>
                     <th scope="row">Ações</th>
                 </tr>
                 </thead>
@@ -67,20 +69,25 @@
                         <td> {{ $ls->empresa}}    </td>
                         <td> {{ substr($ls->nome_func ,0,10) }}.. </td> 
                         <td> {{ $ls->setor }}     </td>
-                        <td> {{ substr($ls->dataEntrada,0,10) }}</td>
-                        <td> {{ $ls->dataSaida}}  </td>
-                        <td class="text-center">  
-                            <div class="row td-row">
-                                <button type="button" class="btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
-                                    <i class="fas fa-minus-circle"></i>
-                                </button> 
+                        <td> {{ $ls->dataPrevisao }}     </td>
+                        <td> {{ $ls->horarioPrevisao }}     </td>
+                  
+                        <td class="text-center"> 
+                            <span style="font-size:18px" > 
+                    
+                                <a type="button" class="text-danger"   data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a> 
                                 @include('layouts.modal.modalrem')
-
-                                <button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
+                                
+                                <a type="submit" class=" text-primary"  onclick="location.href='{{route('agendamento.entrada' , $ls->id ) }}'" method="PATCH" > <i class="fas fa-check-circle"></i> </button>
+                                
+                                <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
                                     <i class="fas fa-check-circle"></i>
-                                </button>
+                                </button-->
                                 @include('layouts.modal.modalSaida')  
-                            </div>
+                             
+                            </span>
                         </td>
                     </tr>
                     @endif

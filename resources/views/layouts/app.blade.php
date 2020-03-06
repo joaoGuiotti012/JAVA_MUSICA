@@ -22,6 +22,7 @@
   
 </head>
 <style>
+
     tr{
         font-size: 14px;
     }
@@ -34,9 +35,14 @@
         display: inline-table;
     }
 
-    .jumbotron{
-        background-color: #292778;
+    th{
+        font-size:13px;
     }
+
+    .jumbotron{
+        background: linear-gradient(135deg, #3970a7 0%,#0a193b 100%);
+    }
+
 </style>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">

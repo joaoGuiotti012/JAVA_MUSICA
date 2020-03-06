@@ -33,10 +33,18 @@ class ControladorAgendamento extends Controller
             return view('visitas.agendamento', compact('func' , 'visitantes'));
     }
   
-    public function create()
+    public function entrada($id)
     {
-        //
+       
+        $agendamento = Agendamento::find($id);
+        $agendamento->dataEntrada = Carbon::now();
+        $entrada = $agendamento->save();
+        if($entrada){
+            return redirect('agendamento/saida' )->with('success', 'Visitante entrou na empresa !' );
+        }
     }
+
+
 
     public function store(Request $request)
     {   
@@ -46,8 +54,9 @@ class ControladorAgendamento extends Controller
         $agendamento->codigo = $request->codigo;
         $agendamento->visitado_id = $request->visitado_id;
         $agendamento->visitante_id = $request->visitante_id;
+        $agendamento->dataPrevisao = $request->dataPrevisao;
+        $agendamento->horarioPrevisao = $request->horarioPrevisao;
         $agendamento->descricao = $request->descricao;
-        $agendamento->dataEntrada = Carbon::now();
     
         if ($agendamento->save()){
             return redirect('agendamento/saida' )->with('success', 'Agendamento Confirmado !! ');

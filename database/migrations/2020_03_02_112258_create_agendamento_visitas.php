@@ -15,13 +15,15 @@ class CreateAgendamentoVisitas extends Migration
     {
         Schema::create('agendamento_visitas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer( 'visitante_id' )->unsigned();
-            $table->integer( 'visitado_id' )->unsigned();
+            $table->integer('visitante_id')->unsigned();
+            $table->integer('visitado_id')->unsigned();
+            $table->integer('guarda_id')->unsigned()->nullable();
             $table->integer('codigo');
             $table->string('descricao' , 250);
-            $table->string('guardaResp', 40)->nullable();
-            $table->dateTime('dataEntrada')->nullable();;
-            $table->dateTime('dataSaida')->nullable();;
+            $table->date('dataPrevisao');
+            $table->time('horarioPrevisao');
+            $table->dateTime('dataEntrada')->nullable();
+            $table->dateTime('dataSaida')->nullable();
             $table->timestamps();
             $table->foreign('visitante_id')
                 ->references('id')
@@ -31,6 +33,9 @@ class CreateAgendamentoVisitas extends Migration
                 ->references('id')
                 ->on('funcionarios')
                 ->onDelete('cascade');
+            $table->foreign('guarda_id')
+                ->references('id')
+                ->on('guarda');
         });
     }
 

@@ -13,7 +13,7 @@ class CreateRamaisGruposTable extends Migration
      */
     public function up()
     {
-        Schema::connection('db2')->create('grupos', function (Blueprint $table) {
+        Schema::connection('db2')->create('ramais_grupos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ramal');
             $table->string('desc_grupo' , 60);
