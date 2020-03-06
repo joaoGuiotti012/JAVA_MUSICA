@@ -56,20 +56,9 @@
                 <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item">
-                        <a href="{{ url('/agendamento') }}" class="nav-link"> Agendamento</a>
+                        <a href="{{ url('/ramais') }}" class="nav-link"> Ramais</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/agendamento/saida') }}" class="nav-link"> Saida</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('agendamento/saida/historico') }}" class="nav-link"> Histórico</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/funcionarios') }}" class="nav-link"> Colaboradores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ url('/visitantes') }}" class="nav-link"> Visitantes</a>
-                    </li>
+        
                 </ul>
 
                 <!-- Right Side Of Navbar -->

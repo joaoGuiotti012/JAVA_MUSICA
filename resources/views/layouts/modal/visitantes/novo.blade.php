@@ -54,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <div class="text-center" style="display:none;" id="preview">
                     <img id ="Tela" Name ="Tela"  class="avatar img-thumbnail"  width="150" height="150" >
                 </div><br>

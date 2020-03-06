@@ -13,7 +13,7 @@ class ControladorFuncionario extends Controller
     {
 
         $func = Funcionario::all();
-        return view('funcionarios' , compact('func'));
+        return view('visitas.funcionarios' , compact('func'));
         
     }
 

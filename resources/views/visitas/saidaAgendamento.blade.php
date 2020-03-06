@@ -27,12 +27,13 @@
       @endif
     @endif
     <br>
-    <div class="table-responsive">
+    <div class="container table-responsive">
             <table id="table-view" class="table table-sm table-hover table-bordered table-striped">
                 <thead>
                 <tr class="text-center">
                     <th scope="col">#</th>
                     <th scope="col">Código</th>
+                    <th scope="col">Descrição</th>
                     <th scope="col">Foto</th>
                     <th scope="col">Visitante</th>
                     <th scope="col">RG</th>
@@ -47,25 +48,26 @@
                 <tbody>
                     @foreach ($agendamento as $ls)
                     @if ( $ls->dataSaida == null )   
-                <tr>
+                <tr class="text-center">
                     <th scope="row">{{$ls->id}}  </th>
                         <td> {{ $ls->codigo}}    </td>
+                        <td > {{ substr($ls->descricao, 0, 20 ) }}..  </td>
                         <td> 
                             @if ($ls->foto != null )
                                 <a href="{{url("storage/visitantes/" . $ls->foto )}}">
-                                <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " style="border-radius: 100%;" width="30" height="30">
+                                <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " width="35" height="35">
                             @else
                                 <a href="{{url("img/topo.png") }}">
                                 <img src="{{ asset("img/topo.png") }}" style="border-radius: 100%;" width="30" height="30">
                             @endif
                             </a> 
                         </td>
-                        <td> {{ $ls->nome}}       </td>
+                        <td> {{ substr($ls->nome,0,10) }}..   </td>
                         <td> {{ $ls->rg}}         </td>
                         <td> {{ $ls->empresa}}    </td>
-                        <td> {{ $ls->nome_func }} </td> 
+                        <td> {{ substr($ls->nome_func ,0,10) }}.. </td> 
                         <td> {{ $ls->setor }}     </td>
-                        <td> {{ $ls->dataEntrada}}</td>
+                        <td> {{ substr($ls->dataEntrada,0,10) }}</td>
                         <td> {{ $ls->dataSaida}}  </td>
                         <td class="text-center">  
                             <div class="row td-row">
@@ -85,7 +87,6 @@
                     @endforeach
                 </tbody>
             </table>
-
         <br>
     </div>
     

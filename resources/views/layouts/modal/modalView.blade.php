@@ -22,6 +22,7 @@
           <p><b> Setor: </b>{{$ls->setor}}</p>
           <p><b> Data Entrada: </b>{{$ls->dataEntrada}}  </p>
           <p><b> Data Saida: </b>{{$ls->dataSaida}} </p>
+          <p><b> Descrição: </b>{{$ls->descricao}} </p>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fechar</button>

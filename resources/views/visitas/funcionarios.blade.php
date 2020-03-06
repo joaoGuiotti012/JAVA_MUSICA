@@ -46,7 +46,7 @@
                 <tbody>
                     @foreach ($func as $ls)
                     
-                    <tr>
+                    <tr class="text-center">
                         <th scope="row">{{$ls->id}}  </th>
                         <td>  {{ $ls->nome}}  </td>
                         <td>  {{ $ls->setor}} </td>

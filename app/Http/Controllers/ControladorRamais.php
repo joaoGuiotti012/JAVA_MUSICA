@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Funcionario;
 use Illuminate\Http\Request;
+use App\RamaisGrupo;
 
 class ControladorRamais extends Controller
 {
@@ -13,7 +14,7 @@ class ControladorRamais extends Controller
      */
     public function index()
     {
-        $ramais = Funcionario::all();
+        $ramais = RamaisGrupo::all();
         return view('ramais.ramais' , compact('ramais'));
     }
 

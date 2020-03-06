@@ -14,23 +14,45 @@
     </div>
 @endif
 
+    <br>
+    <div class="table-responsive container">
 
-    <div class="container">
-
-        <table class="table table-striped">
+        <table class="table table-sm table-borderless table-spriped">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">ramal</th>
+                <th scope="col">Grupo</th>
+                <th scope="col">Comercial</th>
+                <th scope="col">Usuário</th>
+                <th scope="col">Senha </th>
+                <th scope="col">Custo</th>
+                <th scope="col">Ativo</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Observação</th>
+                <th scope="col">N° Conta</th>
+                <th scope="col">Pin</th>
+                <th scope="col">Mac</th>
+                <th scope="col">Chip</th>
               </tr>
             </thead>
             <tbody>
             @foreach ($ramais as $ls)
-                 <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
+              <tr>
+                <td>{{$ls->id}}</td>
+                <td>{{$ls->ramal}}</td>
+                <td scope="col">{{$ls->grupo}}</td>
+                <td scope="col">{{$ls->des_grupo}}</td>
+                <td scope="col">{{$ls->usuario}}</td>
+                <td scope="col">{{$ls->senha}} </td>
+                <td scope="col">{{$ls->custo}}</td>
+                <td scope="col">{{$ls->ativo}}</td>
+                <td scope="col">{{$ls->celular}}</td>
+                <td scope="col">{{$ls->observacao}}</td>
+                <td scope="col">{{$ls->num_conta}}</td>
+                <td scope="col">{{$ls->pin}}</td>
+                <td scope="col">{{$ls->macaddress}}</td>
+                <td scope="col">{{$ls->chip}}</td>
             
               </tr>
             @endforeach

@@ -21,6 +21,7 @@ class agendamentoVisita extends Model
                         'codigo'         => 'required|numeric', 
                         'visitado_id'    => 'required|numeric',
                         'visitante_id'   => 'required|numeric',  
+                        'descricao'      => 'string|max:255',
                     ]);
                     return $request;
     }
@@ -40,6 +41,7 @@ class agendamentoVisita extends Model
                 'visitantes.rg',
                 'visitantes.empresa',
                 'agendamento_visitas.guardaResp',
+                'agendamento_visitas.descricao',
                 'agendamento_visitas.dataSaida',
                 'agendamento_visitas.dataEntrada'
                 )->orderBy('agendamento_visitas.id' , 'desc')
@@ -65,6 +67,7 @@ class agendamentoVisita extends Model
                 'visitantes.rg',
                 'visitantes.empresa',
                 'agendamento_visitas.guardaResp',
+                'agendamento_visitas.descricao',
                 'agendamento_visitas.dataSaida',
                 'agendamento_visitas.dataEntrada'
                 )->where('visitantes.nome','LIKE' , '%'.$search.'%' )
@@ -95,6 +98,7 @@ class agendamentoVisita extends Model
                     'visitantes.rg',
                     'visitantes.empresa',
                     'agendamento_visitas.guardaResp',
+                    'agendamento_visitas.descricao',
                     'agendamento_visitas.dataSaida',
                     'agendamento_visitas.dataEntrada'
                 )->where('visitantes.nome','LIKE' , $request->nome_visitante.'%' )

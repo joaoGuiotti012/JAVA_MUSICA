@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home')
 <style>
     section {
     padding-top: 4rem;
@@ -64,13 +64,13 @@ h2 {
         <br>
             <div class="row mbr-justify-content-center">
     
-                <div class="col-lg-6 mbr-col-md-10">
+                <div class="col-lg-6 mbr-col-md-10" onclick="location.href='{{ url('/ramais') }}'">
                     <div class="wrap">
                         <div class="ico-wrap">
-                            <span class="mbr-iconfont fa-volume-up fa "></span>
+                            <span class="mbr-iconfont fas fa-phone-square-alt "></span>
                         </div>
                         <div class="text-wrap vcenter">
-                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Stay <span>Successful</span></h2>
+                            <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Ramais <span>Eletronicos</span></h2>
                             <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                         </div>
                     </div>

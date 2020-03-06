@@ -30,7 +30,7 @@ class ControladorAgendamento extends Controller
     {
             $func = Funcionario::all();
             $visitantes = Visitantes::all()->sortByDesc("id");
-            return view('agendamento', compact('func' , 'visitantes'));
+            return view('visitas.agendamento', compact('func' , 'visitantes'));
     }
   
     public function create()
@@ -46,6 +46,7 @@ class ControladorAgendamento extends Controller
         $agendamento->codigo = $request->codigo;
         $agendamento->visitado_id = $request->visitado_id;
         $agendamento->visitante_id = $request->visitante_id;
+        $agendamento->descricao = $request->descricao;
         $agendamento->dataEntrada = Carbon::now();
     
         if ($agendamento->save()){
@@ -58,7 +59,7 @@ class ControladorAgendamento extends Controller
     {
         $agendamento = Agendamento::selectAll();
         $cont = count($agendamento);
-        return view('saidaAgendamento', compact('agendamento'), compact('cont'));
+        return view('visitas.saidaAgendamento', compact('agendamento'), compact('cont'));
         
     }
 
@@ -66,20 +67,20 @@ class ControladorAgendamento extends Controller
     {
         $agendamento = Agendamento::selectAll();
         $cont = count($agendamento);
-        return view('historicoAgendamento', compact('agendamento'), compact('cont'));
+        return view('visitas.historicoAgendamento', compact('agendamento'), compact('cont'));
         
     }
 
     public function search(Request $request){
         $busca = Agendamento::search($request->get('search'));
         $cont = count($busca);
-        return view('saidaAgendamento', compact('busca') ,compact('cont'));
+        return view('visitas.saidaAgendamento', compact('busca') ,compact('cont'));
     }
 
     public function histSearch(Request $request){
         $busca = Agendamento::histSearch($request);
 
-        return view('historicoAgendamento',  compact('busca'));
+        return view('visitas.historicoAgendamento',  compact('busca'));
     }
 
     public function saida($id){

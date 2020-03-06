@@ -18,7 +18,7 @@ class ControladorVisitantes extends Controller
     {
         $visitantes = Visitantes::selectAll();
         $cont = count($visitantes);
-        return view('saidaVisitantes' , compact('visitantes') , compact('cont'));
+        return view('visitas.saidaVisitantes' , compact('visitantes') , compact('cont'));
 
     }
 
@@ -26,7 +26,7 @@ class ControladorVisitantes extends Controller
     {
         $visitantes = Visitantes::selectAll();
         $cont = count($visitantes);
-        return view('saidaVisitantes' , compact('visitantes') , compact('cont'));
+        return view('visitas.saidaVisitantes' , compact('visitantes') , compact('cont'));
 
     }
 
@@ -60,7 +60,7 @@ class ControladorVisitantes extends Controller
        
         $visitantes = Visitantes::search($request);
         $cont = count($visitantes);
-        return view('saidaVisitantes' , compact('visitantes' , 'cont'));
+        return view('visitas.saidaVisitantes' , compact('visitantes' , 'cont'));
       
     }
 
