@@ -40,7 +40,18 @@ class ControladorAgendamento extends Controller
         $agendamento->dataEntrada = Carbon::now();
         $entrada = $agendamento->save();
         if($entrada){
-            return redirect('agendamento/saida' )->with('success', 'Visitante entrou na empresa !' );
+            return redirect('agendamento/saida' )->with('primary', 'Visitante entrou na empresa !' );
+        }
+    }
+
+    public function confSaida($id)
+    {
+       
+        $agendamento = Agendamento::find($id);
+        $agendamento->dataSaida = Carbon::now();
+        $entrada = $agendamento->save();
+        if($entrada){
+            return redirect('agendamento/saida' )->with('faill', 'Visitante saiu na empresa !' );
         }
     }
 

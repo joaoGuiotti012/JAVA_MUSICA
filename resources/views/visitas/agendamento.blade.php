@@ -26,7 +26,7 @@
                     <h5 class="card-header">Visitante</h5>
                     <div class="card-body">
                         <div class="form-inline">
-                            <div class="form-group mx-sm-2 mb-2">
+                            <div class="form-group mx-sm-3 mb-2">
                                 <label for="inputPassword2" class="sr-only"></label>
                                 <input type="text" class="form-control" id="inputPassword2" placeholder="Cracha" id="codigo" name="codigo" required>
                             </div>
@@ -44,7 +44,7 @@
                     </div>
                   </div>
             </div>
-
+            
             <div class="col">
                 <div class="card">
                     <h5 class="card-header">Colaborador</h5>

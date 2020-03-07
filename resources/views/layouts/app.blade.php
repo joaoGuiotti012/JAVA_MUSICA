@@ -42,10 +42,34 @@
     .jumbotron{
         background: linear-gradient(135deg, #3970a7 0%,#0a193b 100%);
     }
-
+    .back-to-top {
+        position: relative;
+        z-index: 2; 
+    }
+  .back-to-top .btn-dark {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        padding: 0;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #2e2e2e;
+        border-color: #2e2e2e;
+        display: none;
+        z-index: 999;
+        -webkit-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        transition: all 0.3s linear; 
+    }
+    .back-to-top .btn-dark:hover {
+        cursor: pointer;
+        background: #FA6742;
+        border-color: #FA6742; 
+    }
 </style>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+    <nav id="topo" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <a class="navbar-brand" href="{{ url('home') }}">
@@ -65,7 +89,7 @@
                         <a href="{{ url('/agendamento') }}" class="nav-link"> Agendamento</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/agendamento/saida') }}" class="nav-link"> Saida</a>
+                        <a href="{{ url('/agendamento/saida') }}" class="nav-link"> Movimentação</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('agendamento/saida/historico') }}" class="nav-link"> Histórico</a>
@@ -119,6 +143,15 @@
     <main class="container-fluid">
         @yield('content')
     </main>
+
+    <!-- Back to top -->
+    <div id="back-to-top" class="back-to-top">
+        <button class="btn btn-dark" title="Back to Top" onclick="location.href='#topo'" style="display: block;">
+            <i class="fa fa-angle-up"></i>
+        </button>
+    </div>
+    <!-- End Back to top -->
+
 </body>
 
 

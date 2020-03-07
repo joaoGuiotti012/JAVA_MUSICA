@@ -49,9 +49,9 @@
                 </thead>
                 <tbody>
                     @foreach ($agendamento as $ls)
-                    @if ( $ls->dataSaida == null )   
-                <tr class="text-center">
-                    <th scope="row">{{$ls->id}}  </th>
+                    @if ( $ls->dataEntrada == null )   
+                    <tr class="text-center table-info">
+                        <th scope="row">{{$ls->id}}  </th>
                         <td> {{ $ls->codigo}}    </td>
                         <td > {{ substr($ls->descricao, 0, 20 ) }}..  </td>
                         <td> 
@@ -71,26 +71,70 @@
                         <td> {{ $ls->setor }}     </td>
                         <td> {{ $ls->dataPrevisao }}     </td>
                         <td> {{ $ls->horarioPrevisao }}     </td>
-                  
                         <td class="text-center"> 
                             <span style="font-size:18px" > 
-                    
-                                <a type="button" class="text-danger"   data-toggle="modal" data-target="#rem{{$ls->id}}">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a> 
-                                @include('layouts.modal.modalrem')
-                                
-                                <a type="submit" class=" text-primary"  onclick="location.href='{{route('agendamento.entrada' , $ls->id ) }}'" method="PATCH" > <i class="fas fa-check-circle"></i> </button>
-                                
+                                <button type="submit" title="Confirma a Entrada!" class=" btn-primary"  onclick="location.href='{{route('agendamento.entrada' , $ls->id ) }}'" method="PATCH" >
+                                    <i class="fas fa-check-circle"></i> 
+                                </button>
                                 <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
                                     <i class="fas fa-check-circle"></i>
                                 </button-->
                                 @include('layouts.modal.modalSaida')  
-                             
+                                <button type="button" class="btn-danger"  title="deletar"  data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button> 
+                                @include('layouts.modal.modalrem')
                             </span>
                         </td>
                     </tr>
-                    @endif
+                      @endif              
+                     @if( $ls->dataEntrada != null && $ls->dataSaida == null )
+                     <tr class="text-center table-danger">
+                        <th scope="row">{{$ls->id}}  </th>
+                        <td> {{ $ls->codigo}}    </td>
+                        <td > {{ substr($ls->descricao, 0, 20 ) }}..  </td>
+                        <td> 
+                            @if ($ls->foto != null )
+                                <a href="{{url("storage/visitantes/" . $ls->foto )}}">
+                                <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " width="35" height="35">
+                            @else
+                                <a href="{{url("img/topo.png") }}">
+                                <img src="{{ asset("img/topo.png") }}" style="border-radius: 100%;" width="30" height="30">
+                            @endif
+                            </a> 
+                        </td>
+                        <td> {{ substr($ls->nome,0,10) }}..   </td>
+                        <td> {{ $ls->rg}}         </td>
+                        <td> {{ $ls->empresa}}    </td>
+                        <td> {{ substr($ls->nome_func ,0,10) }}.. </td> 
+                        <td> {{ $ls->setor }}     </td>
+                        <td> {{ $ls->dataPrevisao }}     </td>
+                        <td> {{ $ls->horarioPrevisao }}     </td>
+                        <td class="text-center"> 
+                            <span style="font-size:18px" > 
+                
+                                <button type="submit" title="Confirma a saida!" class="btn-danger"  onclick="location.href='{{route('agendamento.confSaida' , $ls->id ) }}'" method="PATCH" > 
+                                    <i class="fas fa-check-circle"></i> 
+                                </button>
+                                
+                                <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
+                                    <i class="fas fa-check-circle"></i>
+                                </button-->
+                                @include('layouts.modal.modalSaida')               
+                              
+                                <button type="button" class="btn-danger " title="deletar"   data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button > 
+                                @include('layouts.modal.modalrem')
+                            </span>
+                        </td>
+                        </tr>   
+                    @else
+                      
+                     @endif
+                    
+                   
+                    
                     @endforeach
                 </tbody>
             </table>
