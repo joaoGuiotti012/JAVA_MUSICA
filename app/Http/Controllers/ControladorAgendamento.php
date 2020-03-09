@@ -38,6 +38,7 @@ class ControladorAgendamento extends Controller
        
         $agendamento = Agendamento::find($id);
         $agendamento->dataEntrada = Carbon::now();
+        $agendamento->hrEntrada = date('H:i:s');
         $entrada = $agendamento->save();
         if($entrada){
             return redirect('agendamento/saida' )->with('primary', 'Visitante entrou na empresa !' );
@@ -49,6 +50,7 @@ class ControladorAgendamento extends Controller
        
         $agendamento = Agendamento::find($id);
         $agendamento->dataSaida = Carbon::now();
+        $agendamento->hrSaida = date('H:i:s');
         $entrada = $agendamento->save();
         if($entrada){
             return redirect('agendamento/saida' )->with('faill', 'Visitante saiu na empresa !' );

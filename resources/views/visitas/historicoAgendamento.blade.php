@@ -85,8 +85,8 @@
                         <td> {{ $ls->empresa}}    </td>
                         <td> {{ $ls->nome_func }} </td> 
                         <td> {{ $ls->setor }}     </td>
-                        <td> {{ $ls->dataEntrada}}</td>
-                        <td> {{ $ls->dataSaida}}  </td>
+                        <td> {{ $ls->dataEntrada}} {{ $ls->hrEntrada }}</td>
+                        <td> {{ $ls->dataSaida}} {{$ls->hrSaida}}  </td>
                         <td class="text-center" >  
                             <a type="button" class="text-primary" data-toggle="modal" data-target="#view{{$ls->id}}">
                                 <i class="fas fa-eye"></i>

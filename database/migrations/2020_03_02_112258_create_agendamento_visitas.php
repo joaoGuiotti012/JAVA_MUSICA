@@ -20,10 +20,12 @@ class CreateAgendamentoVisitas extends Migration
             $table->integer('guarda_id')->unsigned()->nullable();
             $table->integer('codigo');
             $table->string('descricao' , 250);
-            $table->date('dataPrevisao');
-            $table->time('horarioPrevisao');
-            $table->dateTime('dataEntrada')->nullable();
-            $table->dateTime('dataSaida')->nullable();
+            $table->date('dataPrevisao')->nullable();
+            $table->time('horarioPrevisao')->nullable();
+            $table->time('hrEntrada')->nullable();
+            $table->time('hrSaida')->nullable();
+            $table->date('dataEntrada')->nullable();
+            $table->date('dataSaida')->nullable();
             $table->timestamps();
             $table->foreign('visitante_id')
                 ->references('id')
