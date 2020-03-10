@@ -9,7 +9,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body container">
+        <div class="modal-body container table-responsive">
             <table id="table-view02" class="table table-sm table-hover table-striped">
                 <thead>
                 <tr >

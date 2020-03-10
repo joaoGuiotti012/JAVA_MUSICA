@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use App\agendamentoVisita as Agendamento;
 use App\Funcionario;
 use App\Visitantes;
@@ -25,12 +23,11 @@ class ControladorAgendamento extends Controller
         /*$this->middleware('auth');*/
     }
 
-
     public function index(Funcionario $func)
     {
-            $func = Funcionario::all();
-            $visitantes = Visitantes::all()->sortByDesc("id");
-            return view('visitas.agendamento', compact('func' , 'visitantes'));
+        $func = Funcionario::all();
+        $visitantes = Visitantes::all();
+        return view('visitas.agendamento', compact('func' , 'visitantes'));
     }
   
     public function entrada($id)
