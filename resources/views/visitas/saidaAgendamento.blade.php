@@ -53,7 +53,7 @@
                     <tr class="text-center table-info">
                         <th scope="row">{{$ls->id}}  </th>
                         <td> {{ $ls->codigo}}    </td>
-                        <td > {{ substr($ls->descricao, 0, 20 ) }}..  </td>
+                        <td > {{ substr($ls->descricao, 0, 20 ) }}...  </td>
                         <td> 
                             @if ($ls->foto != null )
                                 <a href="{{url("storage/visitantes/" . $ls->foto )}}">
@@ -73,7 +73,7 @@
                         <td> {{ $ls->horarioPrevisao }}     </td>
                         <td class="text-center"> 
                             <span style="font-size:18px" > 
-                                <button type="submit" title="Confirma a Entrada!" class=" btn-primary"  onclick="location.href='{{route('agendamento.entrada' , $ls->id ) }}'" method="PATCH" >
+                                <button type="submit" title="Confirma a Entrada!" class=" btn-primary" title="Confirmar Entrada !" onclick="location.href='{{route('agendamento.entrada' , $ls->id ) }}'" method="PATCH" >
                                     <i class="fas fa-check-circle"></i> 
                                 </button>
                                 <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
@@ -113,7 +113,7 @@
                         <td class="text-center"> 
                             <span style="font-size:18px" > 
                 
-                                <button type="submit" title="Confirma a saida!" class="btn-danger"  onclick="location.href='{{route('agendamento.confSaida' , $ls->id ) }}'" method="PATCH" > 
+                                <button type="submit" title="Confirma a saida!" class="btn-danger" title="Confirmar Saida !" onclick="location.href='{{route('agendamento.confSaida' , $ls->id ) }}'" method="PATCH" > 
                                     <i class="fas fa-check-circle"></i> 
                                 </button>
                                 

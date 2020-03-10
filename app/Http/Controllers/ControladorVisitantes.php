@@ -7,6 +7,8 @@ use App\Visitantes;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 class ControladorVisitantes extends Controller
 {
     public function __construct()
@@ -67,15 +69,53 @@ class ControladorVisitantes extends Controller
     public function update(Request $request, $id){
 
         $request = Visitantes::validoEdit($request);
-        $visitantes = Visitantes::find($id);
-        $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
-        $visitantes->empresa = mb_strtoupper($request->get('empresa' , 'UTF-8'));
-        $visitantes->rg = $request->get('rg');
-        $update = $visitantes->save();
 
+        if($request->old_foto == null){
+
+            $nameFile = Carbon::now() . '.' . $request->new_foto->extension(); // seta novo nome ao arquivo
+            $request->file('new_foto')->storeAs('visitantes' , $nameFile);
+
+            // atualiza registro com valores novos
+            $visitantes = Visitantes::find($id);
+            $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
+            $visitantes->empresa = mb_strtoupper($request->get('empresa' , 'UTF-8'));
+            $visitantes->rg = $request->get('rg');
+            $visitantes->foto = $nameFile;
+            $update = $visitantes->save();
+        }
+        if( $request->new_foto != null ){
+
+            if($request->file('new_foto')->isValid()){
+                
+                $del = Storage::disk('public')->delete( 'visitantes/'.$request->old_foto);
+                
+                if($del > 0){
+                    $nameFile = Carbon::now() . '.' . $request->new_foto->extension(); // seta novo nome ao arquivo
+                    $request->file('new_foto')->storeAs('visitantes' , $nameFile);
+
+                    // atualiza registro com valores novos
+                    $visitantes = Visitantes::find($id);
+                    $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
+                    $visitantes->empresa = mb_strtoupper($request->get('empresa' , 'UTF-8'));
+                    $visitantes->rg = $request->get('rg');
+                    $visitantes->foto = $nameFile;
+                    $update = $visitantes->save();
+                }else{
+                    return redirect('visitantes')->with('fail', 'Falha ao deletar a imagem ! ');
+                }
+            }
+        }else{
+            $visitantes = Visitantes::find($id);
+            $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
+            $visitantes->empresa = mb_strtoupper($request->get('empresa' , 'UTF-8'));
+            $visitantes->rg = $request->get('rg');
+            $update = $visitantes->save();
+        }
+        
         if($update){
             return redirect('visitantes')->with('success', 'Agendamento alterado com sucesso ! ');
         }
+
 
     }
 

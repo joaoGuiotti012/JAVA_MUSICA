@@ -26,9 +26,9 @@
                     <h5 class="card-header">Visitante</h5>
                     <div class="card-body">
                         <div class="form-inline">
-                            <div class="form-group mx-sm-3 mb-2">
+                            <div class="form-group mx-sm-2 mb-2">
                                 <label for="inputPassword2" class="sr-only"></label>
-                                <input type="text" class="form-control" id="inputPassword2" placeholder="Cracha" id="codigo" name="codigo" required>
+                                <input type="text" class="form-control" placeholder="Cracha" id="codigo" name="codigo" required>
                             </div>
                             <div class="form-group mx-sm-3 mb-2">
                                 <label for="inputPassword2" class="sr-only">ID Visitante</label>
@@ -74,8 +74,8 @@
                 <div class="card" style="width: 18rem;">
                     <h5 class="card-header">Previsão de Chegada</h5>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Data: <input type="date" class="form-sm" name="dataPrevisao" required ></li>
-                      <li class="list-group-item">Horário:  <input type="time" class="form-sm" name="horarioPrevisao" required> </li>
+                      <li class="list-group-item">Data: <input type="date" class="form-sm" name="dataPrevisao"  ></li>
+                      <li class="list-group-item">Horário:  <input type="time" class="form-sm" name="horarioPrevisao" > </li>
                     </ul>
                   </div>
             </div>

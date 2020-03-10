@@ -88,7 +88,7 @@
                         <td> {{ $ls->dataEntrada}} {{ $ls->hrEntrada }}</td>
                         <td> {{ $ls->dataSaida}} {{$ls->hrSaida}}  </td>
                         <td class="text-center" >  
-                            <a type="button" class="text-primary" data-toggle="modal" data-target="#view{{$ls->id}}">
+                            <a type="button" class="text-primary" data-toggle="modal" title="Visualizar !" data-target="#view{{$ls->id}}">
                                 <i class="fas fa-eye"></i>
                             </a> 
                             @include('layouts.modal.modalView')
