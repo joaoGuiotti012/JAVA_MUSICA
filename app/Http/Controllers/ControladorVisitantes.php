@@ -71,7 +71,6 @@ class ControladorVisitantes extends Controller
         $request = Visitantes::validoEdit($request);
 
         if($request->old_foto == null){
-
             $nameFile = Carbon::now() . '.' . $request->new_foto->extension(); // seta novo nome ao arquivo
             $request->file('new_foto')->storeAs('visitantes' , $nameFile);
 
@@ -84,15 +83,11 @@ class ControladorVisitantes extends Controller
             $update = $visitantes->save();
         }
         if( $request->new_foto != null ){
-
             if($request->file('new_foto')->isValid()){
-                
                 $del = Storage::disk('public')->delete( 'visitantes/'.$request->old_foto);
-                
                 if($del > 0){
                     $nameFile = Carbon::now() . '.' . $request->new_foto->extension(); // seta novo nome ao arquivo
                     $request->file('new_foto')->storeAs('visitantes' , $nameFile);
-
                     // atualiza registro com valores novos
                     $visitantes = Visitantes::find($id);
                     $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
@@ -111,11 +106,9 @@ class ControladorVisitantes extends Controller
             $visitantes->rg = $request->get('rg');
             $update = $visitantes->save();
         }
-        
         if($update){
             return redirect('visitantes')->with('success', 'Agendamento alterado com sucesso ! ');
         }
-
 
     }
 

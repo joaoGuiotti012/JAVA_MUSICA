@@ -32,6 +32,9 @@
             <button id="btn-novo" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#novo">
                 <i class="fas fa-user-plus"></i>
             </button> 
+            <button id="btn-setor" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#setor">
+                <i class="fas fa-user-plus"></i>
+            </button> 
             @include('layouts.modal.funcionarios.novo')
         
             <table id="table-view" class="table table-sm table-hover table-bordered table-striped">

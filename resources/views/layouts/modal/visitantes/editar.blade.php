@@ -34,7 +34,7 @@
                     <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " id ="old-img"  class="avatar img-thumbnail"  width="150" height="150">
                 @else
                     <img src="" id ="new-img-null"  style="display:none" class="avatar img-thumbnail"  width="150" height="150">   
-                    <img src="{{ asset("img/topo.png") }}" id ="null-img" class="avatar img-thumbnail" alt="avatar"  width="150" height="150">
+                    <img src="{{ asset("img/topo.png") }}" id="null-img" class="avatar img-thumbnail" alt="avatar"  width="150" height="150">
                 @endif
                 <br><br>
                 <div class="input-group" id="change-img">
@@ -42,7 +42,7 @@
                       <span class="input-group-text" id="inputGroupFileAddon01"><i class="fas fa-photo-video"></i></span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" name="new_foto" style="display:block"  class="custom-file-input change-img" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                      <input type="file" name="new_foto" class="custom-file-input change-img" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                       <label class="custom-file-label" for="inputGroupFile01">
                           selecione ou tire uma foto...
                       </label>
@@ -75,49 +75,28 @@
     </div>
   </div>
 
-<script>
+  <script>
 
-    
-   
-$().ready(function (){
-    
+    $().ready(function (){
 
-    /*var teste = false;
-    $("#old-img").click(function (){
-        if(teste == false){
-            $("#change-img").show(100);
-            teste = true;
-      
-        }else{
-            $("#change-img").hide(100);
-            teste = false;
-        }
-    });*/
-
-    function enviar_imagem(input) {
+        function enviar_imagem(input) {
+             if (input.files && input.files[0]) {
+                 var reader = new FileReader();
+                     reader.onload = function (e) {
+                         $("#old-img").hide();
+                         $("#new-img").show();
+                         $("#null-img").hide();
+                         $("#new-img-null").show();
+                         $("#new-img").attr('src', e.target.result);
+                         $("#new-img-null").attr('src', e.target.result);
+                     }
+                 reader.readAsDataURL(input.files[0]);
+             }
+         }
         
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-                reader.onload = function (e) {
-                    $("#old-img").hide(200);
-                    $("#new-img").show(300);
-                    $("#null-img").hide(200);
-                    $("#new-img-null").show(300);
-                    $("#new-img").attr('src', e.target.result);
-                    $("#new-img-null").attr('src', e.target.result);
-                }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $('.change-img').change(function(){
-        enviar_imagem(this);
+         $('.change-img').change(function(){
+             enviar_imagem(this);
+         });
     });
-    
-    
-
-});
-
-
-
-</script>
+   
+ </script>

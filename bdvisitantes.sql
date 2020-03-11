@@ -234,3 +234,9 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+/* ---------------- USUARIO ADMIN -------------------*/
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@admin.com', NULL, '$2y$10$oxFTsay8WiLLwXoVRnhUPu/AXel1utilBkpVFEjLFr5u738VglO32', NULL, '2020-03-09 18:49:10', '2020-03-09 18:49:10');

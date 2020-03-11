@@ -17,7 +17,6 @@
                 </ul>
             </div>
             @endif
-            
             <form class="container" method="POST" action="{{  route('visitantes.novo') }}"  enctype="multipart/form-data">
                 @csrf
                 <br>

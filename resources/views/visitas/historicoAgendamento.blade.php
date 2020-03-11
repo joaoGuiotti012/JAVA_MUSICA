@@ -43,7 +43,6 @@
                     <form id="div-search" action="{{ route('agendamento.histSearch') }}" method="GET" style="display:none">
                         @csrf
                         
-                        
                         <th colspan="3"><button class="container btn btn-sm btn-success" type=" submit"><i class="fas fa-search-plus"></i></button></th>
                         <th><input type="text" class="form-sm" placeholder="Nome Visitante" name="nome_visitante"></th>
                         <th><input type="text" class="form-sm" placeholder="RG" id="rg" name="rg" ></th>

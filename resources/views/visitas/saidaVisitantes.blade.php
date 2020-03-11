@@ -97,21 +97,3 @@
     </div>
 
 @endsection
-<script>
-    function enviar_imagem(input) {
-      if (input.files && input.files[0]) {
-         var reader = new FileReader();
-    
-            reader.onload = function (e) {
-                $('#preview').show(600);
-                $('#Tela').attr('src', e.target.result);
-            }
-    
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    
-    $("#foto").change(function(){
-      enviar_imagem(this);
-    });
-</script>
