@@ -34,8 +34,10 @@ Route::group(['middleware' => ['auth']], function () {
     /* === RAMAIS === */
     Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 
 
+});
 
-
+Route::get('/resgistrar', function () {
+    return view('auth.register');
 });
 
 /*======================== ROUTES AGENDAMENTO VISITAS ===================================*/ 
