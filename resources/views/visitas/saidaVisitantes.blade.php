@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 
     @if (session('success'))
@@ -44,7 +45,6 @@
                 <thead>
                 <tr class="text-center">
                     <th scope="col">ID</th>
-                    <th scope="col">Foto</th>
                     <th scope="col">Nome</th>
                     <th scope="col">RG</th>
                     <th scope="col">Empresa</th>
@@ -55,24 +55,19 @@
                     @foreach ($visitantes as $ls)
                     <tr class="table-row text-center" >
                         <th scope="text-center" ># {{$ls->id}}  </th>
-                        <td> 
-                            <div class="text-center" >
-                            @if ($ls->foto != null )
-                                <a href="{{url("storage/visitantes/" . $ls->foto )}}">
-                                <img src="{{ asset("storage/visitantes/" . $ls->foto )}} "  width="35" height="35">
-                            @else
-                                <a href="{{url("img/topo.png") }}">
-                                <img src="{{ asset("img/topo.png") }}" width="35" height="35">
-                            @endif
-                            </a> 
-                        </div>
-                        </td>
+                
                         <td> {{ substr($ls->nome,0,15)}}.. </td>
                         <td> {{ $ls->rg}}         </td>
                         <td> {{ $ls->empresa}}    </td>
     
                         <td class="text-center">  
-                            <div class="row td-row">
+                            <div class="row td-row" >
+                                
+                                <button type="button" class="btn btn-sm btn-primary btn-table" data-toggle="modal" data-target="#view{{$ls->id}}">
+                                    <i class="fas fa-eye"></i>
+                                </button> 
+                                @include('layouts.modal.visitantes.view')
+
                                 <button type="button" class="btn btn-sm btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
                                     <i class="fas fa-minus-circle"></i>
                                 </button> 
@@ -81,7 +76,8 @@
                                 <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editar{{$ls->id}}">
                                     <i class="fas fa-user-edit"></i> 
                                 </button> 
-                            @include('layouts.modal.visitantes.editar')
+                                @include('layouts.modal.visitantes.editar')
+
                             </div>
                         </td>
                         

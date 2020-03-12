@@ -35,6 +35,10 @@
         display: inline-table;
     }
 
+    button .btn-table{
+        font-size: 12px;
+    }
+
     th{
         font-size:13px;
     }
@@ -68,7 +72,7 @@
         border-color: #FA6742; 
     }
 </style>
-<body>
+<body onload="startTime()">
     <nav id="topo" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -257,7 +261,27 @@
         }, 2500); // O valor é representado em milisegundos.
     });
 
-        
+function startTime(){
+    var today=new Date();
+    var h=today.getHours();
+    var m=today.getMinutes();
+    var s=today.getSeconds();
+    // adicione um zero na frente de números<10
+    m=checkTime(m);
+    s=checkTime(s);
+    document.getElementById('date').innerHTML=h+":"+m+":"+s;
+    t=setTimeout('startTime()',500);
+}
+
+function checkTime(i){
+    if (i<10){
+        i="0" + i;
+    }
+    return i;
+}
+
+ 
+
     
 
 

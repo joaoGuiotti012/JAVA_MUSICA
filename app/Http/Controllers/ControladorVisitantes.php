@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
+date_default_timezone_set('America/Sao_Paulo');
+
 class ControladorVisitantes extends Controller
 {
     public function __construct()

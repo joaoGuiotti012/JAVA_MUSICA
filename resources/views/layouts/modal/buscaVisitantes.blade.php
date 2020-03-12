@@ -14,7 +14,7 @@
                 <thead>
                 <tr class="text-center" href="#">
                     <th scope="col">Código</th>
-                    <th scope="col">Foto</th>
+                    <!--th scope="col">Foto</th-->
                     <th scope="col">Nome</th>
                     <th scope="col">RG</th>
                     <th scope="col">Empresa</th>
@@ -24,13 +24,13 @@
                     @foreach ($visitantes as $ls)
                 <tr class="table-row">
                         <th scope="row" id="{{$ls->id}}"># {{$ls->id}}  </th>
-                        <td> 
+                        <!--td> 
                             @if ($ls->foto != null )
                                 <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " style="border-radius: 100%;" width="30" height="30">
                             @else
                                 <img src="{{ asset("img/topo.png") }}" style="border-radius: 100%;" width="30" height="30">
                             @endif
-                        </td>
+                        </td-->
                         <td> {{ $ls->nome}}       </td>
                         <td> {{ $ls->rg}}         </td>
                         <td> {{ $ls->empresa}}    </td>
