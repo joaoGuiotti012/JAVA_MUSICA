@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use DB;
 
 class Funcionario extends Model
 {
@@ -20,6 +21,16 @@ class Funcionario extends Model
         ]);
         return $request;
         
+    }
+
+    static function selectAll(){
+
+        $busca = DB::table('funcionarios')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+
+        return $busca;
+
     }
 
     

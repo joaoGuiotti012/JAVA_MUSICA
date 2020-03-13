@@ -27,7 +27,7 @@ class ControladorAgendamento extends Controller
     public function index(Funcionario $func)
     {
         $func = Funcionario::all();
-        $visitantes = Visitantes::all();
+        $visitantes = Visitantes::selectAll();
         return view('visitas.agendamento', compact('func' , 'visitantes'));
     }
   

@@ -12,7 +12,7 @@ class ControladorFuncionario extends Controller
     public function index()
     {
 
-        $func = Funcionario::all();
+        $func = Funcionario::selectAll();
         return view('visitas.funcionarios' , compact('func'));
         
     }

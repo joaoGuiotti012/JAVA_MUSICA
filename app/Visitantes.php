@@ -34,12 +34,10 @@ class Visitantes extends Model
     static function selectAll( ){
 
         $busca = DB::table('visitantes')
-                ->orderBy('id', 'DESC')
+                ->orderBy('created_at', 'DESC')
                 ->take(100)
                 ->get();
-                
         return $busca;
-
     }
 
     static function search( Request $request ){
@@ -63,5 +61,5 @@ class Visitantes extends Model
     }
 
 
-
+ 
 }
