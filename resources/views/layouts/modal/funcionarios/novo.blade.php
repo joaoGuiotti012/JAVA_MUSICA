@@ -28,20 +28,28 @@
                     <div class="form-group col-md-12">
 
                         <label for="nome">Nome Completo</label>
-                        <input type="text" class="form-control" name="nome" >
+                        <input type="text" class="form-control" name="nome"  required>
 
                     </div>
                     <div class="form-group col-md-6">
                             <label for="visitado_id">Nome  /  Setor </label>
-                            <select class="custom-select" id="inputGroupSelect01" name="setor">
-                                <option selected>Choose...</option>
+                            <select class="custom-select" id="inputGroupSelect01" name="setor" required>
+                                    <option value="Salas Reuniao" > Salas Reuinião </option>
                                     <option value="T.I" > T.I </option>
+                                    <option value="Infra" > Infra </option>
                                     <option value="Controladoria" > Controladoria </option>
                                     <option value="Comercial" > Comercial </option>
-                                    <option value="Infra" > Infra </option>
+                                    <option value="Diretoria Comercial" > Diretoria Comercial </option>
                                     <option value="Financeiro" > Financeiro </option>
                                     <option value="Compras" > Compras </option>
-                                    <option value="MArketing" > Marketing </option>
+                                    <option value="Trade Marketing" > Trade Marketing </option>
+                                    <option value="Marketing" > Marketing </option>
+                                    <option value="Cervejaria " > Cervejaria  </option>
+                                    <option value="PPCP" > PPCP  </option>
+                                    <option value="Fiscal" > Fiscal  </option>
+                                    <option value="Contabilidade " >  Contabilidade </option>
+                                
+                                    
                                    
                             </select>
                     </div>

@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group mx-sm-3 mb-2">
                                 <label for="inputPassword2" class="sr-only">ID Visitante</label>
-                                <input type="text" class="form-control"  placeholder="ID Visitante" id="id-select" name="visitante_id" >
+                                <input type="text" class="form-control"  placeholder="ID Visitante" id="id-select" name="visitante_id" pattern=".{1,}" required title="clique em buscar !">
                             </div>
                             <div class="form-group mx-sm-2 mb-2">
                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#buscaVisitantes">

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Carbon\Traits\Timestamp;
 use DB;
 use Dotenv\Validator;
+use Exception;
 use Faker\Provider\ar_JO\Company;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\TryCatch;
@@ -60,17 +61,22 @@ class ControladorAgendamento extends Controller
     {   
         $agendamento = new Agendamento();
         $request = Agendamento::valido($request);
-
         $agendamento->codigo = $request->codigo;
         $agendamento->visitado_id = $request->visitado_id;
         $agendamento->visitante_id = $request->visitante_id;
         $agendamento->dataPrevisao = $request->dataPrevisao;
         $agendamento->horarioPrevisao = $request->horarioPrevisao;
         $agendamento->descricao = $request->descricao;
-    
-        if ($agendamento->save()){
-            return redirect('agendamento/saida' )->with('success', 'Agendamento Confirmado !! ');
+
+        if( $agendamento->save() > 0){
+            return redirect('agendamento/saida' )->with( 'success', ' Agendamento confirmado com sucesso ! ' );
         }
+
+            
+  
+            
+    
+    
         
     }
 

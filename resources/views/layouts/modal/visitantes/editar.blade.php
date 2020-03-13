@@ -62,7 +62,7 @@
                 
                     <div class="form-group col-md-4">
                         <label for="rg">RG</label>
-                        <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" value="{{$ls->rg}}">
+                        <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" value="{{$ls->rg}}"  pattern=".{12,}"  required title="RG invalido, min 11 caracteres EX: 12.123.123-4 !">
                     </div>
                 </div>
                     <div class="modal-footer">
@@ -77,7 +77,9 @@
 
   <script>
 
-    $().ready(function (){
+
+     
+    $(document).ready(function (){
 
         function enviar_imagem(input) {
              if (input.files && input.files[0]) {
@@ -97,6 +99,8 @@
          $('.change-img').change(function(){
              enviar_imagem(this);
          });
+         
+         
     });
    
  </script>

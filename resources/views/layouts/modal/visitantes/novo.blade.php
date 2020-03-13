@@ -27,17 +27,17 @@
                     <div class="form-group col-md-10">
 
                         <label for="nome">Nome Completo</label>
-                        <input type="text" class="form-control" name="nome" >
+                        <input type="text" class="form-control" name="nome" required title="Informar um nome !">
 
                     </div>
                     <div class="form-group col-md-6">
                         <label for="empresa">Empresa</label>
-                        <input type="text" class="form-control" name="empresa">
+                        <input type="text" class="form-control" name="empresa" required title="Informar uma empresa !">
                     </div>
                 
                     <div class="form-group col-md-4">
                         <label for="rg">RG</label>
-                        <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" >
+                        <input type="text" class="form-control" placeholder="123.432.123-4" name="rg" id="rg" pattern=".{12,}"  required title="RG invalido, min 11 caracteres EX: 12.123.123-4 !">
 
                     </div>
                     <br>
@@ -46,7 +46,7 @@
                           <span class="input-group-text" id="inputGroupFileAddon01"><i class="fas fa-photo-video"></i></span>
                         </div>
                         <div class="custom-file">
-                          <input type="file" name="foto" id="foto" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                          <input type="file" name="foto" id="foto" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" required title="Fazer upload de uma foto !">
                           <label class="custom-file-label" for="inputGroupFile01">
                               selecione ou tire uma foto...
                           </label>

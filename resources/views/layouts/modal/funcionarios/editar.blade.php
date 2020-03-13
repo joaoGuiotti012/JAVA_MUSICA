@@ -25,26 +25,31 @@
             @method('PATCH') 
             @csrf
                 <br>
-             
-                
                 <div class="form-row text-left">
                     <div class="form-group col-md-12">
 
                         <label for="nome">Nome Completo</label>
-                        <input type="text" class="form-control" name="nome" value="{{$ls->nome}}">
+                        <input type="text" class="form-control" name="nome" value="{{$ls->nome}}" required>
 
                     </div>
                     <div class="form-group col-md-6">
                         <label for="empresa">Setor</label>
-                        <select class="custom-select" id="inputGroupSelect01" name="setor">
+                        <select class="custom-select" id="inputGroupSelect01" name="setor" required>
                                 <option selected>{{$ls->setor}}</option>
+                                <option value="Salas Reuniao" > Salas Reuinião </option>
                                 <option value="T.I" > T.I </option>
+                                <option value="Infra" > Infra </option>
                                 <option value="Controladoria" > Controladoria </option>
                                 <option value="Comercial" > Comercial </option>
-                                <option value="Infra" > Infra </option>
+                                <option value="Diretoria Comercial" > Diretoria Comercial </option>
                                 <option value="Financeiro" > Financeiro </option>
                                 <option value="Compras" > Compras </option>
+                                <option value="Trade Marketing" > Trade Marketing </option>
                                 <option value="Marketing" > Marketing </option>
+                                <option value="Cervejaria " > Cervejaria  </option>
+                                <option value="PPCP" > PPCP  </option>
+                                <option value="Fiscal" > Fiscal  </option>
+                                <option value="Contabilidade " >  Contabilidade </option>
                         </select>
                     </div>
             

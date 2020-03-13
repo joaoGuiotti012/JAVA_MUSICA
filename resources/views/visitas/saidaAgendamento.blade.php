@@ -8,8 +8,8 @@
     </div>
     @endif
     @if (session('fail'))
-    <div id="alert" class="alert alert-success">
-        <p>{{ session('success') }} </p>
+    <div id="alert" class="alert alert-warning">
+        <p> <i class="fas fa-bomb"></i> {{ session('fail') }} </p>
     </div>
     @endif
     @if (session('primary'))
