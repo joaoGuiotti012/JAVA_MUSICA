@@ -51,12 +51,12 @@
                         <td>  {{ $ls->nome}}  </td>
                         <td>  {{ $ls->setor}} </td>
                         <td class="text-center" >  
-                            <button type="button" class="btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
+                            <button type="button" class="text-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
                                 <i class="fas fa-minus-circle"></i>
                             </button> 
                             @include('layouts.modal.funcionarios.rem')
                 
-                            <button type="button" class="btn-success" data-toggle="modal" data-target="#editar{{$ls->id}}">
+                            <button type="button" class="text-success" data-toggle="modal" data-target="#editar{{$ls->id}}">
                                 <i class="fas fa-user-edit"></i> 
                             </button> 
                             @include('layouts.modal.funcionarios.editar') 

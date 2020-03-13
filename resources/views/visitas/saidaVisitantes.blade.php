@@ -63,17 +63,17 @@
                         <td class="text-center">  
                             <div class="row td-row" >
                                 
-                                <button type="button" class="btn btn-sm btn-primary btn-table" data-toggle="modal" data-target="#view{{$ls->id}}">
+                                <button type="button" class="text-primary" data-toggle="modal" data-target="#view{{$ls->id}}">
                                     <i class="fas fa-eye"></i>
                                 </button> 
                                 @include('layouts.modal.visitantes.view')
 
-                                <button type="button" class="btn btn-sm btn-danger " data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                <button type="button" class="text-danger"  data-toggle="modal" data-target="#rem{{$ls->id}}">
                                     <i class="fas fa-minus-circle"></i>
                                 </button> 
                                 @include('layouts.modal.visitantes.rem')
                     
-                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editar{{$ls->id}}">
+                                <button type="button" class="text-success"  data-toggle="modal" data-target="#editar{{$ls->id}}">
                                     <i class="fas fa-user-edit"></i> 
                                 </button> 
                                 @include('layouts.modal.visitantes.editar')

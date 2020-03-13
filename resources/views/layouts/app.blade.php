@@ -23,6 +23,11 @@
 </head>
 <style>
 
+    #alert{
+        position: absolute;
+        width: 100%;
+    }
+
     tr{
         font-size: 14px;
     }

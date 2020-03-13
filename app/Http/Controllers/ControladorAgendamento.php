@@ -51,7 +51,7 @@ class ControladorAgendamento extends Controller
         $agendamento->hrSaida = date('H:i:s');
         $entrada = $agendamento->save();
         if($entrada){
-            return redirect('agendamento/saida' )->with('faill', 'Visitante saiu na empresa !' );
+            return redirect('agendamento/saida' )->with('saida', 'Visitante saiu na empresa !' );
         }
     }
 
@@ -72,12 +72,6 @@ class ControladorAgendamento extends Controller
             return redirect('agendamento/saida' )->with( 'success', ' Agendamento confirmado com sucesso ! ' );
         }
 
-            
-  
-            
-    
-    
-        
     }
 
     public function show( )

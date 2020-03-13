@@ -48,9 +48,6 @@
                                     <option value="PPCP" > PPCP  </option>
                                     <option value="Fiscal" > Fiscal  </option>
                                     <option value="Contabilidade " >  Contabilidade </option>
-                                
-                                    
-                                   
                             </select>
                     </div>
 

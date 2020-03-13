@@ -12,6 +12,11 @@
         <p> <i class="fas fa-bomb"></i> {{ session('fail') }} </p>
     </div>
     @endif
+    @if (session('saida'))
+    <div id="alert" class="alert alert-danger">
+        <p> <i class="fas fa-sign-out-alt"></i> {{ session('saida') }} </p>
+    </div>
+    @endif
     @if (session('primary'))
         <div id="alert" class="alert alert-primary">
             <p>{{ session('primary') }}  </p>
@@ -70,14 +75,16 @@
                         <td> {{ $ls->dataPrevisao }}     </td>
                         <td> {{ $ls->horarioPrevisao }}     </td>
                         <td class="text-center"> 
-                                <button type="submit" title="Confirma a Entrada!" class=" btn-primary" title="Confirmar Entrada !" onclick="location.href='{{route('agendamento.entrada' , $ls->id ) }}'" method="PATCH" >
+                                <button type="submit" title="Confirma a Entrada!" class=" text-primary" title="Confirmar Entrada !" 
+                                data-toggle="modal" data-target="#entrada{{$ls->id}}"> 
                                     <i class="fas fa-check-circle"></i> 
                                 </button>
+                                @include('layouts.modal.entrada')
                                 <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
                                     <i class="fas fa-check-circle"></i>
                                 </button-->
                                 @include('layouts.modal.modalSaida')  
-                                <button type="button" class="btn-danger"  title="deletar"  data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                <button type="button" class="text-danger"  title="deletar"  data-toggle="modal" data-target="#rem{{$ls->id}}">
                                     <i class="fas fa-trash-alt"></i>
                                 </button> 
                                 @include('layouts.modal.modalrem')
@@ -107,16 +114,14 @@
                         <td> {{ $ls->horarioPrevisao }}     </td>
                         <td class="text-center"> 
                 
-                                <button type="submit" title="Confirma a saida!" class="btn-danger btn-table" title="Confirmar Saida !" onclick="location.href='{{route('agendamento.confSaida' , $ls->id ) }}'" method="PATCH" > 
+                                <button type="submit" title="Confirma a saida!" 
+                        class="text-danger btn-table" title="Confirmar Saida !" data-toggle="modal"  data-target="#saida{{$ls->id}}" > 
                                     <i class="fas fa-check-circle"></i> 
                                 </button>
-                                
-                                <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
-                                    <i class="fas fa-check-circle"></i>
-                                </button-->
-                                @include('layouts.modal.modalSaida')               
+                                @include('layouts.modal.saida')
+                                            
                               
-                                <button type="button" class="btn-danger btn-table" title="deletar"   data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                <button type="button" class="text-danger btn-table" title="deletar"   data-toggle="modal" data-target="#rem{{$ls->id}}">
                                     <i class="fas fa-trash-alt"></i>
                                 </button > 
                                 @include('layouts.modal.modalrem')
