@@ -6,6 +6,7 @@ use App\Funcionario;
 use App\Visitantes;
 use Carbon\Carbon;
 use Carbon\Traits\Timestamp;
+use DateTime;
 use DB;
 use Dotenv\Validator;
 use Exception;
@@ -169,8 +170,9 @@ class ControladorAgendamento extends Controller
         }
         $dadosXls .= "  </table>";
      
-        // Definimos o nome do arquivo que será exportado  
-        $arquivo = "MinhaPlanilha.xls";  
+        // Definimos o nome do arquivo que será exportado
+        $arquivo = Carbon::now().".xls"; 
+         //"MinhaPlanilha.xls";  
         // Configurações header para forçar o download  
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="'.$arquivo.'"');
