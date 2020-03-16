@@ -22,12 +22,10 @@
   
 </head>
 <style>
-
     /*#alert{
         position: absolute;
         width: 100%;
     }*/
-
     tr{
         font-size: 14px;
     }
@@ -163,10 +161,7 @@
     <!-- End Back to top -->
 
 </body>
-
-
 <script>
-  
    $(document).ready(function() {
         $('#table-view').DataTable({ 
             "bJQueryUI": true,
@@ -253,8 +248,6 @@
             $("#danger").hide(1500);
         });
 
-   
-
         // <+============= MASK ===================+>
         $('#rg').mask('00.000.000-0' , {reverse: false });
     });
@@ -265,29 +258,6 @@
             $('#alert').hide(1000); // "foo" é o id do elemento que seja manipular.
         }, 2500); // O valor é representado em milisegundos.
     });
-
-function startTime(){
-    var today=new Date();
-    var h=today.getHours();
-    var m=today.getMinutes();
-    var s=today.getSeconds();
-    // adicione um zero na frente de números<10
-    m=checkTime(m);
-    s=checkTime(s);
-    document.getElementById('date').innerHTML=h+":"+m+":"+s;
-    t=setTimeout('startTime()',500);
-}
-
-function checkTime(i){
-    if (i<10){
-        i="0" + i;
-    }
-    return i;
-}
-
- 
-
-    
 
 
 </script>

@@ -90,7 +90,33 @@ class agendamentoVisita extends Model
 
 
     static function histSearch(Request $request){
-        $busca = DB::table('agendamento_visitas')
+        
+        $start= date($request->dataEntrada); 
+        $end = date($request->dataSaida); 
+        if($start != null and $end != null){
+            $busca = DB::table('agendamento_visitas')
+                ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
+                ->join('visitantes', 'visitantes.id', '=' , 'agendamento_visitas.visitante_id')
+                ->select(
+                    'agendamento_visitas.id',
+                    'agendamento_visitas.visitado_id' , 
+                    'funcionarios.nome as nome_func',
+                    'funcionarios.setor', 
+                    'agendamento_visitas.codigo',
+                    'visitantes.foto',  
+                    'visitantes.nome',
+                    'visitantes.rg',
+                    'visitantes.empresa',
+                    'agendamento_visitas.descricao',
+                    'agendamento_visitas.dataSaida',
+                    'agendamento_visitas.dataEntrada',
+                    'agendamento_visitas.hrEntrada',
+                    'agendamento_visitas.hrSaida',
+                )->whereBetween('agendamento_visitas.created_at', array($start, $end))
+                // ->orderBy('dataEntrada', 'desc')
+                ->get();
+        }else{
+            $busca = DB::table('agendamento_visitas')
                 ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
                 ->join('visitantes', 'visitantes.id', '=' , 'agendamento_visitas.visitante_id')
                 ->select(
@@ -113,10 +139,9 @@ class agendamentoVisita extends Model
                 ->where('visitantes.empresa','LIKE' , $request->empresa.'%' )
                 ->where('funcionarios.setor','LIKE' , $request->setor.'%' )
                 ->where('funcionarios.nome','LIKE' , $request->nome_visitado.'%' )
-                ->where('agendamento_visitas.dataEntrada','LIKE' , $request->dataEntrada.'%' )
-                ->where('agendamento_visitas.dataSaida','LIKE', $request->dataSaida.'%' )
-                 ->orderBy('dataEntrada', 'desc')
-                 ->get();
+                ->get();
+        }
+                
         return $busca;
     }
 }
