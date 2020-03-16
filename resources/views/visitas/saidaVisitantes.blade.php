@@ -17,10 +17,10 @@
     <br>
     <div class="container">
         <div class="td-row">
-            <button class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#novo" > 
+            <button class="text-primary btn-sm mb-2" data-toggle="modal" data-target="#novo" > 
                 <i class="fas fa-user-plus"></i>
             </button>
-            <button id="btn-filtrar" class="btn btn-primary btn-sm mb-2">
+            <button id="btn-filtrar" class="text-primary btn-sm mb-2">
                 <i class="fas fa-filter"></i>
             </button> 
          

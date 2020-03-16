@@ -56,6 +56,8 @@ Route::patch('agendamento/editar{id}', 'ControladorAgendamento@update')->name('a
 
 Route::patch('agendamento/saida{id}', 'ControladorAgendamento@saida')->name('agendamento.saida'); 
 
+Route::get('agendamento/historico/export', 'ControladorAgendamento@exportExcel')->name('agendamento.export'); 
+
 Route::get('agendamento/entrada{id}', 'ControladorAgendamento@entrada')->name('agendamento.entrada'); 
 Route::get('agendamento/confSaida{id}', 'ControladorAgendamento@confSaida')->name('agendamento.confSaida'); 
 

@@ -27,7 +27,7 @@ class ControladorAgendamento extends Controller
     public function index(Funcionario $func)
     {
         $func = Funcionario::all();
-        $visitantes = Visitantes::selectAll();
+        $visitantes = Visitantes::all();
         return view('visitas.agendamento', compact('func' , 'visitantes'));
     }
   
@@ -134,6 +134,53 @@ class ControladorAgendamento extends Controller
         if($update){
             return redirect('agendamento/saida' )->with('success', 'Agendamento atualizado :) ');
         }
+    }
+
+    public function exportExcel()
+    {    $dadosXls  = "";
+        $dadosXls .= "  <table border='1' >";
+        $dadosXls .= "      <tr>";
+        $dadosXls .= "          <th>Código</th>";
+        $dadosXls .= "          <th>Descrição</th>";
+        $dadosXls .= "          <th>Visitante</th>";
+        $dadosXls .= "          <th>RG</th>";
+        $dadosXls .= "          <th>Empresa</th>";
+        $dadosXls .= "          <th>Visitado</th>";
+        $dadosXls .= "          <th>Setor</th>";
+        $dadosXls .= "          <th>Data Entrada</th>";
+        $dadosXls .= "          <th>Data Saida</th>";
+        $dadosXls .= "      </tr>";
+        $result = Agendamento::selectAll();
+       
+        foreach($result as $res){
+            if( $res->dataSaida != null){   
+                $dadosXls .= "      <tr>";
+                $dadosXls .= "          <td>".$res->codigo."</td>";
+                $dadosXls .= "          <td>".$res->descricao."</td>";
+                $dadosXls .= "          <td>".$res->nome."</td>";
+                $dadosXls .= "          <td>".$res->rg."</td>";
+                $dadosXls .= "          <td>".$res->empresa."</td>";
+                $dadosXls .= "          <td>".$res->nome_func."</td>";
+                $dadosXls .= "          <td>".$res->setor."</td>";
+                $dadosXls .= "          <td>".$res->dataEntrada."</td>";
+                $dadosXls .= "          <td>".$res->dataSaida."</td>";
+                $dadosXls .= "      </tr>";
+            }
+        }
+        $dadosXls .= "  </table>";
+     
+        // Definimos o nome do arquivo que será exportado  
+        $arquivo = "MinhaPlanilha.xls";  
+        // Configurações header para forçar o download  
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="'.$arquivo.'"');
+        header('Cache-Control: max-age=0');
+        // Se for o IE9, isso talvez seja necessário
+        header('Cache-Control: max-age=1');
+           
+        // Envia o conteúdo do arquivo  
+        echo $dadosXls;  
+        exit;
     }
 
   

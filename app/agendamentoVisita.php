@@ -112,7 +112,7 @@ class agendamentoVisita extends Model
                     'agendamento_visitas.dataEntrada',
                     'agendamento_visitas.hrEntrada',
                     'agendamento_visitas.hrSaida',
-                )->whereBetween('agendamento_visitas.created_at', array($start, $end))
+                )->whereBetween('agendamento_visitas.dataEntrada', array($start, $end))
                 // ->orderBy('dataEntrada', 'desc')
                 ->get();
         }else{

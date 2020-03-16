@@ -59,7 +59,6 @@ class ControladorVisitantes extends Controller
         }else{
             return redirect('visitantes')->with('faill' , 'imgagem não é valida, falha no upload olhe o tipo apenas: jpg, jpeg, png !');
         }
-       
     }
 
     public function search(Request $request){

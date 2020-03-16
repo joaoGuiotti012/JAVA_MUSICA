@@ -29,7 +29,7 @@
     <br>
     <div class="container">
     
-            <button id="btn-novo" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#novo">
+            <button id="btn-novo" class="text-primary btn-sm mb-2" data-toggle="modal" data-target="#novo">
                 <i class="fas fa-user-plus"></i>
             </button> 
             @include('layouts.modal.funcionarios.novo')

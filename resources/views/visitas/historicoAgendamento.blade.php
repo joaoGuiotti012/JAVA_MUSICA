@@ -32,8 +32,11 @@
         <h2 class="text-center" id="historico"><i class="far fa-calendar-alt"></i>  Histórico de Agendamentos </h2>
         <br>
         
-        <button id="btn-filtrar" class="btn btn-primary btn-sm mb-2">
+        <button id="btn-filtrar" class="text-primary btn-sm mb-2" >
             <i class="fas fa-filter"></i>
+        </button> 
+        <button  class="text-success  btn-sm mb-2" onclick="location.href='{{ url('agendamento/historico/export') }}'">
+            <i class="fas fa-file-excel"></i>
         </button> 
         
          <div class=" table-responsive" style="max-height: 450px">
