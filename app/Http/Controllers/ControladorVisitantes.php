@@ -39,21 +39,23 @@ class ControladorVisitantes extends Controller
         $visitantes = new Visitantes();
         $request = Visitantes::valido($request);
 
-        if($request->file('foto')->isValid()){
+        if(isset($_FILES['foto'])){
            
-            $nameFile = Carbon::now() . '.' . $request->foto->extension(); // seta novo nome ao arquivo
-            $request->file('foto')->storeAs('visitantes' , $nameFile);
+            $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'. $request->foto->extension(); 
+            $diretorio =  str_replace('/',DIRECTORY_SEPARATOR, public_path('storage/visitantes/'));  ;
+            
+            //dd($diretorio);
+            if( move_uploaded_file( $_FILES['foto']['tmp_name'] , $diretorio .$nameFile)){
+                $visitantes->foto = $nameFile;
+                $visitantes->nome = mb_strtoupper($request->nome , 'UTF-8');
+                $visitantes->rg = $request->rg;
+                $visitantes->empresa = mb_strtoupper($request->empresa, 'UTF-8');
 
-            $visitantes->foto = $nameFile;
-            $visitantes->nome = mb_strtoupper($request->nome , 'UTF-8');
-            $visitantes->rg = $request->rg;
-            $visitantes->empresa = mb_strtoupper($request->empresa, 'UTF-8');
-
-            $add = $visitantes->save();
-            if($add > 0){
-                return redirect('visitantes')->with('success' , 'visitante cadastro com sucesso !');
+                $add = $visitantes->save();
+                if($add > 0){
+                    return redirect('visitantes')->with('success' , 'visitante cadastro com sucesso !');
+                }
             }
-
         }else{
             return redirect('visitantes')->with('faill' , 'imgagem não é valida, falha no upload olhe o tipo apenas: jpg, jpeg, png !');
         }
@@ -71,11 +73,11 @@ class ControladorVisitantes extends Controller
     public function update(Request $request, $id){
 
         $request = Visitantes::validoEdit($request);
+        $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'.$request->new_foto->extension(); 
+        $diretorio =  str_replace('/',DIRECTORY_SEPARATOR, public_path('storage/visitantes/'));
 
         if($request->old_foto == null){
-            $nameFile = Carbon::now() . '.' . $request->new_foto->extension(); // seta novo nome ao arquivo
-            $request->file('new_foto')->storeAs('visitantes' , $nameFile);
-
+            $update = move_uploaded_file( $_FILES['new_foto']['tmp_name'] , $diretorio .$nameFile);
             // atualiza registro com valores novos
             $visitantes = Visitantes::find($id);
             $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
@@ -84,21 +86,21 @@ class ControladorVisitantes extends Controller
             $visitantes->foto = $nameFile;
             $update = $visitantes->save();
         }
-        if( $request->new_foto != null ){
-            if($request->file('new_foto')->isValid()){
-                $del = Storage::disk('public')->delete( 'visitantes/'.$request->old_foto);
-                if($del > 0){
-                    $nameFile = Carbon::now() . '.' . $request->new_foto->extension(); // seta novo nome ao arquivo
-                    $request->file('new_foto')->storeAs('visitantes' , $nameFile);
+        if( $request->old_foto != null ){
+            if(isset($_FILES['new_foto'])){                
+                if( move_uploaded_file( $_FILES['new_foto']['tmp_name'] , $diretorio .$nameFile)){
                     // atualiza registro com valores novos
                     $visitantes = Visitantes::find($id);
                     $visitantes->nome = mb_strtoupper($request->get('nome') , 'UTF-8'); 
                     $visitantes->empresa = mb_strtoupper($request->get('empresa' , 'UTF-8'));
                     $visitantes->rg = $request->get('rg');
                     $visitantes->foto = $nameFile;
-                    $update = $visitantes->save();
-                }else{
-                    return redirect('visitantes')->with('fail', 'Falha ao deletar a imagem ! ');
+                    $del = Storage::disk('public')->delete('visitantes/'.$request->old_foto);
+                    if($del > 0){
+                        $update = $visitantes->save();
+                     }else{
+                        return redirect('visitantes')->with('fail', 'Falha ao deletar a imagem ! ');
+                    }
                 }
             }
         }else{
@@ -111,13 +113,17 @@ class ControladorVisitantes extends Controller
         if($update){
             return redirect('visitantes')->with('success', 'Agendamento alterado com sucesso ! ');
         }
-
     }
 
     public function destroy($id)
     {
         $visitantes = Visitantes::find($id);
+        
+        if($visitantes->foto != null){
+            Storage::disk('public')->delete('visitantes/'.$visitantes->foto);
+        }
         $visitantes->delete();
+
         return redirect('visitantes')->with('success', 'Agendamento deletado com sucesso !! ');
         
     }

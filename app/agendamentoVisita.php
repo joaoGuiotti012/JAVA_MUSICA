@@ -61,7 +61,6 @@ class agendamentoVisita extends Model
         $busca = DB::table('agendamento_visitas')
                 ->join('funcionarios', 'funcionarios.id', '=' , 'agendamento_visitas.visitado_id')
                 ->join('visitantes', 'visitantes.id', '=' , 'agendamento_visitas.visitante_id')
-                ->join('guarda', 'guarda.id', '=' , 'agendamento_visitas.guarda_id')
                 ->select(
                 'agendamento_visitas.id',
                 'agendamento_visitas.visitado_id' , 
