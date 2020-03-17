@@ -173,7 +173,6 @@ class ControladorAgendamento extends Controller
      
         // Definimos o nome do arquivo que será exportado
         $arquivo = 'historico' . date('_His').".xls"; 
-        dd($arquivo);
          //"MinhaPlanilha.xls";  
         // Configurações header para forçar o download  
         header('Content-Type: application/vnd.ms-excel');
