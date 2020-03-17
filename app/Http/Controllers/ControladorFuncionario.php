@@ -27,7 +27,9 @@ class ControladorFuncionario extends Controller
         $func->setor = mb_strtoupper($request->setor , 'UTF-8');
     
         if ($func->save()){
+            
             return redirect('funcionarios' )->with('success', 'Funcionarios Confirmado !! ');
+            
         }
     }
 

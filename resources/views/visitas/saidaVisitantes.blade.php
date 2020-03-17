@@ -23,7 +23,7 @@
             <button id="btn-filtrar" class="text-primary btn-sm mb-2">
                 <i class="fas fa-filter"></i>
             </button> 
-         
+            
             @include('layouts.modal.visitantes.novo')
         </div>
     

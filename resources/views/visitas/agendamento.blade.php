@@ -26,21 +26,35 @@
                     <h5 class="card-header">Visitante</h5>
                     <div class="card-body">
                         <div class="form-inline">
-                            <div class="form-group mx-sm-2 mb-2">
-                                <label for="inputPassword2" class="sr-only"></label>
-                                <input type="text" class="form-control" placeholder="Cracha" id="codigo" name="codigo" 
-                                pattern=".{6,}"  required required title="minimo de 6 numeros !" value="<?php echo mt_rand(1,999999)?>">
-                            </div>
-                            <div class="form-group mx-sm-3 mb-2">
-                                <label for="inputPassword2" class="sr-only">ID Visitante</label>
-                                <input type="text" class="form-control"  placeholder="ID Visitante" id="id-select" name="visitante_id" pattern=".{1,}" required title="clique em buscar !">
-                            </div>
-                            <div class="form-group mx-sm-2 mb-2">
-                                <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#buscaVisitantes">
-                                    Buscar <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                            @include('layouts.modal.buscaVisitantes') <!-- MODAL Visitantes -->
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-group mx-sm-2 mb-2">
+                                        <label for="inputPassword2" class="sr-only"></label>
+                                        <input type="text" class="form-control" placeholder="Cracha" id="codigo" name="codigo" 
+                                        pattern=".{6,}"  required required title="minimo de 6 numeros !" value="<?php echo mt_rand(1,999999)?>">
+                                    </div>
+                                    <div class="form-group mx-sm-2 mb-2">
+                                         
+                                        <h3 > <i class="fas fa-address-card" ></i></h3>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group mx-sm-2 mb-2">
+                                        <label for="inputPassword2" class="sr-only">ID Visitante</label>
+                                        <input type="text" class="form-control"  placeholder="ID Visitante" id="id-select" name="visitante_id" pattern=".{1,}" required title="clique em buscar !">
+                                    </div>
+                                    <div class="form-group mx-sm-2 mb-2">
+                                        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#buscaVisitantes">
+                                            Buscar <i class="fas fa-search"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary mx-sm-2 mb-2" data-toggle="modal" data-target="#novo" >
+                                            <i class="fas fa-user-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                             </div>
+                        
+                            
                         </div>
                     </div>
                   </div>
@@ -62,6 +76,9 @@
                                 <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#visitados">
                                     Buscar <i class="fas fa-search"></i>
                                 </button>
+                                <button type="button" class="btn btn-outline-primary mx-sm-2 mb-2" data-toggle="modal" data-target="#func_novo" >
+                                    <i class="fas fa-user-plus"></i>
+                                </button>
                             </div>
                         @include('layouts.modal.buscaVisitados')  <!-- MODAL Visitados -->
                         </div>
@@ -77,11 +94,18 @@
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item">Data: <input type="date" class="form-sm" name="dataPrevisao"  ></li>
                       <li class="list-group-item">Horário:  <input type="time" class="form-sm" name="horarioPrevisao" > </li>
+                      <!--li class="list-group-item">Guarda: 
+                        <select class="custom-select-sm">
+                              <option selected>Open this select menu</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                          </select>
+                      </li-->
                     </ul>
                   </div>
             </div>
             <div class="col">
-                
             </div>
         </div>
         <br>
@@ -103,6 +127,10 @@
     </div>          
     
 </form>
+
+@include('layouts.modal.visitantes.novo')
+@include('layouts.modal.funcionarios.novo')
+@include('layouts.modal.buscaVisitantes') <!-- MODAL Visitantes -->
 
 @endsection
 
