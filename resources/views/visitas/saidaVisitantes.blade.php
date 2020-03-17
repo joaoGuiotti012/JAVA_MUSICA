@@ -33,8 +33,8 @@
                     <tr>
                     <form id="div-search" action="{{ route('visitantes.search') }}" method="GET" style="display:none">
                         @csrf
-                   
-                        <th colspan="2"><button class=" container btn btn-sm btn-success" type=" submit"><i class="fas fa-search-plus"></i></button></th>
+                        
+                        <th colspan="1"><button class=" container btn btn-sm btn-success" type=" submit"><i class="fas fa-search-plus"></i></button></th>
                         <th><input type="text" class="form-sm" placeholder="Nome Visitante" name="nome" id="nome"></th>
                         <th><input type="text" class="form-sm" placeholder="RG" id="rg" name="rg" ></th>
                         <th colspan="2"><input type="text" class="form-sm" placeholder="Empressa" name="empresa"></th>
