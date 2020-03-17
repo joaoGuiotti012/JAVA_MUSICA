@@ -67,7 +67,7 @@ h2 {
         <br>
             <div class="row mbr-justify-content-center">
     
-                <div class="col-lg-6 mbr-col-md-10" onclick="location.href='{{ url('/ramais') }}'">
+                <div class="col-lg-6 mbr-col-md-10 btn disabled " aria-disabled="true" onclick="location.href='{{ url('/') }}'" title="Futuras implementações !">
                     <div class="wrap">
                         <div class="ico-wrap">
                             <span class="mbr-iconfont fas fa-phone-square-alt "></span>
@@ -78,7 +78,7 @@ h2 {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10"  onclick="location.href='{{ url('/agendamento') }}'">
+                <div class="col-lg-6 mbr-col-md-10 btn"  onclick="location.href='{{ url('/agendamento') }}'">
                     <div class="wrap">
                         <div class="ico-wrap">
                             <span class="mbr-iconfont fa-calendar fa"></span>
@@ -87,11 +87,11 @@ h2 {
                             <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">Agendamento
                                 <span>de Visitantes</span>
                             </h2>
-                            <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                            <p class="mbr-fonts-style text1 mbr-text display-6">Controle de visitantes e agendamento de visitas, acesso, saida, histórico...</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10">
+                <div class="col-lg-6 mbr-col-md-10 btn disabled " aria-disabled="true" onclick="location.href='{{ url('/') }}'" title="Futuras implementações !">
                     <div class="wrap">
                         <div class="ico-wrap">
                             <span class="mbr-iconfont fa-globe fa"></span>
@@ -104,7 +104,7 @@ h2 {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10">
+                <div class="col-lg-6 mbr-col-md-10 btn disabled " aria-disabled="true" onclick="location.href='{{ url('/') }}'" title="Futuras implementações !">
                     <div class="wrap">
                         <div class="ico-wrap">
                             <span class="mbr-iconfont fa-trophy fa"></span>
