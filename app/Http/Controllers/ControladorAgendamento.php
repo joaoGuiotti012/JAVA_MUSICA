@@ -138,7 +138,8 @@ class ControladorAgendamento extends Controller
     }
 
     public function exportExcel()
-    {    $dadosXls  = "";
+    {    
+        $dadosXls  = "";
         $dadosXls .= "  <table border='1' >";
         $dadosXls .= "      <tr>";
         $dadosXls .= "          <th>Código</th>";
@@ -171,7 +172,8 @@ class ControladorAgendamento extends Controller
         $dadosXls .= "  </table>";
      
         // Definimos o nome do arquivo que será exportado
-        $arquivo = Carbon::now().".xls"; 
+        $arquivo = 'historico' . date('_His').".xls"; 
+        dd($arquivo);
          //"MinhaPlanilha.xls";  
         // Configurações header para forçar o download  
         header('Content-Type: application/vnd.ms-excel');
