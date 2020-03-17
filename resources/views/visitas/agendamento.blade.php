@@ -33,10 +33,6 @@
                                         <input type="text" class="form-control" placeholder="Cracha" id="codigo" name="codigo" 
                                         pattern=".{6,}"  required required title="minimo de 6 numeros !" value="<?php echo mt_rand(1,999999)?>">
                                     </div>
-                                    <div class="form-group mx-sm-2 mb-2">
-                                         
-                                        <h3 > <i class="fas fa-address-card" ></i></h3>
-                                    </div>
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group mx-sm-2 mb-2">
@@ -130,7 +126,7 @@
 
 @include('layouts.modal.visitantes.novo')
 @include('layouts.modal.funcionarios.novo')
-@include('layouts.modal.buscaVisitantes') <!-- MODAL Visitantes -->
+@include('layouts.modal.buscaVisitantes') 
 
 @endsection
 
