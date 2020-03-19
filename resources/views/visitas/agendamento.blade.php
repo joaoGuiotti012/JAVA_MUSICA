@@ -31,7 +31,7 @@
                                     <div class="form-group mx-sm-2 mb-2">
                                         <label for="inputPassword2" class="sr-only"></label>
                                         <input type="text" class="form-control" placeholder="Cracha" id="codigo" name="codigo" 
-                                        pattern=".{6,}"  required required title="minimo de 6 numeros !" value="<?php echo mt_rand(1,999999)?>">
+                                        pattern=".{6,}"  required required title="minimo de 6 numeros !" value="<?php echo mt_rand(100000,999999)?>">
                                     </div>          
                                 </div>
                                 <div class="col-sm">
@@ -40,17 +40,15 @@
                                         <input type="text" class="form-control"  placeholder="ID Visitante" id="id-select" name="visitante_id" pattern=".{1,}" required title="clique em buscar !">
                                     </div>
                                     <div class="form-group mx-sm-2 mb-2">
-                                        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#buscaVisitantes">
+                                        <button type="button" class=" btn-primary mb-2" data-toggle="modal" data-target="#buscaVisitantes">
                                             Buscar <i class="fas fa-search"></i>
                                         </button>
-                                        <button type="button" class="btn btn-outline-primary mx-sm-2 mb-2" data-toggle="modal" data-target="#novo" >
+                                        <button type="button" class=" btn-outline-primary mx-sm-2 mb-2" data-toggle="modal" data-target="#novo" >
                                             <i class="fas fa-user-plus"></i>
                                         </button>
                                     </div>
                                 </div>
                              </div>
-                        
-                            
                         </div>
                     </div>
                   </div>
@@ -69,10 +67,10 @@
                         </div>
                         <div class="form-inline">
                             <div class="form-group mx-sm-3 mb-2">
-                                <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#visitados">
+                                <button type="button" class=" btn-primary mb-2" data-toggle="modal" data-target="#visitados">
                                     Buscar <i class="fas fa-search"></i>
                                 </button>
-                                <button type="button" class="btn btn-outline-primary mx-sm-2 mb-2" data-toggle="modal" data-target="#func_novo" >
+                                <button type="button" class=" btn-outline-primary mx-sm-2 mb-2" data-toggle="modal" data-target="#func_novo" >
                                     <i class="fas fa-user-plus"></i>
                                 </button>
                             </div>
