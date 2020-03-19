@@ -22,8 +22,9 @@
                 <tbody>
                     <?php $i = 0; ?>
                     @foreach ($visitantes as $ls)
-                <tr class="table-row">
-                        <th scope="row" id="{{$ls->id}}"># {{$ls->id}}  </th>
+                   
+                    <tr class="table-row">
+                        <th scope="row" id="{{$ls->id}}">{{$ls->id}}  </th>
                         <!--td> 
                             @if ($ls->foto != null )
                                 <img src="{{ asset("storage/visitantes/" . $ls->foto )}} " style="border-radius: 100%;" width="30" height="30">
@@ -47,3 +48,12 @@
       </div>
     </div>
   </div>
+  <script> 
+    $(document).ready(function($){ 
+      $(".table-row:has(th)").click(function(e) {
+        var clickedCell= $(e.target).closest("th");
+        document.getElementById("id-select").value = clickedCell.text();
+        $('#btn-ok').trigger('click');
+      });
+    });
+</script>

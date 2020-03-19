@@ -20,8 +20,8 @@
                 <tbody>
                 <?php $i = 0; ?>
                 @foreach ($func as $ls)
-                    <tr class="table-row-visitado">
-                        <th scope="row" id="{{$ls->id}}"># {{$ls->id}}  </th>
+                    <tr class="table-row-visitados">
+                        <th  id="{{$ls->id}}">{{$ls->id}}  </th>
                         <td> {{ $ls->nome}}      </td>
                         <td> {{ $ls->setor}}      </td>
                     </tr>
@@ -35,3 +35,12 @@
       </div>
     </div>
   </div>
+  <script> 
+    $(document).ready(function($){ 
+      $(".table-row-visitados:has(th)").click(function(e) {
+        var clickedCell= $(e.target).closest("th");
+        document.getElementById("id-visitado").value = clickedCell.text();
+        $('#btn-okk').trigger('click');
+      });
+    });
+  </script>

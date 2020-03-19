@@ -208,6 +208,9 @@
 
 
     // <+================ click table row ================+>
+
+    
+    /*
     $(document).ready(function($) {
         $(".table-row").click(function() {
             var id = $(this).find("th").attr("id");
@@ -224,7 +227,7 @@
             }
         });
 
-    });
+    });*/
 
     // <+================ ANIMAÇÔES ================+>
     $(document).ready(function (){

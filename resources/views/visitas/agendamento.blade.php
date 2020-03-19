@@ -32,7 +32,7 @@
                                         <label for="inputPassword2" class="sr-only"></label>
                                         <input type="text" class="form-control" placeholder="Cracha" id="codigo" name="codigo" 
                                         pattern=".{6,}"  required required title="minimo de 6 numeros !" value="<?php echo mt_rand(1,999999)?>">
-                                    </div>
+                                    </div>          
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group mx-sm-2 mb-2">
@@ -63,8 +63,8 @@
                         <div class="form-inline">
                     
                             <div class="form-group mx-sm-3 mb-2">
-                                <label for="inputPassword2" class="sr-only">ID Visitante</label>
-                                <input type="text" class="form-control"  placeholder="ID Visitante" id="id-visitado" name="visitado_id" required >
+                                <label for="inputPassword2" class="sr-only">ID Colaborador</label>
+                                <input type="text" class="form-control"  placeholder="ID Colaborador" id="id-visitado" name="visitado_id" required >
                             </div>
                         </div>
                         <div class="form-inline">
