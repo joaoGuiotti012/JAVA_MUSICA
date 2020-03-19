@@ -75,7 +75,7 @@
         border-color: #FA6742; 
     }
 </style>
-<body onload="startTime()">
+<body>
     <nav id="topo" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">

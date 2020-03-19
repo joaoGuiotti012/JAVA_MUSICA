@@ -57,9 +57,5 @@ class Visitantes extends Model
                     ->take(50)
                     ->get();
         return $busca;
-
     }
-
-
- 
 }
