@@ -68,10 +68,20 @@ class ControladorAgendamento extends Controller
         $agendamento->dataPrevisao = $request->dataPrevisao;
         $agendamento->horarioPrevisao = $request->horarioPrevisao;
         $agendamento->descricao = $request->descricao;
+        try{
 
-        if( $agendamento->save() > 0){
-            return redirect('agendamento/saida' )->with( 'success', ' Agendamento confirmado com sucesso ! ' );
+            if($agendamento->save()){
+                return redirect('agendamento/saida' )->with( 'success', ' Agendamento confirmado com sucesso ! ' );  
+                exit; 
+            }
+
+        }catch( Exception $e){
+            return redirect('agendamento/saida' )->with( 'fail', $e->getMessage() );
         }
+
+        /*if(  > 0){
+            return redirect('agendamento/saida' )->with( 'success', ' Agendamento confirmado com sucesso ! ' );
+        }*/
 
     }
 
