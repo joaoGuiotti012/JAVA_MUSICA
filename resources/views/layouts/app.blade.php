@@ -22,10 +22,11 @@
   
 </head>
 <style>
-    /*#alert{
+    .alert{
         position: absolute;
         width: 100%;
-    }*/
+        z-index : 1;
+    }
     tr{
         font-size: 14px;
     }
@@ -76,6 +77,35 @@
     }
 </style>
 <body>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    @if (session('success'))
+    <div id="alert" class="alert alert-success">
+        <p>{{ session('success') }} </p>
+    </div>
+    @endif
+    @if (session('fail'))
+    <div id="alert" class="alert alert-warning">
+        <p> <i class="fas fa-bomb"></i> {{ session('fail') }} </p>
+    </div>
+    @endif
+    @if (session('saida'))
+    <div id="alert" class="alert alert-danger">
+        <p> <i class="fas fa-sign-out-alt"></i> {{ session('saida') }} </p>
+    </div>
+    @endif
+    @if (session('primary'))
+        <div id="alert" class="alert alert-primary">
+            <p>{{ session('primary') }}  </p>
+        </div>
+    @endif
     <nav id="topo" class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">

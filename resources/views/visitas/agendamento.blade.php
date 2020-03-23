@@ -1,21 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
-    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
+    
     <br> <br>
 
     <form class="jumbotron container" method="POST" action="{{  route('agendamento.novo') }}"  enctype="multipart/form-data">

@@ -72,8 +72,8 @@ class ControladorVisitantes extends Controller
     public function update(Request $request, $id){
 
         $request = Visitantes::validoEdit($request);
-        $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'.$request->new_foto->extension(); 
         $diretorio =  str_replace('/',DIRECTORY_SEPARATOR, public_path('storage/visitantes/'));
+        $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'.$request->new_foto->extension(); 
 
         if($request->old_foto == null){
             $update = move_uploaded_file( $_FILES['new_foto']['tmp_name'] , $diretorio .$nameFile);
@@ -85,8 +85,8 @@ class ControladorVisitantes extends Controller
             $visitantes->foto = $nameFile;
             $update = $visitantes->save();
         }
-        if( $request->old_foto != null ){
-            if(isset($_FILES['new_foto'])){                
+        if( $request->old_foto != null && $request->new_foto != null ){
+            if(isset($_FILES['new_foto'])){ 
                 if( move_uploaded_file( $_FILES['new_foto']['tmp_name'] , $diretorio .$nameFile)){
                     // atualiza registro com valores novos
                     $visitantes = Visitantes::find($id);

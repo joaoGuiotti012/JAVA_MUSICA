@@ -2,22 +2,7 @@
 
 @section('content')
 
-    @if (session('success'))
-    <div id="alert" class="alert alert-success">
-        <p>{{ session('success') }} </p>
-    </div>
-    @endif
-    @if (session('fail'))
-    <div id="alert" class="alert alert-success">
-        <p>{{ session('success') }} </p>
-    </div>
-    @endif
-    @if (session('primary'))
-        <div id="alert" class="alert alert-primary">
-            <p>{{ session('primary') }}  </p>
-        </div>
-    @endif
-
+   
     @if (isset($busca))
       <?php $agendamento = $busca; ?>
       @if (session('search'))

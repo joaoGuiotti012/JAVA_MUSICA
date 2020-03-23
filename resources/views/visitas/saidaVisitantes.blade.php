@@ -3,17 +3,6 @@
 
 @section('content')
 
-    @if (session('success'))
-    <div id="alert" class="alert alert-success">
-        <p>{{ session('success') }} </p>
-    </div>
-    @endif
-    @if (session('primary'))
-        <div id="alert" class="alert alert-primary">
-            <p>{{ session('primary') }}  </p>
-        </div>
-    @endif
-
     <br>
     <div class="container">
         <div class="td-row">

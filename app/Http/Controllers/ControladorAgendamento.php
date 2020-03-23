@@ -180,6 +180,7 @@ class ControladorAgendamento extends Controller
             }
         }
         $dadosXls .= "  </table>";
+        $dadosXls = mb_convert_encoding($dadosXls , "HTML-ENTITIES", "UTF-8");
      
         // Definimos o nome do arquivo que será exportado
         $arquivo = 'historico' . date('_His').".xls"; 

@@ -4,26 +4,7 @@
     <body onload="startTime()">
     
 
-    @if (session('success'))
-    <div id="alert" class="alert alert-success">
-        <p>{{ session('success') }} </p>
-    </div>
-    @endif
-    @if (session('fail'))
-    <div id="alert" class="alert alert-warning">
-        <p> <i class="fas fa-bomb"></i> {{ session('fail') }} </p>
-    </div>
-    @endif
-    @if (session('saida'))
-    <div id="alert" class="alert alert-danger">
-        <p> <i class="fas fa-sign-out-alt"></i> {{ session('saida') }} </p>
-    </div>
-    @endif
-    @if (session('primary'))
-        <div id="alert" class="alert alert-primary">
-            <p>{{ session('primary') }}  </p>
-        </div>
-    @endif
+    
 
     @if (isset($busca))
       <?php $agendamento = $busca; ?>
