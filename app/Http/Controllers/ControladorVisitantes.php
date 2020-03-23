@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
-date_default_timezone_set('America/Sao_Paulo');
 
 class ControladorVisitantes extends Controller
 {
@@ -41,11 +40,12 @@ class ControladorVisitantes extends Controller
 
         if(isset($_FILES['foto'])){
            
-            $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'. $request->foto->extension(); 
             $diretorio =  str_replace('/',DIRECTORY_SEPARATOR, public_path('storage/visitantes/'));  ;
+            $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'. $request->foto->extension(); 
             
             //dd($diretorio);
             if( move_uploaded_file( $_FILES['foto']['tmp_name'] , $diretorio .$nameFile)){
+                
                 $visitantes->foto = $nameFile;
                 $visitantes->nome = mb_strtoupper($request->nome , 'UTF-8');
                 $visitantes->rg = $request->rg;
@@ -73,9 +73,10 @@ class ControladorVisitantes extends Controller
 
         $request = Visitantes::validoEdit($request);
         $diretorio =  str_replace('/',DIRECTORY_SEPARATOR, public_path('storage/visitantes/'));
-        $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'.$request->new_foto->extension(); 
 
-        if($request->old_foto == null){
+        if($request->old_foto == null && $request->new_foto != null){
+            $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'.$request->new_foto->extension(); 
+
             $update = move_uploaded_file( $_FILES['new_foto']['tmp_name'] , $diretorio .$nameFile);
             // atualiza registro com valores novos
             $visitantes = Visitantes::find($id);
@@ -87,6 +88,8 @@ class ControladorVisitantes extends Controller
         }
         if( $request->old_foto != null && $request->new_foto != null ){
             if(isset($_FILES['new_foto'])){ 
+            $nameFile = hash('sha512',uniqid(time() + rand(-10000,10000))).'.'.$request->new_foto->extension(); 
+
                 if( move_uploaded_file( $_FILES['new_foto']['tmp_name'] , $diretorio .$nameFile)){
                     // atualiza registro com valores novos
                     $visitantes = Visitantes::find($id);

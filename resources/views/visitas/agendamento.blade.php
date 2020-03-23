@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    
     <br> <br>
-
     <form class="jumbotron container" method="POST" action="{{  route('agendamento.novo') }}"  enctype="multipart/form-data">
     @csrf  
         <div class="row">

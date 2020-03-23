@@ -2,9 +2,6 @@
 
 @section('content')
     <body onload="startTime()">
-    
-
-    
 
     @if (isset($busca))
       <?php $agendamento = $busca; ?>
@@ -58,24 +55,24 @@
                         <td> {{ $ls->dataPrevisao }}     </td>
                         <td> {{ $ls->horarioPrevisao }}     </td>
                         <td class="text-center"> 
-                                <button type="submit" title="Confirma a Entrada!" class=" text-primary" title="Confirmar Entrada !" 
-                                data-toggle="modal" data-target="#entrada{{$ls->id}}"> 
-                                    <i class="fas fa-check-circle"></i> 
-                                </button>
-                                @include('layouts.modal.entrada')
-                                <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
-                                    <i class="fas fa-check-circle"></i>
-                                </button-->
-                                @include('layouts.modal.modalSaida')  
-                                <button type="button" class="text-danger"  title="deletar"  data-toggle="modal" data-target="#rem{{$ls->id}}">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button> 
-                                @include('layouts.modal.modalrem')
+                            <button type="submit" title="Confirma a Entrada!" class=" text-primary" title="Confirmar Entrada !" 
+                            data-toggle="modal" data-target="#entrada{{$ls->id}}"> 
+                                <i class="fas fa-check-circle"></i> 
+                            </button>
+                            @include('layouts.modal.entrada')
+                            <!--button type="button"  class="btn-primary" data-toggle="modal" data-target="#saida{{$ls->id}}">
+                                <i class="fas fa-check-circle"></i>
+                            </button-->
+                            @include('layouts.modal.modalSaida')  
+                            <button type="button" class="text-danger"  title="deletar"  data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button> 
+                            @include('layouts.modal.modalrem')
                         </td>
                     </tr>
-                      @endif              
-                     @if( $ls->dataEntrada != null && $ls->dataSaida == null )
-                     <tr class="text-center table-danger">
+                    @endif              
+                    @if( $ls->dataEntrada != null && $ls->dataSaida == null )
+                    <tr class="text-center table-danger">
                         <th> {{ $ls->codigo}}    </th>
                         <td > {{ substr($ls->descricao, 0, 20 ) }}..  </td>
                         <td style="padding: 1.rem;"> 
@@ -96,26 +93,23 @@
                         <td> {{ $ls->dataPrevisao }}     </td>
                         <td> {{ $ls->horarioPrevisao }}     </td>
                         <td class="text-center"> 
-                
-                                <button type="submit" title="Confirma a saida!" 
-                        class="text-danger btn-table" title="Confirmar Saida !" data-toggle="modal"  data-target="#saida{{$ls->id}}" > 
-                                    <i class="fas fa-check-circle"></i> 
-                                </button>
-                                @include('layouts.modal.saida')
-                                            
-                              
-                                <button type="button" class="text-danger btn-table" title="deletar"   data-toggle="modal" data-target="#rem{{$ls->id}}">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button > 
-                                @include('layouts.modal.modalrem')
+                            <button type="submit" title="Confirma a saida!" 
+                                class="text-danger btn-table" title="Confirmar Saida !" data-toggle="modal"  data-target="#saida{{$ls->id}}" > 
+                                <i class="fas fa-check-circle"></i> 
+                            </button>
+                            @include('layouts.modal.saida')
+                            
+                            <button type="button" class="text-danger btn-table" title="deletar"   
+                                data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button > 
+                            @include('layouts.modal.modalrem')
                         </td>
                         </tr>   
                     @else
                       
-                     @endif
-                    
+                    @endif
                    
-                    
                     @endforeach
                 </tbody>
             </table>

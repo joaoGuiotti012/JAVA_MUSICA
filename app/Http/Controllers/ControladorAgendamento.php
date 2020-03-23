@@ -16,7 +16,7 @@ use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Component\Console\Input\Input;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\VarDumper\VarDumper;
-date_default_timezone_set('America/Sao_Paulo');
+//date_default_timezone_set('America/Sao_Paulo');
 class ControladorAgendamento extends Controller
 {
     

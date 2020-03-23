@@ -11,6 +11,7 @@
       @endif
     @endif
     <br>
+
     <div class="container">
         <br>
         <h2 class="text-center" id="historico"><i class="far fa-calendar-alt"></i>  Histórico de Agendamentos </h2>
