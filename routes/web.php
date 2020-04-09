@@ -7,13 +7,10 @@
 |
 */
 
-
+//use Illuminate\Routing\Route;
 
 Route::get('/', function () {
     return view('home');
-});
-Route::get('/camera', function () {
-    return view('camera');
 });
 
 Route::get('/home', function () {
@@ -28,11 +25,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('agendamento', 'ControladorAgendamento@index')->name('agendamento'); 
     Route::post('agendamento/novo', 'ControladorAgendamento@store')->name('agendamento.novo'); 
 
-    /* visitantes*/
-
-
     /* === RAMAIS === */
+
     Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 
+
+    /* === APP RH === */
+    Route::get('lancamento', 'LancamentoRhController@index' )->name('lancamento');
 
 });
 
@@ -92,11 +90,15 @@ Route::patch('funcionarios/editar{id}', 'ControladorFuncionario@update')->name('
 Route::delete('funcioanrios/delete{id}', 'ControladorFuncionario@destroy')->name('funcionarios.destroy'); 
 
 
+Route::get('ajusteselect', 'Controller@ajusteSelect'); 
 
 
 
 
-/*===================================== RAMAIS ===========================================*/ 
+
+/*===================================== APP RH ===========================================*/ 
 
 
 
+Route::get('pessoas' , 'PessoaController@index')->name('pessoas.index');
+Route::get('avaliacao' , 'AvaliacaoController@index')->name('avaliacao.index');

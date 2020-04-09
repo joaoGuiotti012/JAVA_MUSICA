@@ -58,4 +58,18 @@ class Visitantes extends Model
                     ->get();
         return $busca;
     }
+
+
+
+    static function findDuplicados( $rg ){
+
+        $duplicados = DB::table('visitantes')
+                    ->select(
+                        'visitantes.id',
+                        'visitantes.rg',
+                    )
+                    ->where('visitantes.rg','=' , $rg )
+                    ->get();
+        return $duplicados;
+    }
 }

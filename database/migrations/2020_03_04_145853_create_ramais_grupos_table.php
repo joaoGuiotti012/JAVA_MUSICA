@@ -38,6 +38,6 @@ class CreateRamaisGruposTable extends Migration
      */
     public function down()
     {
-        Schema::connection('db2')->dropIfExists('ramais');
+        Schema::connection('db2')->dropIfExists('ramais_grupos');
     }
 }

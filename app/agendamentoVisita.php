@@ -54,7 +54,16 @@ class agendamentoVisita extends Model
 
     }
 
-
+    static function seachCodVi($id_visitante){
+        $visitas =  DB::table('agendamento_visitas')
+        ->select(
+            'agendamento_visitas.id',
+            'agendamento_visitas.codigo',
+            'agendamento_visitas.visitante_id'
+        )->where('agendamento_visitas.visitante_id' ,'=' , $id_visitante )
+        ->get();
+        return $visitas;
+    }
 
     static function search($search){
 
