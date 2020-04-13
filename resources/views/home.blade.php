@@ -91,7 +91,7 @@ h2 {
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 mbr-col-md-10 btn" aria-disabled="true" onclick="location.href='{{ url('/lancamento') }}'" title="Futuras implementações !">
+                <div class="col-lg-6 mbr-col-md-10 btn" aria-disabled="true" onclick="location.href='{{ url('rh/lancamentos') }}'" title="Futuras implementações !">
                     <div class="wrap">
                         <div class="ico-wrap">
                             <span class="mbr-iconfont fa-globe fa"></span>

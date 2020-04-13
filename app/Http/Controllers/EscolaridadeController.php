@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\lancamentoRh;
+use App\Escolaridade;
 use Illuminate\Http\Request;
 
-class LancamentoRhController extends Controller
+class EscolaridadeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        return view('RH.lancamentos');
+    public function index()
+    {
+        //
     }
 
     /**
@@ -40,10 +41,10 @@ class LancamentoRhController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\lancamentoRh  $lancamentoRh
+     * @param  \App\Escolaridade  $escolaridade
      * @return \Illuminate\Http\Response
      */
-    public function show(lancamentoRh $lancamentoRh)
+    public function show(Escolaridade $escolaridade)
     {
         //
     }
@@ -51,10 +52,10 @@ class LancamentoRhController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\lancamentoRh  $lancamentoRh
+     * @param  \App\Escolaridade  $escolaridade
      * @return \Illuminate\Http\Response
      */
-    public function edit(lancamentoRh $lancamentoRh)
+    public function edit(Escolaridade $escolaridade)
     {
         //
     }
@@ -63,10 +64,10 @@ class LancamentoRhController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\lancamentoRh  $lancamentoRh
+     * @param  \App\Escolaridade  $escolaridade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, lancamentoRh $lancamentoRh)
+    public function update(Request $request, Escolaridade $escolaridade)
     {
         //
     }
@@ -74,10 +75,10 @@ class LancamentoRhController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\lancamentoRh  $lancamentoRh
+     * @param  \App\Escolaridade  $escolaridade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(lancamentoRh $lancamentoRh)
+    public function destroy(Escolaridade $escolaridade)
     {
         //
     }

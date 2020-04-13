@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 
 
     /* === APP RH === */
-    Route::get('lancamento', 'LancamentoRhController@index' )->name('lancamento');
+    Route::get('rh/lancamentos', 'AvaliacaoController@show' )->name('lancamento');
 
 });
 
@@ -99,6 +99,18 @@ Route::get('ajusteselect', 'Controller@ajusteSelect');
 /*===================================== APP RH ===========================================*/ 
 
 
+Route::get('rh/pessoas' , 'PessoaController@index')->name('pessoas.index');
 
-Route::get('pessoas' , 'PessoaController@index')->name('pessoas.index');
-Route::get('avaliacao' , 'AvaliacaoController@index')->name('avaliacao.index');
+Route::post('rh/pessoas/novo' , 'PessoaController@store')->name('pessoas.novo');
+
+
+Route::get('rh/avaliacao' , 'AvaliacaoController@index')->name('avaliacao.index');
+
+Route::post('rh/avaliacao/novo' , 'AvaliacaoController@store')->name('avaliacao.novo');
+
+Route::any('rh/avaliacao/editar{id}' , 'AvaliacaoController@edit')->name('avaliacao.editar');
+
+Route::patch('rh/avaliacao/update{id}' , 'AvaliacaoController@update')->name('avaliacao.update');
+
+
+//Route::get('avaliacao/novo' , 'AvaliacaoController@store')->name('avaliacao.novo');

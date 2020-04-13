@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLancamentoRhsTable extends Migration
+class CreateEscolaridadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateLancamentoRhsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('db3')->create('lancamento_rhs', function (Blueprint $table) {
+        Schema::connection('db3')->create('escolaridades', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('descricao' , 20);
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateLancamentoRhsTable extends Migration
      */
     public function down()
     {
-        Schema::connection('db3')->dropIfExists('lancamento_rhs');
+        Schema::connection('db3')->dropIfExists('escolaridades');
     }
 }

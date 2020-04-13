@@ -27,6 +27,22 @@
         width: 100%;
         z-index : 1;
     }
+
+    .alert-danger{
+        background: #b10a0a;
+        color: white;
+    }
+
+    .alert-success{
+        background: #049c65f0;
+        color: white;
+    }
+
+    .alert-primary{
+        background: #0d58a2fa;
+        color: white;
+    }
+
     tr{
         font-size: 14px;
     }
@@ -91,7 +107,7 @@
         <p>{{ session('success') }} </p>
     </div>
     @endif
-    @if (session('fail'))
+    @if (session('danger'))
     <div id="alert" class="alert alert-warning">
         <p> <i class="fas fa-bomb"></i> {{ session('fail') }} </p>
     </div>
@@ -123,13 +139,13 @@
                 <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item">
-                        <a href="{{ url('/lancamento') }}" class="nav-link"> Lançamento</a>
+                        <a href="{{ url('rh/lancamentos') }}" class="nav-link"> Lançamento</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/pessoas') }} " class="nav-link"> Pessoas</a>
+                        <a href=" {{ url('rh/pessoas') }}" class="nav-link"> Pessoas</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/avaliacao') }}" class="nav-link"> Avaliação</a>
+                        <a href="{{ url('rh/avaliacao') }}" class="nav-link"> Avaliação</a>
                     </li>
                     <!--li class="nav-item">
                         <a href="{{ url('/funcionarios') }}" class="nav-link"> Colaboradores</a>
@@ -261,32 +277,16 @@
 
     // <+================ ANIMAÇÔES ================+>
     $(document).ready(function (){
-        $("#btn-filtrar").click(function (){
-            $("#btn-ocultar").show(1000);
-            $("#btn-filtrar").hide(1000);
-            $("#div-search").show(1000);
-        });
-
-        $("#btn-ocultar").click(function (){
-            $("#btn-ocultar").hide(1000);
-            $("#btn-filtrar").show(1000);
-            $("#div-search").hide(1000);
-        });
-
-        $("#btn-filtrar").click(function (){
-            $("#success").hide(1500);
-            $("#primary").hide(1500);
-            $("#danger").hide(1500);
-        });
-
         // <+============= MASK ===================+>
         $('#rg').mask('00.000.000-0' , {reverse: false });
+        $('#cpf').mask('000.000.000-00' , {reverse: false });
+        $('#fone1').mask('(00)00000-0000' , {reverse: false });
     });
 
     // <+================ SET TIME ALERT ================+>
     $().ready(function() {
         setTimeout(function () {
-            $('#alert').hide(1000); // "foo" é o id do elemento que seja manipular.
+            $('.alert').hide(1500); // "foo" é o id do elemento que seja manipular.
         }, 2500); // O valor é representado em milisegundos.
     });
 
