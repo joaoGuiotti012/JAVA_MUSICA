@@ -277,6 +277,24 @@
 
     // <+================ ANIMAÇÔES ================+>
     $(document).ready(function (){
+
+        $("#btn-filtros").click(function (){
+            $("#btn-ocultar").show(1000);
+            $("#btn-filtros").hide(1000);
+            $("#div-filtros").show(1000);
+        });
+
+        $("#btn-ocultar").click(function (){
+            $("#btn-ocultar").hide(1000);
+            $("#btn-filtros").show(1000);
+            $("#div-filtros").hide(1000);
+        });
+
+        $("#btn-filtros").click(function (){
+            $("#success").hide(1500);
+            $("#primary").hide(1500);
+            $("#danger").hide(1500);
+        });
         // <+============= MASK ===================+>
         $('#rg').mask('00.000.000-0' , {reverse: false });
         $('#cpf').mask('000.000.000-00' , {reverse: false });

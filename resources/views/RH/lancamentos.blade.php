@@ -3,11 +3,89 @@
 <br>
 <div class="container">
     <br>
+    <h2 class="text-center" id="historico"><i class="far fa-calendar-alt"></i> Lançamestos </h2>
     <div class="container table-responsive">
+        <button class="btn btn-sm btn-primary" id="btn-filtros">
+            Filtros <i class="fas fa-filter"></i>
+        </button>
+        <form action=" {{route('avaliacao.search') }}" method="GET">
+        @csrf
+        <button class="btn btn-sm btn-primary" type="submit" style="display:none" id="btn-ocultar">
+            Buscar <i class="fas fa-search"></i>
+        </button>
+        <div class="card" id="div-filtros" style="display:none">
+            <h6 class="card-header list-inline">
+                Filtros <i class="fas fa-filter"></i>
+            </h6>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="tp" >
+                                <label class="form-check-label" for="inlineCheckbox1">Teste Psico</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="iac" >
+                                <label class="form-check-label" for="inlineCheckbox2">Informações. Criminais</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="rs" >
+                                <label class="form-check-label" for="inlineCheckbox3">Redes Socias</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="ptj"  >
+                                <label class="form-check-label" for="inlineCheckbox3">Tribunal Just.</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="rp"  >
+                                <label class="form-check-label" for="inlineCheckbox3">Ref. Profi.</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="if"  >
+                                <label class="form-check-label" for="inlineCheckbox3">Info. Financeira</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="ic"  >
+                                <label class="form-check-label" for="inlineCheckbox3">Info. CNH</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="ep"  >
+                                <label class="form-check-label" for="inlineCheckbox3">E. Psicologica</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="et"  >
+                                <label class="form-check-label" for="inlineCheckbox3">Ex. Tecnica</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="ex"  >
+                                <label class="form-check-label" for="inlineCheckbox3">Ex. Médico</label>
+                            </div>
+                            <br><br>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <select id="inputState" class="form-control" name="campo">
+                                    <option selected></option>
+                                        <option value="nome" >Nome</option>
+                                        <option value="cargo_concorrido" >Cargo Concorrido</option>
+                                        <option value="setor" >Setor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input type="text" class="form-control" name="descricao" placeholder="Descrição">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        <br>
         <table id="table-view" class="table table-sm table-hover table-bordered table-striped">
             <thead>
                 <tr class="text-center">
-                    <th scope="col">#</th>
+                    <th scope="col"><i class="fas fa-user"></i></th>
                     <th scope="col">Nome</th>
                     <th scope="col"> Carg. Concorrido</th>
                     <th scope="col">Setor</th>
@@ -79,6 +157,5 @@
         </table>
     </div>
 </div>
-
 
 @endsection

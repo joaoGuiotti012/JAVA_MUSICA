@@ -99,10 +99,18 @@ class AvaliacaoController extends Controller
     public function show()
     {
         //$lancamento = DB::connection('db3')->table('avaliacaos')->where('id' , '2')->get();
-        
         //$itens = Itens::all();
         $lancamentos = Avaliacao::selectLancamentos();
         return view('RH.lancamentos' , compact('lancamentos'));
+    }
+
+
+    public function search(Request $request, Avaliacao $lancamentos){
+        $dataForm = $request->all();
+        //dd($dataForm);
+        $lancamentos = $lancamentos->search($dataForm, $lancamentos);
+        //dd($lancamentos);
+        return view('RH.lancamentos', compact('lancamentos'));
     }
 
     /**

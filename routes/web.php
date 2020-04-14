@@ -114,5 +114,7 @@ Route::delete('rh/avaliacao/delete{id}', 'AvaliacaoController@destroy')->name('a
 
 Route::patch('rh/avaliacao/update{id}' , 'AvaliacaoController@update')->name('avaliacao.update');
 
+Route::get('rh/avaliacao/search' , 'AvaliacaoController@search')->name('avaliacao.search');
+
 
 //Route::get('avaliacao/novo' , 'AvaliacaoController@store')->name('avaliacao.novo');

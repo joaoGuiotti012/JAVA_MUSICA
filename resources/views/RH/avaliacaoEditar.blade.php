@@ -14,7 +14,7 @@
                       <br>
 
                     </div>
-                    <div class="container">
+                    <div class="container table-responsive">
                         <form action="{{ route('avaliacao.update' , $ls[0]->id) }}" method="POST" enctype="multipart/form-data">
                             @method('PATCH') 
                             @csrf
@@ -51,22 +51,22 @@
                             </td></tr>
                             <tr class="text-center"> 
                                 <th>PESQUISA TRIBUNAL JUSTIÇA</th>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_ptj" value="S"@if($ls[0]->ptj == 'S') checked @endif></td>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_ptj" value="N"@if($ls[0]->ptj == 'N') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_ptj" value="S" @if($ls[0]->ptj == 'S') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_ptj" value="N" @if($ls[0]->ptj == 'N') checked @endif></td>
                                 <td><input type="date" class="form-control-sm" name="date_ptj" value="{{$ls[0]->date_ptj}}"></td>
                                 <td><textarea type="text" class="form-control-sm" name="obs_ptj" value="{{$ls[0]->obs_ptj}}"></textarea>
                             </td></tr>
                             <tr class="text-center"> 
                                 <th>REFERÊNCIA PROFISSIONAL</th>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_rp" value="S"@if($ls[0]->rp == 'S') checked @endif></td>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_rp" value="N"@if($ls[0]->rp == 'N') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_rp" value="S" @if($ls[0]->rp == 'S') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_rp" value="N" @if($ls[0]->rp == 'N') checked @endif></td>
                                 <td><input type="date" class="form-control-sm" name="date_rp" value="{{$ls[0]->date_rp}}"></td>
                                 <td><textarea type="text" class="form-control-sm" name="obs_rp" value="{{$ls[0]->obs_rp}}"></textarea>
                             </td></tr>
                             <tr class="text-center"> 
                                 <th>INFORMAÇAO FINANCEIRA</th>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_if" value="S"@if($ls[0]->if == 'S') checked @endif></td>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_if" value="N"@if($ls[0]->if == 'N') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_if" value="S" @if($ls[0]->if == 'S') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_if" value="N" @if($ls[0]->if == 'N') checked @endif></td>
                                 <td><input type="date" class="form-control-sm" name="date_if" value="{{$ls[0]->date_if}}"></td>
                                 <td><textarea type="text" class="form-control-sm" name="obs_if" value="{{$ls[0]->obs_if}}"></textarea>
                             </td></tr>
@@ -79,8 +79,8 @@
                             </td></tr>
                             <tr class="text-center"> 
                                 <th>ENTREVISTA PSICOLOGICA	</th>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_ep" value="S"@if($ls[0]->ep == 'S') checked @endif></td>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_ep" value="N"@if($ls[0]->ep == 'N') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_ep" value="S" @if($ls[0]->ep == 'S') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_ep" value="N" @if($ls[0]->ep == 'N') checked @endif></td>
                                 <td><input type="date" class="form-control-sm" name="date_ep" value="{{$ls[0]->date_ep}}"></td>
                                 <td><textarea type="text" class="form-control-sm" name="obs_ep" value="{{$ls[0]->obs_ep}}"></textarea>
                             </td></tr>
