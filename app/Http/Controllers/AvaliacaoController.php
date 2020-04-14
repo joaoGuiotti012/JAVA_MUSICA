@@ -9,6 +9,10 @@ use App\Pessoa;
 use DB;
 use Illuminate\Http\Request;
 
+
+use Exception;
+use PhpParser\Node\Stmt\TryCatch;
+
 class AvaliacaoController extends Controller
 {
     /**
@@ -75,14 +79,15 @@ class AvaliacaoController extends Controller
         $av->date_ex =  $request->date_ex;
         $av->obs_ex =  $request->dobs_ex;
 
-        if($av->save() ){
-            return redirect('rh/avaliacao')->with("success" , "Sucesso: Avaliações aplicadas com exito ! ");
-        }else{
-            return redirect('rh/avaliacao')->with("danger" , "Falha ao aplicar as avaliações ! ");
+        try{
+            if($av->save()){
+                return redirect('rh/avaliacao')->with("success" , "Sucesso: Avaliações aplicadas com exito ! ");
+                exit; 
+            }
+
+        }catch( Exception $e){
+            return redirect('rh/avaliacao')->with("danger" , "Falha: ao realizar a avaliação. MOTIVO: ". $e->getMessage() );
         }
-
-
-
     }
 
     /**
@@ -156,8 +161,9 @@ class AvaliacaoController extends Controller
         $av->ex = $request->chk_ex;
         $av->date_ex =  $request->date_ex;
         $av->obs_ex =  $request->dobs_ex;
-
-        if($av->save() ){
+        $update  = $av->save();
+        
+        if($update ){
             return redirect('rh/lancamentos')->with("success" , "Sucesso: Avaliações alteradas com exito ! ");
         }else{
             return redirect('rh/lancamentos')->with("danger" , "Falha ao aplicar atualizações ! ");
@@ -170,8 +176,17 @@ class AvaliacaoController extends Controller
      * @param  \App\Avaliacao  $avaliacao
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Avaliacao $avaliacao)
+    public function destroy( $id)
     {
-        //
+        $av = Avaliacao::find($id);
+        
+        $delete = $av->delete();
+
+        if($delete > 0){
+            return redirect('rh/lancamentos')->with('success' , 'Deletar: Lançamento deletado com sucesso !') ;
+        }else{
+            return redirect('rh/lancamentos')->with('danger' , 'Deletar: Falha ao deletar este lançamento !') ;
+
+        }
     }
 }

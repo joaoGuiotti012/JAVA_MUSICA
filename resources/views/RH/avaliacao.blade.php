@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card">
             <h5 class="card-header">
-                formulário de Avaliações
+                Formulário de Avaliações
             </h5>
             <div class="card-body">
                 <form action="{{ route('avaliacao.novo') }}" method="POST"> 

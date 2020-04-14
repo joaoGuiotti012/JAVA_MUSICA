@@ -142,7 +142,7 @@
                         <a href="{{ url('rh/lancamentos') }}" class="nav-link"> Lançamento</a>
                     </li>
                     <li class="nav-item">
-                        <a href=" {{ url('rh/pessoas') }}" class="nav-link"> Pessoas</a>
+                        <a href=" {{ url('rh/pessoas') }}" class="nav-link"> Cadastros</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ url('rh/avaliacao') }}" class="nav-link"> Avaliação</a>

@@ -36,6 +36,7 @@ class CreatePessoasTable extends Migration
             $table->date('data_contato')->nullable();
             $table->date('data_retorno')->nullable();
             $table->timestamps();
+            
         });
     }
 

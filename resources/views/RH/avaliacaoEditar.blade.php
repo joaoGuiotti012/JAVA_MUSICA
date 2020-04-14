@@ -72,8 +72,8 @@
                             </td></tr>
                             <tr class="text-center"> 
                                 <th>INFORMAÇAO DE CNH</th>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_ic" value="S"@if($ls[0]->ic == 'S') checked @endif></td>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_ic" value="N"@if($ls[0]->ic == 'N') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_ic" value="S" @if($ls[0]->ic == 'S') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_ic" value="N" @if($ls[0]->ic == 'N') checked @endif></td>
                                 <td><input type="date" class="form-control-sm" name="date_ic" value="{{$ls[0]->date_ic}}"></td>
                                 <td><textarea type="text" class="form-control-sm" name="obs_ic" value="{{$ls[0]->obs_ic}}"></textarea>
                             </td></tr>
@@ -86,8 +86,8 @@
                             </td></tr>
                             <tr class="text-center"> 
                                 <th>ENTREVISTA TECNICA</th>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_et" value="S"@if($ls[0]->et == 'S') checked @endif></td>
-                                <td> <input type="checkbox" class="form-check-input" name="chk_et" value="N"@if($ls[0]->et == 'N') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_et" value="S" @if($ls[0]->et == 'S') checked @endif></td>
+                                <td> <input type="checkbox" class="form-check-input" name="chk_et" value="N" @if($ls[0]->et == 'N') checked @endif></td>
                                 <td><input type="date" class="form-control-sm" name="date_et" value="{{$ls[0]->date_et}}"></td>
                                 <td><textarea type="text" class="form-control-sm" name="obs_et" value="{{$ls[0]->obs_et}}" ></textarea></td>
                             </tr>

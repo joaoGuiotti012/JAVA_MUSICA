@@ -110,6 +110,8 @@ Route::post('rh/avaliacao/novo' , 'AvaliacaoController@store')->name('avaliacao.
 
 Route::any('rh/avaliacao/editar{id}' , 'AvaliacaoController@edit')->name('avaliacao.editar');
 
+Route::delete('rh/avaliacao/delete{id}', 'AvaliacaoController@destroy')->name('avaliacao.delete'); 
+
 Route::patch('rh/avaliacao/update{id}' , 'AvaliacaoController@update')->name('avaliacao.update');
 
 
