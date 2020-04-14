@@ -63,6 +63,7 @@ class PessoaController extends Controller
         $pessoa->setor = $request->setor;
         $pessoa->data_contato = $request->data_contato;
         $pessoa->data_retorno = $request->data_retorno;
+        $pessoa->responsavel = $request->responsavel;
        
         if( $pessoa->save() ){
             return redirect('rh/pessoas')->with("success" , "Sucesso: Cadastro realizado exito ! ");

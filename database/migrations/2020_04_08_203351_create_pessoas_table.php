@@ -35,6 +35,7 @@ class CreatePessoasTable extends Migration
             $table->string('setor' , 100)->nullable();
             $table->date('data_contato')->nullable();
             $table->date('data_retorno')->nullable();
+            $table->string('responsavel' , 100)->nullable();
             $table->timestamps();
             
         });

@@ -82,11 +82,10 @@ class AvaliacaoController extends Controller
         try{
             if($av->save()){
                 return redirect('rh/avaliacao')->with("success" , "Sucesso: Avaliações aplicadas com exito ! ");
-                exit; 
             }
-
+            exit; 
         }catch( Exception $e){
-            return redirect('rh/avaliacao')->with("danger" , "Falha: ao realizar a avaliação. MOTIVO: ". $e->getMessage() );
+            return redirect('rh/avaliacao')->with('danger' , $e->getMessage());
         }
     }
 
@@ -185,14 +184,12 @@ class AvaliacaoController extends Controller
     public function destroy( $id)
     {
         $av = Avaliacao::find($id);
-        
         $delete = $av->delete();
 
         if($delete > 0){
             return redirect('rh/lancamentos')->with('success' , 'Deletar: Lançamento deletado com sucesso !') ;
         }else{
             return redirect('rh/lancamentos')->with('danger' , 'Deletar: Falha ao deletar este lançamento !') ;
-
         }
     }
 }

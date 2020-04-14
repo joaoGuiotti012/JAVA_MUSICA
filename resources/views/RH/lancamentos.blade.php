@@ -22,7 +22,8 @@
                     <div class="col-md-12">
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                                <select id="inputState" class="form-control" name="campo">
+                                <select id="select" class="form-control" name="campo">
+                                    <option id="deficiencia" value="teste">Deficiencia</option>
                                     <option value="nome" >Nome</option>
                                     <option value="cargo_concorrido" >Cargo Concorrido</option>
                                     <option value="setor" >Setor</option>
@@ -103,7 +104,7 @@
         </div>
         <br>
     <div class="container table-responsive">
-        <table id="table-view" class="table table-sm table-hover table-bordered table-striped">
+        <table class="table table-sm table-hover table-bordered table-striped">
             <thead>
                 <tr class="text-center">
                     <th scope="col"><i class="fas fa-user"></i></th>
@@ -120,6 +121,7 @@
                     <th scope="row">E. Psicologica </th>
                     <th scope="row">E. Tecnica </th>
                     <th scope="row">Ex. Médico </th>
+                    <th scope="row">Responsavel</th>
                     <th colspan="2" > AÇÕES </th>
                 </tr>
             </thead>
@@ -160,6 +162,7 @@
                     <td>
                         @if($ls->ex == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ex == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                     </td> 
+                    <td>{{ $ls->responsavel }}</td>
                     <td class="text-center" > 
                         <button type="submit" class="text-primary" onclick="location.href='{{ route('avaliacao.editar' , $ls->id) }}'" >
                             <i class="fas fa-edit"></i>

@@ -148,7 +148,8 @@ class Avaliacao extends Model
             'avaliacaos.et',
             'avaliacaos.date_et',
             'avaliacaos.ex',
-            'avaliacaos.date_ex'
+            'avaliacaos.date_ex',
+            'pessoas.responsavel'
         )->get();
         return $query;
     }
