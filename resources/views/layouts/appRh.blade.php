@@ -279,9 +279,9 @@
     $(document).ready(function (){
 
         $("#btn-filtros").click(function (){
-            $("#btn-ocultar").show(1000);
-            $("#btn-filtros").hide(1000);
-            $("#div-filtros").show(1000);
+            $("#btn-ocultar").show(800);
+            $("#btn-filtros").hide(800);
+            $("#div-filtros").show(800);
         });
 
         $("#btn-ocultar").click(function (){
@@ -291,9 +291,9 @@
         });
 
         $("#btn-filtros").click(function (){
-            $("#success").hide(1500);
-            $("#primary").hide(1500);
-            $("#danger").hide(1500);
+            $("#success").hide(1000);
+            $("#primary").hide(1000);
+            $("#danger").hide(1000);
         });
         // <+============= MASK ===================+>
         $('#rg').mask('00.000.000-0' , {reverse: false });
@@ -304,7 +304,7 @@
     // <+================ SET TIME ALERT ================+>
     $().ready(function() {
         setTimeout(function () {
-            $('.alert').hide(1500); // "foo" é o id do elemento que seja manipular.
+            $('.alert').hide(1000); // "foo" é o id do elemento que seja manipular.
         }, 2500); // O valor é representado em milisegundos.
     });
 

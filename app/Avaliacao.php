@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+
 use DB;
 
 class Avaliacao extends Model
@@ -10,7 +12,9 @@ class Avaliacao extends Model
     protected $connection = 'db3';
 
 
-    static function search(Array $data, Avaliacao $lancamentos){
+    static function search(array $data, Avaliacao $lancamentos){
+        
+
         return $lancamentos->join('pessoas', 'pessoas.id', '=' , 'avaliacaos.pessoa_id')
         ->select(
             'avaliacaos.id',
@@ -39,45 +43,80 @@ class Avaliacao extends Model
             'avaliacaos.et',
             'avaliacaos.date_et',
             'avaliacaos.ex',
-            'avaliacaos.date_ex' )->where(function ($query) use ($data) {
-                if( isset($data['campo']) AND isset($data['descricao']) ){
-                    $query->where( 'pessoas.'.$data['campo'] , 'LIKE' ,  '%'.$data['descricao'].'%'  );
-                }
-                if( isset($data['tp'])){
-                    $query->where('tp' ,  '=' , null);
-                }
-                if( isset($data['iac'])){
-                    $query->where('iac' ,  '=' , null);
-                }
-                if( isset($data['rs'])){
-                    $query->where('rs' ,  '=' , null);
-                }
-                if( isset($data['ptj'])){
-                    $query->where('ptj' ,  '=' , null);
-                }
-                if( isset($data['rp'])){
-                    $query->where('rp' ,  '=' , null);
-                }
-                if( isset($data['if'])){
-                    $query->where('if' ,  '=' , null);
-                }
-                if( isset($data['ic'])){
-                    $query->where('ic' ,  '=' , null);
-                }
-                if( isset($data['ep'])){
-                    $query->where('ep' ,  '=' , null);
-                }
-                if( isset($data['et'])){
-                    $query->where('et' ,  '=' , null);
-                }
-                if( isset($data['ex'])){
-                    $query->where('ex' ,  '=' , null);
-                }
-        })->get();
+            'avaliacaos.date_ex'
+            )->where(function ($query) use ($data) {
+                
+                if( $data['campo'] == 'obs_' AND isset($data['descricao'])){
+                    
+                    if(isset($data['tp']) )
+                        $query->where( $data['campo'].'tp' , 'LIKE' , '%'.$data['descricao'].'%' );
+                        
+                    if(isset($data['iac']) )
+                        $query->where( $data['campo'].'iac' , 'LIKE', '%'.$data['descricao'].'%' );
+                    
+                    if(isset($data['rs']) )
+                        $query->where( $data['campo'].'rs' , 'LIKE', '%'.$data['descricao'].'%');
+                    
+                    if(isset($data['ptj']))
+                        $query->where( $data['campo'].'ptj' , 'LIKE',  '%'.$data['descricao'].'%');
+                    
+                    if(isset($data['rp']))
+                        $query->where( $data['campo'].'rp' , 'LIKE', '%'.$data['descricao'].'%');
+                    
+                    if(isset($data['if']))
+                        $query->where( $data['campo'].'if' ,  'LIKE', '%'.$data['descricao'].'%');
+                    
+                    if(isset($data['ic']))
+                        $query->where( $data['campo'].'ic' , 'LIKE',  '%'.$data['descricao'].'%');
+                    
+                    if(isset($data['ep']))
+                        $query->where( $data['campo'].'ep' ,'LIKE', '%'.$data['descricao'].'%');
+                    
+                    if(isset($data['et']))
+                        $query->where( $data['campo'].'et' , 'LIKE', '%'.$data['descricao'].'%');
+                    
+                    if(isset($data['ex']))
+                        $query->where( $data['campo'].'ex' , 'LIKE',  '%'.$data['descricao'].'%');
+                    
 
+                }else{
+                    if(isset($data['campo']) AND isset($data['descricao']))
+                        $query->where( 'pessoas.'.$data['campo'] , 'LIKE' ,  '%'.$data['descricao'].'%'  );
+                    
+                    if( isset($data['tp']))
+                        $query->where('tp' ,  '=' , null);
+                    
+                    if( isset($data['iac']))
+                        $query->where('iac' ,  '=' , null);
+                    
+                    if( isset($data['rs']))
+                        $query->where('rs' ,  '=' , null);
+                    
+                    if( isset($data['ptj']))
+                        $query->where('ptj' ,  '=' , null);
+                    
+                    if( isset($data['rp']))
+                        $query->where('rp' ,  '=' , null);
+                    
+                    if( isset($data['if']))
+                        $query->where('if' ,  '=' , null);
+                    
+                    if( isset($data['ic']))
+                        $query->where('ic' ,  '=' , null);
+                    
+                    if( isset($data['ep']))
+                        $query->where('ep' ,  '=' , null);
+                    
+                    if( isset($data['et']))
+                        $query->where('et' ,  '=' , null);
+                    
+                    if( isset($data['ex']))
+                        $query->where('ex' ,  '=' , null);
+                }
+            })->get();
     }
 
-
+    
 
     static function selectLancamentos(){
         $query = DB::connection('db3')->table('avaliacaos')

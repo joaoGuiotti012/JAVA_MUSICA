@@ -50,34 +50,34 @@ class AvaliacaoController extends Controller
         $av->pessoa_id = $request->cad_num;
         $av->tp = $request->chk_tp;
         $av->date_tp =  $request->date_tp;
-        $av->obs_tp =  $request->dobs_tp;
+        $av->obs_tp =  $request->obs_tp;
         $av->iac = $request->chk_iac;
         $av->date_iac =  $request->date_iac;
-        $av->obs_iac =  $request->dobs_iac;
+        $av->obs_iac =  $request->obs_iac;
         $av->rs = $request->chk_rs;
         $av->date_rs =  $request->date_rs;
-        $av->obs_rs =  $request->dobs_rs;
+        $av->obs_rs =  $request->obs_rs;
         $av->ptj = $request->chk_ptj;
         $av->date_ptj =  $request->date_ptj;
-        $av->obs_ptj =  $request->dobs_ptj;
+        $av->obs_ptj =  $request->obs_ptj;
         $av->rp = $request->chk_rp;
         $av->date_rp =  $request->date_rp;
-        $av->obs_rp =  $request->dobs_rp;
+        $av->obs_rp =  $request->obs_rp;
         $av->if = $request->chk_if;
         $av->date_if =  $request->date_if;
-        $av->obs_if =  $request->dobs_if;
+        $av->obs_if =  $request->obs_if;
         $av->ic = $request->chk_ic;
         $av->date_ic =  $request->date_ic;
-        $av->obs_ic =  $request->dobs_ic;
+        $av->obs_ic =  $request->obs_ic;
         $av->ep = $request->chk_ep;
         $av->date_ep =  $request->date_ep;
-        $av->obs_ep =  $request->dobs_ep;
+        $av->obs_ep =  $request->obs_ep;
         $av->et = $request->chk_et;
         $av->date_et =  $request->date_et;
-        $av->obs_et =  $request->dobs_et;
+        $av->obs_et =  $request->obs_et;
         $av->ex = $request->chk_ex;
         $av->date_ex =  $request->date_ex;
-        $av->obs_ex =  $request->dobs_ex;
+        $av->obs_ex =  $request->obs_ex;
 
         try{
             if($av->save()){
@@ -106,9 +106,8 @@ class AvaliacaoController extends Controller
 
 
     public function search(Request $request, Avaliacao $lancamentos){
-        $dataForm = $request->all();
-        //dd($dataForm);
-        $lancamentos = $lancamentos->search($dataForm, $lancamentos);
+        $data = $request->all();
+        $lancamentos = $lancamentos->search($data, $lancamentos);
         //dd($lancamentos);
         return view('RH.lancamentos', compact('lancamentos'));
     }
@@ -138,37 +137,36 @@ class AvaliacaoController extends Controller
         
         $av = Avaliacao::find($id);
         
-
         $av->tp = $request->chk_tp;
         $av->date_tp =  $request->date_tp;
-        $av->obs_tp =  $request->dobs_tp;
+        $av->obs_tp =  $request->obs_tp;
         $av->iac = $request->chk_iac;
         $av->date_iac =  $request->date_iac;
-        $av->obs_iac =  $request->dobs_iac;
+        $av->obs_iac =  $request->obs_iac;
         $av->rs = $request->chk_rs;
         $av->date_rs =  $request->date_rs;
-        $av->obs_rs =  $request->dobs_rs;
+        $av->obs_rs =  $request->obs_rs;
         $av->ptj = $request->chk_ptj;
         $av->date_ptj =  $request->date_ptj;
-        $av->obs_ptj =  $request->dobs_ptj;
+        $av->obs_ptj =  $request->obs_ptj;
         $av->rp = $request->chk_rp;
         $av->date_rp =  $request->date_rp;
-        $av->obs_rp =  $request->dobs_rp;
+        $av->obs_rp =  $request->obs_rp;
         $av->if = $request->chk_if;
         $av->date_if =  $request->date_if;
-        $av->obs_if =  $request->dobs_if;
+        $av->obs_if =  $request->obs_if;
         $av->ic = $request->chk_ic;
         $av->date_ic =  $request->date_ic;
-        $av->obs_ic =  $request->dobs_ic;
+        $av->obs_ic =  $request->obs_ic;
         $av->ep = $request->chk_ep;
         $av->date_ep =  $request->date_ep;
-        $av->obs_ep =  $request->dobs_ep;
+        $av->obs_ep =  $request->obs_ep;
         $av->et = $request->chk_et;
         $av->date_et =  $request->date_et;
-        $av->obs_et =  $request->dobs_et;
+        $av->obs_et =  $request->obs_et;
         $av->ex = $request->chk_ex;
         $av->date_ex =  $request->date_ex;
-        $av->obs_ex =  $request->dobs_ex;
+        $av->obs_ex =  $request->obs_ex;
         $update  = $av->save();
         
         if($update ){

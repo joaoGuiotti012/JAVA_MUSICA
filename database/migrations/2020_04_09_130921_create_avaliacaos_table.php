@@ -16,7 +16,7 @@ class CreateAvaliacaosTable extends Migration
         Schema::connection('db3')->create('avaliacaos', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('pessoa_id')->unsigned();
+            $table->integer('pessoa_id')->unsigned()->unique();
 
             $table->string('tp', 1)->nullable();
             $table->date('date_tp')->nullable();
