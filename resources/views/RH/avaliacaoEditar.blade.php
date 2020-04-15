@@ -100,6 +100,16 @@
                             </tr>
                            
                         </table>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Observações Gerais:</label>
+                            <textarea class="form-control" name="obs_geral" rows="4">{{ $ls[0]->obs_geral}}</textarea>
+                        </div>
+                        
+                        <div class="form-group col-md-3">
+                            <label for="inputPassword4" hidden>Responsável Cadastro </label>
+                            <input type="text" class="form-control" name="responsavel" value="{{ Auth::user()->name }}" hidden >
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

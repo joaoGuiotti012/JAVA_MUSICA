@@ -41,6 +41,15 @@
                             </tr>
                             @endforeach
                         </table>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Observações Gerais:</label>
+                            <textarea class="form-control" name="obs_geral" rows="4">  Indicação: </textarea>
+                        </div>
+                        <br>
+                        <div class="form-group col-md-3">
+                            <label for="inputPassword4" hidden>Responsável Cadastro </label>
+                            <input type="text" class="form-control" name="responsavel" value="{{ Auth::user()->name }}" hidden >
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

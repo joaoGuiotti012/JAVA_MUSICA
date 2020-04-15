@@ -3,14 +3,14 @@
 <br>
 <div class="container">
     <br>
-    <h2 class="text-center" id="historico"><i class="far fa-calendar-alt"></i> Lançamestos </h2>
+    <h2 class="text-center" id="historico"><i class="fas fa-list-ul"> </i> Lançamestos </h2>
     
-        <button class="btn btn-sm btn-primary" id="btn-filtros">
+        <button class=" btn-sm btn-primary" id="btn-filtros">
             Filtros <i class="fas fa-filter"></i>
         </button>
         <form action=" {{route('avaliacao.search') }}" method="GET">
         @csrf
-        <button class="btn btn-sm btn-primary" type="submit" style="display:none" id="btn-ocultar">
+        <button class=" btn-sm btn-primary" type="submit" style="display:none" id="btn-ocultar">
             Buscar <i class="fas fa-search"></i>
         </button>
         <div class="card" id="div-filtros" style="display:none">
@@ -23,11 +23,12 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <select id="select" class="form-control" name="campo">
-                                    <option id="deficiencia" value="teste">Deficiencia</option>
+                                    <option id="deficiencia" value="responsavel">Responsável</option>
                                     <option value="nome" >Nome</option>
                                     <option value="cargo_concorrido" >Cargo Concorrido</option>
                                     <option value="setor" >Setor</option>
                                     <option value="obs_" >Observação</option>
+                                    <option value="obs_geral" >Observação Geral</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
@@ -103,7 +104,7 @@
         </form>
         </div>
         <br>
-    <div class="container table-responsive">
+    <div class="container-fluid table-responsive">
         <table class="table table-sm table-hover table-bordered table-striped">
             <thead>
                 <tr class="text-center">
@@ -111,6 +112,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col"> Carg. Concorrido</th>
                     <th scope="col">Setor</th>
+                    <th scope="col">Deficiencia</th>
                     <th scope="row">Teste Psicologicos</th>
                     <th scope="row">Info. Criminais</th>
                     <th scope="row">Redes Socias</th>
@@ -122,7 +124,8 @@
                     <th scope="row">E. Tecnica </th>
                     <th scope="row">Ex. Médico </th>
                     <th scope="row">Responsavel</th>
-                    <th colspan="2" > AÇÕES </th>
+                    <th scope="row">Data Modificação</th>
+                    <th colspan="3" > AÇÕES </th>
                 </tr>
             </thead>
             <tbody>
@@ -132,6 +135,7 @@
                     <td>{{ $ls->nome }}</td> 
                     <td>{{ $ls->cargo_concorrido }}</td> 
                     <td>{{ $ls->setor }}</td> 
+                    <td> @if( $ls->deficiencia) {{ $ls->deficiencia}} @else -- @endif</td>
                     <td> 
                         @if($ls->tp == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->tp == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                     </td> 
@@ -163,6 +167,7 @@
                         @if($ls->ex == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ex == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                     </td> 
                     <td>{{ $ls->responsavel }}</td>
+                    <td>{{ $ls->updated_at }}</td>
                     <td class="text-center" > 
                         <button type="submit" class="text-primary" onclick="location.href='{{ route('avaliacao.editar' , $ls->id) }}'" >
                             <i class="fas fa-edit"></i>
@@ -174,6 +179,14 @@
                             <i class="fas fa-trash-alt"></i>
                         </button> 
                         @include('layouts.modal.RH.rem')
+                    </td>
+                    <td>
+                        <button type="submit" class="text-info"  title="deletar"   
+                        data-toggle="modal" data-target="#view{{$ls->id}}">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        @include('layouts.modal.RH.view')
+
                     </td>
                 </tr>
                 @endforeach

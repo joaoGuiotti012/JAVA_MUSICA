@@ -50,34 +50,37 @@ class AvaliacaoController extends Controller
         $av->pessoa_id = $request->cad_num;
         $av->tp = $request->chk_tp;
         $av->date_tp =  $request->date_tp;
-        $av->obs_tp =  $request->obs_tp;
+        $av->obs_tp =  mb_strtoupper($request->obs_tp);
         $av->iac = $request->chk_iac;
         $av->date_iac =  $request->date_iac;
-        $av->obs_iac =  $request->obs_iac;
+        $av->obs_iac =  mb_strtoupper($request->obs_iac);
         $av->rs = $request->chk_rs;
         $av->date_rs =  $request->date_rs;
-        $av->obs_rs =  $request->obs_rs;
+        $av->obs_rs =  mb_strtoupper($request->obs_rs);
         $av->ptj = $request->chk_ptj;
         $av->date_ptj =  $request->date_ptj;
-        $av->obs_ptj =  $request->obs_ptj;
+        $av->obs_ptj =  mb_strtoupper($request->obs_ptj);
         $av->rp = $request->chk_rp;
         $av->date_rp =  $request->date_rp;
-        $av->obs_rp =  $request->obs_rp;
+        $av->obs_rp =  mb_strtoupper($request->obs_rp);
         $av->if = $request->chk_if;
         $av->date_if =  $request->date_if;
-        $av->obs_if =  $request->obs_if;
+        $av->obs_if =  mb_strtoupper($request->obs_if);
         $av->ic = $request->chk_ic;
         $av->date_ic =  $request->date_ic;
-        $av->obs_ic =  $request->obs_ic;
+        $av->obs_ic =  mb_strtoupper($request->obs_ic);
         $av->ep = $request->chk_ep;
         $av->date_ep =  $request->date_ep;
-        $av->obs_ep =  $request->obs_ep;
+        $av->obs_ep =  mb_strtoupper($request->obs_ep);
         $av->et = $request->chk_et;
         $av->date_et =  $request->date_et;
-        $av->obs_et =  $request->obs_et;
+        $av->obs_et =  mb_strtoupper($request->obs_et);
         $av->ex = $request->chk_ex;
         $av->date_ex =  $request->date_ex;
-        $av->obs_ex =  $request->obs_ex;
+        $av->obs_ex =  mb_strtoupper($request->obs_ex);
+        $av->obs_geral = mb_strtoupper($request->obs_geral);
+        $av->responsavel =  mb_strtoupper($request->responsavel);
+
 
         try{
             if($av->save()){
@@ -138,34 +141,37 @@ class AvaliacaoController extends Controller
         
         $av->tp = $request->chk_tp;
         $av->date_tp =  $request->date_tp;
-        $av->obs_tp =  $request->obs_tp;
+        $av->obs_tp =  mb_strtoupper($request->obs_tp);
         $av->iac = $request->chk_iac;
         $av->date_iac =  $request->date_iac;
-        $av->obs_iac =  $request->obs_iac;
+        $av->obs_iac =  mb_strtoupper($request->obs_iac);
         $av->rs = $request->chk_rs;
         $av->date_rs =  $request->date_rs;
-        $av->obs_rs =  $request->obs_rs;
+        $av->obs_rs =  mb_strtoupper($request->obs_rs);
         $av->ptj = $request->chk_ptj;
         $av->date_ptj =  $request->date_ptj;
-        $av->obs_ptj =  $request->obs_ptj;
+        $av->obs_ptj =  mb_strtoupper($request->obs_ptj);
         $av->rp = $request->chk_rp;
         $av->date_rp =  $request->date_rp;
-        $av->obs_rp =  $request->obs_rp;
+        $av->obs_rp =  mb_strtoupper($request->obs_rp);
         $av->if = $request->chk_if;
         $av->date_if =  $request->date_if;
-        $av->obs_if =  $request->obs_if;
+        $av->obs_if =  mb_strtoupper($request->obs_if);
         $av->ic = $request->chk_ic;
         $av->date_ic =  $request->date_ic;
-        $av->obs_ic =  $request->obs_ic;
+        $av->obs_ic =  mb_strtoupper($request->obs_ic);
         $av->ep = $request->chk_ep;
         $av->date_ep =  $request->date_ep;
-        $av->obs_ep =  $request->obs_ep;
+        $av->obs_ep =  mb_strtoupper($request->obs_ep);
         $av->et = $request->chk_et;
         $av->date_et =  $request->date_et;
-        $av->obs_et =  $request->obs_et;
+        $av->obs_et =  mb_strtoupper($request->obs_et);
         $av->ex = $request->chk_ex;
         $av->date_ex =  $request->date_ex;
-        $av->obs_ex =  $request->obs_ex;
+        $av->obs_ex =  mb_strtoupper($request->obs_ex);
+        $av->obs_geral = mb_strtoupper($request->obs_geral);
+        $av->responsavel =  mb_strtoupper($request->responsavel);
+
         $update  = $av->save();
         
         if($update ){

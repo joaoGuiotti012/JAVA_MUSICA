@@ -22,7 +22,7 @@ class CreatePessoasTable extends Migration
             $table->string('estado' , 100);
             $table->string('endereco' , 100)->nullable();
             $table->integer('escolaridade');
-            $table->string('rg', 14)->unique();;
+            $table->string('rg', 14);
             $table->string('cpf', 15)->unique();
             $table->string('nome_pai' , 100);
             $table->string('nome_mae' , 100);
@@ -35,7 +35,6 @@ class CreatePessoasTable extends Migration
             $table->string('setor' , 100)->nullable();
             $table->date('data_contato')->nullable();
             $table->date('data_retorno')->nullable();
-            $table->string('responsavel' , 100)->nullable();
             $table->timestamps();
             
         });

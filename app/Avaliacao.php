@@ -15,13 +15,28 @@ class Avaliacao extends Model
     static function search(array $data, Avaliacao $lancamentos){
         
 
-        return $lancamentos->join('pessoas', 'pessoas.id', '=' , 'avaliacaos.pessoa_id')
+        return $lancamentos
+        ->join('pessoas', 'pessoas.id', '=' , 'avaliacaos.pessoa_id')
+        ->join('cidades', 'cidades.id', '=' , 'pessoas.cidade')
+        ->join('estados', 'estados.id', '=' , 'pessoas.estado')
+        ->join('escolaridades', 'escolaridades.id', '=' , 'pessoas.escolaridade')
+        
         ->select(
             'avaliacaos.id',
             'pessoas.nome',
+            'pessoas.data_nasc',
             'pessoas.rg',
+            'pessoas.cpf',
+            'cidades.descricao as cidade',
+            'estados.descricao as estado',
+            'escolaridades.descricao as escolaridade',
+            'pessoas.endereco',
+            'pessoas.deficiencia',
             'pessoas.cargo_concorrido',
             'pessoas.setor',
+            'pessoas.fone1',
+            'pessoas.fone2',
+            'pessoas.email',
             'pessoas.data_contato',
             'pessoas.data_retorno',
             'avaliacaos.tp',
@@ -43,9 +58,17 @@ class Avaliacao extends Model
             'avaliacaos.et',
             'avaliacaos.date_et',
             'avaliacaos.ex',
-            'avaliacaos.date_ex'
+            'avaliacaos.date_ex',
+            'avaliacaos.obs_geral',
+            'avaliacaos.responsavel',
+            'avaliacaos.updated_at'
             )->where(function ($query) use ($data) {
-                
+                if( isset($data['deficiencia']) ){
+                    $query->where( 'pessoas.deficiencia' , $data['deficiencia'] );
+                }
+                if( $data['campo'] == 'responsavel' || $data['campo'] == 'obs_geral' ){
+                    $query->where( $data['campo'] , 'LIKE' , '%'.$data['descricao'].'%' );
+                }
                 if( $data['campo'] == 'obs_' AND isset($data['descricao'])){
                     
                     if(isset($data['tp']) )
@@ -80,7 +103,8 @@ class Avaliacao extends Model
                     
 
                 }else{
-                    if(isset($data['campo']) AND isset($data['descricao']))
+
+                    if( isset($data['campo']) AND isset($data['descricao']) AND $data['campo'] != 'responsavel' AND $data['campo'] != 'obs_geral' )
                         $query->where( 'pessoas.'.$data['campo'] , 'LIKE' ,  '%'.$data['descricao'].'%'  );
                     
                     if( isset($data['tp']))
@@ -113,6 +137,7 @@ class Avaliacao extends Model
                     if( isset($data['ex']))
                         $query->where('ex' ,  '=' , null);
                 }
+                
             })->get();
     }
 
@@ -121,12 +146,25 @@ class Avaliacao extends Model
     static function selectLancamentos(){
         $query = DB::connection('db3')->table('avaliacaos')
         ->join('pessoas', 'pessoas.id', '=' , 'avaliacaos.pessoa_id')
+        ->join('cidades', 'cidades.id', '=' , 'pessoas.cidade')
+        ->join('estados', 'estados.id', '=' , 'pessoas.estado')
+        ->join('escolaridades', 'escolaridades.id', '=' , 'pessoas.escolaridade')
         ->select(
             'avaliacaos.id',
             'pessoas.nome',
+            'pessoas.data_nasc',
             'pessoas.rg',
+            'pessoas.cpf',
+            'cidades.descricao as cidade',
+            'estados.descricao as estado',
+            'escolaridades.descricao as escolaridade',
+            'pessoas.endereco',
+            'pessoas.deficiencia',
             'pessoas.cargo_concorrido',
             'pessoas.setor',
+            'pessoas.fone1',
+            'pessoas.fone2',
+            'pessoas.email',
             'pessoas.data_contato',
             'pessoas.data_retorno',
             'avaliacaos.tp',
@@ -149,7 +187,9 @@ class Avaliacao extends Model
             'avaliacaos.date_et',
             'avaliacaos.ex',
             'avaliacaos.date_ex',
-            'pessoas.responsavel'
+            'avaliacaos.obs_geral',
+            'avaliacaos.responsavel',
+            'avaliacaos.updated_at'
         )->get();
         return $query;
     }

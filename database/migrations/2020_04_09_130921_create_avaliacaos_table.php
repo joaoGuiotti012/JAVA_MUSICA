@@ -58,6 +58,9 @@ class CreateAvaliacaosTable extends Migration
             $table->string('ex', 1)->nullable();
             $table->date('date_ex')->nullable();
             $table->string('obs_ex')->nullable();
+            
+            $table->string('obs_geral')->nullable();
+            $table->string('responsavel')->nullable();
 
             $table->timestamps();
 

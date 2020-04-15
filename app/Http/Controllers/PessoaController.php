@@ -44,26 +44,25 @@ class PessoaController extends Controller
         
         $pessoa = new Pessoa();
         $request = Pessoa::valido($request);
-        $pessoa->nome = $request->nome;
+        $pessoa->nome = mb_strtoupper($request->nome);
         $pessoa->data_nasc = $request->data_nasc;
         $pessoa->cidade = $request->cidade;
         $pessoa->estado = $request->estado;
-        $pessoa->endereco = $request->endereco;
+        $pessoa->endereco = mb_strtoupper($request->endereco);
         $pessoa->escolaridade = $request->escolaridade;
         $pessoa->cpf = $request->cpf;
         $pessoa->rg = $request->rg;
-        $pessoa->nome_pai = $request->nome_pai;
-        $pessoa->nome_mae = $request->nome_mae;
+        $pessoa->nome_pai = mb_strtoupper($request->nome_pai);
+        $pessoa->nome_mae = mb_strtoupper($request->nome_mae);
         $pessoa->fone1 = $request->fone1;
         $pessoa->fone2 = $request->fone2;
-        $pessoa->email = $request->email;
-        $pessoa->deficiencia = $request->deficiencia;
+        $pessoa->email = mb_strtoupper($request->email);
+        $pessoa->deficiencia = mb_strtoupper($request->deficiencia);
         $pessoa->pdf = $request->pdf;
-        $pessoa->cargo_concorrido = $request->cargo_concorrido;
-        $pessoa->setor = $request->setor;
+        $pessoa->cargo_concorrido = mb_strtoupper($request->cargo_concorrido);
+        $pessoa->setor = mb_strtoupper($request->setor);
         $pessoa->data_contato = $request->data_contato;
         $pessoa->data_retorno = $request->data_retorno;
-        $pessoa->responsavel = $request->responsavel;
        
         if( $pessoa->save() ){
             return redirect('rh/pessoas')->with("success" , "Sucesso: Cadastro realizado exito ! ");

@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Telefone 2</label>
-                        <input type="text" class="form-control" name="fone2">
+                        <input type="text" class="form-control" id="fone2" name="fone2">
                     </div>
                 </div>
                 <div class="form-row">
@@ -147,14 +147,12 @@
                                 <label for="inputPassword4">Data Retorno </label>
                                 <input type="date" class="form-control" name="data_retorno">
                             </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputPassword4" hidden>Responsável Cadastro </label>
-                            <input type="text" class="form-control" name="responsavel" value="{{ Auth::user()->name }}" hidden >
-                            </div>
                         </div>
                     </div>
+                    
                 </div>
                 <br>
+                
             </div>  
             <div class="card-footer">
                 <button type="submit" class="btn btn-success">Salvar <i class="fas fa-check"></i> </button>

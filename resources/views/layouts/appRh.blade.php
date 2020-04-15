@@ -301,6 +301,7 @@
         $('#rg').mask('00.000.000-0' , {reverse: false });
         $('#cpf').mask('000.000.000-00' , {reverse: false });
         $('#fone1').mask('(00)00000-0000' , {reverse: false });
+        $('#fone2').mask('(00)00000-0000' , {reverse: false });
     });
 
     // <+================ SET TIME ALERT ================+>
