@@ -31,6 +31,7 @@
                 <p> <b> Setor: </b> {{ $ls->setor }}</p>
                 <p> <b> Data Contato: </b> @if($ls->data_contato){{ $ls->data_contato }}@else -- @endif</p>
                 <p> <b> Data Retorno: </b> @if($ls->data_retorno){{ $ls->data_retorno }}@else -- @endif</p>
+                <p> <b> Indicação: </b> @if($ls->indicacao){{ $ls->indicacao }}@else -- @endif</p>
 
               </div>
               <div class="col-md-6 text-left">

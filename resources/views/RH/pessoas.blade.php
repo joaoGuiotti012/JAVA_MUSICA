@@ -94,19 +94,19 @@
                 <div class="form-group">
                     <label for="inputAddress2">Deficiencia: </label><br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="deficiencia" value="auditivo">
-                        <label class="form-check-label" for="inlineCheckbox1">Auditivo</label>
+                        <input class="form-check-input" type="checkbox" name="deficiencia" value="AUDITIVA">
+                        <label class="form-check-label" for="inlineCheckbox1">Auditiva</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="deficiencia" value="visual">
+                        <input class="form-check-input" type="checkbox" name="deficiencia" value="VISUAL">
                         <label class="form-check-label" for="inlineCheckbox2">Visual</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="deficiencia" value="mental" >
+                        <input class="form-check-input" type="checkbox" name="deficiencia" value="MENTAL" >
                         <label class="form-check-label" for="inlineCheckbox3">Mental</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="deficiencia" value="fisica" >
+                        <input class="form-check-input" type="checkbox" name="deficiencia" value="FISICA" >
                         <label class="form-check-label" for="inlineCheckbox3">Física</label>
                     </div>
                 </div>
@@ -139,6 +139,10 @@
                             </div>
                         </div>
                         <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Indicação </label>
+                                <input type="text" class="form-control" name="indicacao">
+                            </div>
                             <div class="form-group col-md-3">
                                 <label for="inputEmail4" >Data Contrato</label>
                                 <input type="date" class="form-control" name="data_contato">
@@ -147,6 +151,7 @@
                                 <label for="inputPassword4">Data Retorno </label>
                                 <input type="date" class="form-control" name="data_retorno">
                             </div>
+                            
                         </div>
                     </div>
                     

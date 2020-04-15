@@ -37,7 +37,7 @@ class Pessoa extends Model
                     'cidades.descricao as cidade',                
                     'estados.descricao as estado',                
                     'pessoas.cargo_concorrido',                
-                    'pessoas.setor'              
+                    'pessoas.setor'            
                 )->get();
 
         return $busca;

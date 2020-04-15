@@ -39,6 +39,7 @@ class Avaliacao extends Model
             'pessoas.email',
             'pessoas.data_contato',
             'pessoas.data_retorno',
+            'pessoas.indicacao',
             'avaliacaos.tp',
             'avaliacaos.date_tp',
             'avaliacaos.iac',
@@ -66,9 +67,10 @@ class Avaliacao extends Model
                 if( isset($data['deficiencia']) ){
                     $query->where( 'pessoas.deficiencia' , $data['deficiencia'] );
                 }
-                if( $data['campo'] == 'responsavel' || $data['campo'] == 'obs_geral' ){
+                if( $data['campo'] == 'responsavel' || $data['campo'] == 'obs_geral' || $data['campo'] == 'indicacao' ){
                     $query->where( $data['campo'] , 'LIKE' , '%'.$data['descricao'].'%' );
                 }
+                
                 if( $data['campo'] == 'obs_' AND isset($data['descricao'])){
                     
                     if(isset($data['tp']) )
@@ -104,7 +106,8 @@ class Avaliacao extends Model
 
                 }else{
 
-                    if( isset($data['campo']) AND isset($data['descricao']) AND $data['campo'] != 'responsavel' AND $data['campo'] != 'obs_geral' )
+                    if( isset($data['campo']) AND isset($data['descricao']) AND $data['campo'] != 'responsavel' 
+                        AND $data['campo'] != 'obs_geral' AND $data['campo'] != 'indicacao')
                         $query->where( 'pessoas.'.$data['campo'] , 'LIKE' ,  '%'.$data['descricao'].'%'  );
                     
                     if( isset($data['tp']))
@@ -167,6 +170,7 @@ class Avaliacao extends Model
             'pessoas.email',
             'pessoas.data_contato',
             'pessoas.data_retorno',
+            'pessoas.indicacao',
             'avaliacaos.tp',
             'avaliacaos.date_tp',
             'avaliacaos.iac',

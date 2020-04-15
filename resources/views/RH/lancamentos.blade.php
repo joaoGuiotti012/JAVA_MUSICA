@@ -23,7 +23,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <select id="select" class="form-control" name="campo">
-                                    <option id="deficiencia" value="responsavel">Responsável</option>
+                                    <option value="responsavel">Responsável</option>
+                                    <option value="indicacao">Indicação</option>
                                     <option value="nome" >Nome</option>
                                     <option value="cargo_concorrido" >Cargo Concorrido</option>
                                     <option value="setor" >Setor</option>
@@ -83,7 +84,7 @@
                             <label for="inputAddress2"> <b> Deficiencia: </b></label><br>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" name="deficiencia" value="auditivo">
-                                <label class="form-check-label" for="inlineCheckbox1">Auditivo</label>
+                                <label class="form-check-label" for="inlineCheckbox1">Auditiva</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" name="deficiencia" value="visual">
@@ -113,6 +114,7 @@
                     <th scope="col"> Carg. Concorrido</th>
                     <th scope="col">Setor</th>
                     <th scope="col">Deficiencia</th>
+                    <th scope="col">Indicação</th>
                     <th scope="row">Teste Psicologicos</th>
                     <th scope="row">Info. Criminais</th>
                     <th scope="row">Redes Socias</th>
@@ -136,6 +138,7 @@
                     <td>{{ $ls->cargo_concorrido }}</td> 
                     <td>{{ $ls->setor }}</td> 
                     <td> @if( $ls->deficiencia) {{ $ls->deficiencia}} @else -- @endif</td>
+                    <td> @if( $ls->indicacao) {{ $ls->indicacao}} @else -- @endif</td>
                     <td> 
                         @if($ls->tp == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->tp == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                     </td> 
@@ -192,7 +195,9 @@
                 @endforeach
             </tbody>
         </table>
+        
     </div>
+    <br><br>
 </div>
 
 @endsection
