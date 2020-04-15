@@ -21,6 +21,7 @@ class Pessoa extends Model
             'rg'            => 'required',  
             'fone1'         => 'required',
             'email'         => 'required',
+            'pdf'           => 'mimes:pdf',  
         ]);
         return $request;
     }
@@ -29,13 +30,25 @@ class Pessoa extends Model
         $busca = DB::connection('db3')->table('pessoas')
                 ->join('cidades', 'cidades.id', '=' , 'pessoas.cidade')
                 ->join('estados', 'estados.id', '=' , 'pessoas.estado')
+                ->join('escolaridades', 'escolaridades.id', '=' , 'pessoas.escolaridade')
                 ->select( 
                     'pessoas.id',
-                    'pessoas.nome',           
-                    'pessoas.cpf',                
-                    'pessoas.rg',                
-                    'cidades.descricao as cidade',                
-                    'estados.descricao as estado',                
+                    'pessoas.nome',
+                    'pessoas.data_nasc',
+                    'pessoas.rg',
+                    'pessoas.cpf',
+                    'cidades.descricao as cidade',
+                    'estados.descricao as estado',
+                    'escolaridades.descricao as escolaridade',
+                    'pessoas.endereco',
+                    'pessoas.deficiencia',
+                    'pessoas.cargo_concorrido',
+                    'pessoas.setor',
+                    'pessoas.fone1',
+                    'pessoas.fone2',
+                    'pessoas.email',
+                    'pessoas.pdf',
+                    'pessoas.indicacao',                
                     'pessoas.cargo_concorrido',                
                     'pessoas.setor'            
                 )->get();

@@ -20,7 +20,6 @@ class Avaliacao extends Model
         ->join('cidades', 'cidades.id', '=' , 'pessoas.cidade')
         ->join('estados', 'estados.id', '=' , 'pessoas.estado')
         ->join('escolaridades', 'escolaridades.id', '=' , 'pessoas.escolaridade')
-        
         ->select(
             'avaliacaos.id',
             'pessoas.nome',
@@ -37,6 +36,7 @@ class Avaliacao extends Model
             'pessoas.fone1',
             'pessoas.fone2',
             'pessoas.email',
+            'pessoas.pdf',
             'pessoas.data_contato',
             'pessoas.data_retorno',
             'pessoas.indicacao',
@@ -168,6 +168,7 @@ class Avaliacao extends Model
             'pessoas.fone1',
             'pessoas.fone2',
             'pessoas.email',
+            'pessoas.pdf',
             'pessoas.data_contato',
             'pessoas.data_retorno',
             'pessoas.indicacao',

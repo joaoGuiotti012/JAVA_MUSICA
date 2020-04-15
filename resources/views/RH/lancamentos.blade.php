@@ -3,7 +3,7 @@
 <br>
 <div class="container">
     <br>
-    <h2 class="text-center" id="historico"><i class="fas fa-list-ul"> </i> Lançamestos </h2>
+    <h2 class="text-center" id="historico"><i class="fas fa-list-alt"></i> Lançamestos </h2>
     
         <button class=" btn-sm btn-primary" id="btn-filtros">
             Filtros <i class="fas fa-filter"></i>

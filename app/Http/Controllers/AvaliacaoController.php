@@ -81,6 +81,7 @@ class AvaliacaoController extends Controller
         $av->obs_geral = mb_strtoupper($request->obs_geral);
         $av->responsavel =  mb_strtoupper($request->responsavel);
 
+        
 
         try{
             if($av->save()){
