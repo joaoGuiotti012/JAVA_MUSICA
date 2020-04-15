@@ -34,6 +34,7 @@
                     <th colspan="2">Ações</th>
                 </thead>
                 <tbody>
+                    
                     @foreach ($pessoas as $ls)
                     <tr class="text-center">
                         <th scope="text-center" >{{$ls->id}}  </th>
