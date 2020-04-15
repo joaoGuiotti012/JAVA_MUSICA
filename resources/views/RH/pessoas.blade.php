@@ -13,7 +13,7 @@
         @include('layouts.modal.RH.addPessoa')
         <br><br>
         <div class="table-responsive" style="max-height: 450px">
-            <table class="table table-sm table-hover table-bordered table-striped ">
+            <table id="table-view" class="table table-sm table-hover table-bordered table-striped ">
                 <thead>
                 <tr class="text-center">
                     <th scope="col">ID</th>
@@ -31,10 +31,9 @@
                     <th scope="col">Cargo conc.</th>
                     <th scope="col">Setor</th>
                     <th scope="col">Indicação</th>
-                    <th colspan="2">Ações</th>
+                    <th >Ações</th>
                 </thead>
                 <tbody>
-                    
                     @foreach ($pessoas as $ls)
                     <tr class="text-center">
                         <th scope="text-center" >{{$ls->id}}  </th>
@@ -54,15 +53,11 @@
                         <td> @if( $ls->indicacao) {{ $ls->indicacao}} @else -- @endif</td>
                         
                         <td>
-                            <button type="button" class="text-danger"  data-toggle="modal" data-target="#rem{{$ls->id}}">
-                                <i class="fas fa-minus-circle"></i>
-                            </button> 
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="text-danger" data-toggle="modal" data-target="#rem{{$ls->id}}"><i class="fas fa-minus-circle"></i></button>
+                                <button type="button" class="text-primary" data-toggle="modal" data-target="#editar{{$ls->id}}"><i class="fas fa-user-edit"></i> </button>
+                            </div>
                             @include('layouts.modal.RH.remCadastro')
-                        </td>        
-                        <td>
-                            <button type="button" class="text-success"  data-toggle="modal" data-target="#editar{{$ls->id}}">
-                                <i class="fas fa-user-edit"></i> 
-                            </button> 
                         </td>
                         
                     </tr>

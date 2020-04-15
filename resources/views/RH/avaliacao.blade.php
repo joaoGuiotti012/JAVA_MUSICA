@@ -10,9 +10,9 @@
             <div class="card-body">
                 <form action="{{ route('avaliacao.novo') }}" method="POST"> 
                 @csrf
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="form-group mx-sm-2 mb-2">
-                            <input type="text" class="form-control"  placeholder="N° Cadastro" id="cad_num" name="cad_num" pattern=".{1,}" required title="clique em buscar !">
+                            <input type="text" class="form-control-sm"  placeholder="N° Cadastro" id="cad_num" name="cad_num" pattern=".{1,}" required title="clique em buscar !">
                         </div>
                         <div class="form-group mx-sm-2 mb-2">
                             <button type="button" class=" btn-primary mb-2" data-toggle="modal" data-target="#cadPessoas">
@@ -43,7 +43,7 @@
                         </table>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Observações Gerais:</label>
-                            <textarea class="form-control" name="obs_geral" rows="4">  Indicação: </textarea>
+                            <textarea class="form-control" name="obs_geral" rows="4">   </textarea>
                         </div>
                         <br>
                         <div class="form-group col-md-3">

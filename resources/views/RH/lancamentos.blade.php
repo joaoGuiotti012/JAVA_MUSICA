@@ -172,23 +172,23 @@
                     <td>{{ $ls->responsavel }}</td>
                     <td>{{ $ls->updated_at }}</td>
                     <td class="text-center" > 
-                        <button type="submit" class="text-primary" onclick="location.href='{{ route('avaliacao.editar' , $ls->id) }}'" >
-                            <i class="fas fa-edit"></i>
-                        </button> 
-                    </td>
-                    <td class="text-center">
-                        <button type="submit" class="text-danger"  title="deletar"   
-                        data-toggle="modal" data-target="#rem{{$ls->id}}">
-                            <i class="fas fa-trash-alt"></i>
-                        </button> 
-                        @include('layouts.modal.RH.rem')
-                    </td>
-                    <td>
-                        <button type="submit" class="text-info"  title="deletar"   
-                        data-toggle="modal" data-target="#view{{$ls->id}}">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        @include('layouts.modal.RH.view')
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="submit" class="text-primary" onclick="location.href='{{ route('avaliacao.editar' , $ls->id) }}'" >
+                                <i class="fas fa-edit"></i>
+                            </button> 
+                
+                            <button type="submit" class="text-danger"  title="deletar"   
+                            data-toggle="modal" data-target="#rem{{$ls->id}}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button> 
+                            @include('layouts.modal.RH.rem')
+                    
+                            <button type="submit" class="text-info"  title="deletar"   
+                            data-toggle="modal" data-target="#view{{$ls->id}}">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            @include('layouts.modal.RH.view')
+                        </div>
 
                     </td>
                 </tr>
