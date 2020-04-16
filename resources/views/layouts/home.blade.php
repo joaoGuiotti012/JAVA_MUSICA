@@ -20,6 +20,27 @@
   
 </head>
 <style>
+    .alert{
+        position: absolute;
+        width: 100%;
+        z-index : 1;
+    }
+
+    .alert-danger{
+        background: #b10a0a;
+        color: white;
+    }
+
+    .alert-success{
+        background: #049c65f0;
+        color: white;
+    }
+
+    .alert-primary{
+        background: #0d58a2fa;
+        color: white;
+    }
+
     tr{
         font-size: 14px;
     }
@@ -37,6 +58,37 @@
     }
 </style>
 <body>
+    
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        @if (session('success'))
+        <div id="alert" class="alert alert-success">
+            <p>{{ session('success') }} </p>
+        </div>
+        @endif
+        @if (session('danger'))
+        <div id="alert" class="alert alert-danger">
+            <p> <i class="fas fa-bomb"></i> {{ session('danger') }} </p>
+        </div>
+        @endif
+        @if (session('saida'))
+        <div id="alert" class="alert alert-danger">
+            <p> <i class="fas fa-sign-out-alt"></i> {{ session('saida') }} </p>
+        </div>
+        @endif
+        @if (session('primary'))
+            <div id="alert" class="alert alert-primary">
+                <p>{{ session('primary') }}  </p>
+            </div>
+        @endif
+   
     <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -101,6 +153,12 @@
 
 <script>
   
+  $().ready(function() {
+        setTimeout(function () {
+            $('.alert').hide(1000); // "foo" é o id do elemento que seja manipular.
+        }, 2500); // O valor é representado em milisegundos.
+    });
+
    
 
 </script>

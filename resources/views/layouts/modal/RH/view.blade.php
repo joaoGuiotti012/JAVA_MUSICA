@@ -43,52 +43,64 @@
                 <p> 
                   <b> Teste Psico.: </b>
                   @if($ls->tp == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->tp == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
-                  <b> Data: </b> {{ $ls->date_tp}} </p> 
+                  <b> Data: </b> {{ $ls->date_tp}} 
+                </p> 
+                <hr>
                 <p>
                     <b> Info. Criminais: </b>
                     @if($ls->iac == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->iac == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                     <b> Data: </b> {{ $ls->date_iac}} </p> 
-                  </p> 
+                </p> 
+                <hr>
+
                 <p> 
                   <b> Redes Sociais: </b>
                   @if($ls->rs == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->rs == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_rs}} </p> 
                 </p> 
+                <hr>
                 <p>
                   <b> Trib. Just.: </b>
                   @if($ls->ptj == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ptj == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ptj}} </p> 
                 </p> 
+                <hr>
                 <p>
                   <b> Ref. Profi.: </b>
                   @if($ls->rp == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->rp == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_rp}} </p> 
                 </p> 
+                <hr>
                 <p>
                   <b> Info. Financeira: </b>
                   @if($ls->if == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->if == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_if }} </p> 
                 </p> 
+                <hr>
                 <p>
                   <b> Info. CNH: </b>
                   @if($ls->ic == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ic == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ic }} </p> 
                 </p> 
+                <hr>
                 <p>
                   <b> EX. Psico.: </b>
                   @if($ls->ep == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ep == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ep }} </p> 
                 </p> 
+                <hr>
                 <p>
                   <b> EX. Tecnico: </b>
                   @if($ls->et == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->et == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_et }} </p> 
                 </p> 
+                <hr>
                 <p>
                   <b> EX. Médico: </b>
                   @if($ls->ex == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ex == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ex }} </p> 
                 </p> 
+                <hr>
                 <p> <b> Obs. Gerais: </b> {{ $ls->obs_geral }}  </p>
                 <p> <b> Responsável: </b> {{ $ls->responsavel}}  </p>
 

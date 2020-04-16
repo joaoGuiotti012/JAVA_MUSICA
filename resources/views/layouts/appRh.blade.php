@@ -108,8 +108,8 @@
     </div>
     @endif
     @if (session('danger'))
-    <div id="alert" class="alert alert-warning">
-        <p> <i class="fas fa-bomb"></i> {{ session('fail') }} </p>
+    <div id="alert" class="alert alert-danger">
+        <p> <i class="fas fa-bomb"></i> {{ session('danger') }} </p>
     </div>
     @endif
     @if (session('saida'))

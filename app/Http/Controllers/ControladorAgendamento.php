@@ -27,9 +27,14 @@ class ControladorAgendamento extends Controller
 
     public function index(Funcionario $func)
     {
-        $func = Funcionario::all();
-        $visitantes = Visitantes::all();
-        return view('visitas.agendamento', compact('func' , 'visitantes'));
+        if(auth()->user()->status == 'VISITANTES' ){
+            $func = Funcionario::all();
+            $visitantes = Visitantes::all();
+            return view('visitas.agendamento', compact('func' , 'visitantes'));
+        }
+        return redirect('/home')->with("danger" , "Sem permissão de acesso a esta Pagina !" );  
+
+        
     }
   
     public function entrada($id)

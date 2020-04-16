@@ -14,14 +14,17 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
+
     return view('home');
 });
+
 
 Auth::routes();
 
 
-Route::group(['middleware' => ['auth']], function () {
-    /* agendamento visitas */
+Route::group(['middleware' => ['auth']], function ( ) {
+
+    
     Route::get('agendamento', 'ControladorAgendamento@index')->name('agendamento'); 
     Route::post('agendamento/novo', 'ControladorAgendamento@store')->name('agendamento.novo'); 
 
@@ -30,9 +33,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 
 
     /* === APP RH === */
-    Route::get('rh/lancamentos', 'AvaliacaoController@show' )->name('lancamento');
 
+    Route::get('rh/lancamentos', 'AvaliacaoController@show')->name('lancamento');
+    
+    
+    
 });
+
+
+
+
+
+
 
 Route::get('/resgistrar', function () {
     return view('auth.register');
@@ -99,24 +111,27 @@ Route::get('ajusteselect', 'Controller@ajusteSelect');
 /*===================================== APP RH ===========================================*/ 
 
 
-Route::get('rh/pessoas' , 'PessoaController@index')->name('pessoas.index');
-
-Route::post('rh/pessoas/novo' , 'PessoaController@store')->name('pessoas.novo');
-
-
 Route::get('rh/avaliacao' , 'AvaliacaoController@index')->name('avaliacao.index');
 
 Route::post('rh/avaliacao/novo' , 'AvaliacaoController@store')->name('avaliacao.novo');
 
 Route::any('rh/avaliacao/editar{id}' , 'AvaliacaoController@edit')->name('avaliacao.editar');
 
+
 Route::delete('rh/avaliacao/delete{id}', 'AvaliacaoController@destroy')->name('avaliacao.delete'); 
 
-Route::delete('rh/pessoas/delete{id}', 'PessoaController@destroy')->name('pessoa.delete'); 
 
 Route::patch('rh/avaliacao/update{id}' , 'AvaliacaoController@update')->name('avaliacao.update');
 
 Route::get('rh/avaliacao/search' , 'AvaliacaoController@search')->name('avaliacao.search');
 
+// ======= Pessoas Cadastro =================================== //
 
-//Route::get('avaliacao/novo' , 'AvaliacaoController@store')->name('avaliacao.novo');
+Route::delete('rh/pessoas/delete{id}', 'PessoaController@destroy')->name('pessoa.delete'); 
+
+Route::any('rh/pessoa/editar{id}' , 'PessoaController@edit')->name('pessoa.editar');
+
+Route::post('rh/pessoas/novo' , 'PessoaController@store')->name('pessoas.novo');
+
+Route::get('rh/pessoas' , 'PessoaController@index')->name('pessoas.index');
+

@@ -1,7 +1,9 @@
 @extends('layouts.appRh')
+
+
 @section('content')
 <br>
-<div class="container">
+
     <br>
     <h2 class="text-center" id="historico"><i class="fas fa-list-alt"></i> Lançamestos </h2>
     
@@ -105,13 +107,14 @@
         </form>
         </div>
         <br>
-    <div class="container-fluid table-responsive">
-        <table class="table table-sm table-hover table-bordered table-striped">
+</div>
+    <div class="table-responsive ">
+        <table class="table-sm table-hover table-bordered table-striped ">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center" style="font-size:12px">
                     <th scope="col"><i class="fas fa-user"></i></th>
-                    <th scope="col">Nome</th>
-                    <th scope="col"> Carg. Concorrido</th>
+                    <th width="20%"> Nome </th>
+                    <th width="20%"> Carg. Concorrido</th>
                     <th scope="col">Setor</th>
                     <th scope="col">Deficiencia</th>
                     <th scope="col">Indicação</th>
@@ -133,8 +136,8 @@
             <tbody>
                 @foreach ($lancamentos as $ls)
                 <tr class="text-center">
-                    <td>{{ $ls->id }}</td> 
-                    <td>{{ $ls->nome }}</td> 
+                    <td >{{ $ls->id }}</td> 
+                    <td >{{ $ls->nome }}</td> 
                     <td>{{ $ls->cargo_concorrido }}</td> 
                     <td>{{ $ls->setor }}</td> 
                     <td> @if( $ls->deficiencia) {{ $ls->deficiencia}} @else -- @endif</td>
@@ -173,7 +176,7 @@
                     <td>{{ $ls->updated_at }}</td>
                     <td class="text-center" > 
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="submit" class="text-primary" onclick="location.href='{{ route('avaliacao.editar' , $ls->id) }}'" >
+                            <button type="submit" class="text-primary" onclick="location.href='{{ route('avaliacao.editar' , $ls->id  ) }}'" >
                                 <i class="fas fa-edit"></i>
                             </button> 
                 

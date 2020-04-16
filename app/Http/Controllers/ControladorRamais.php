@@ -14,8 +14,14 @@ class ControladorRamais extends Controller
      */
     public function index()
     {
-        $ramais = RamaisGrupo::all();
-        return view('ramais.ramais' , compact('ramais'));
+
+        if( auth()->user()->status == 'RAMAIS'){
+            $ramais = RamaisGrupo::all();
+            return view('ramais.ramais' , compact('ramais'));
+        }
+        return redirect('/home')->with("danger" , "Sem permissão de acesso a esta Pagina !" );  
+
+
     }
 
     /**

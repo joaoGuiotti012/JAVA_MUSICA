@@ -10,6 +10,8 @@ class Pessoa extends Model
 {
     protected $connection = 'db3';
 
+   
+
     static function valido(Request $request){
         $request->validate([
             'nome'          => 'required', 
@@ -37,8 +39,13 @@ class Pessoa extends Model
                     'pessoas.data_nasc',
                     'pessoas.rg',
                     'pessoas.cpf',
+                    'pessoas.nome_pai',
+                    'pessoas.nome_mae',
+                    'cidades.id as cidade_id',
                     'cidades.descricao as cidade',
+                    'estados.id as estado_id',
                     'estados.descricao as estado',
+                    'escolaridades.id as escolaridade_id',
                     'escolaridades.descricao as escolaridade',
                     'pessoas.endereco',
                     'pessoas.deficiencia',
@@ -49,6 +56,8 @@ class Pessoa extends Model
                     'pessoas.email',
                     'pessoas.pdf',
                     'pessoas.indicacao',                
+                    'pessoas.data_contato',                
+                    'pessoas.data_retorno',                
                     'pessoas.cargo_concorrido',                
                     'pessoas.setor'            
                 )->get();

@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     @foreach ($pessoas as $ls)
-                    <tr class="text-center">
+                    <tr class="text-center" style="font-size:12px">
                         <th scope="text-center" >{{$ls->id}}  </th>
                         <td> {{$ls->nome }} </td>
                         <td> {{ $ls->data_nasc}}         </td>
@@ -55,9 +55,10 @@
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="text-danger" data-toggle="modal" data-target="#rem{{$ls->id}}"><i class="fas fa-minus-circle"></i></button>
-                                <button type="button" class="text-primary" data-toggle="modal" data-target="#editar{{$ls->id}}"><i class="fas fa-user-edit"></i> </button>
+                                <button type="button" class="text-primary" data-toggle="modal" data-target="#editPessoa{{$ls->id}}"><i class="fas fa-user-edit"></i> </button>
                             </div>
                             @include('layouts.modal.RH.remCadastro')
+                            @include('layouts.modal.RH.editPessoa')
                         </td>
                         
                     </tr>

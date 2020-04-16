@@ -1,6 +1,7 @@
 @extends('layouts.home')
 <style>
-    section {
+
+section {
     padding-top: 4rem;
     padding-bottom: 5rem;
     background-color: #f1f4fa;
@@ -60,10 +61,9 @@ h2 {
 
 @section('content')
 <br>
-<h1>  
-        
-    </h1>
     <div class="container">
+        
+
         <br>
             <div class="row mbr-justify-content-center">
     
