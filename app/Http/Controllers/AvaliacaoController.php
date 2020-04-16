@@ -6,10 +6,11 @@ use App\agendamentoVisita;
 use App\Avaliacao;
 use App\ItensAvaliacao as Itens;
 use App\Pessoa;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 
-
+date_default_timezone_set('America/Sao_Paulo');
 use Exception;
 use PhpParser\Node\Stmt\TryCatch;
 
@@ -85,6 +86,7 @@ class AvaliacaoController extends Controller
         $av->obs_ex =  mb_strtoupper($request->obs_ex);
         $av->obs_geral = mb_strtoupper($request->obs_geral);
         $av->responsavel =  mb_strtoupper($request->responsavel);
+    
         //dd($av->save());
         try{
             if($av->save()){
@@ -143,7 +145,7 @@ class AvaliacaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        //dd(Carbon::now());
         $av = Avaliacao::find($id);
         if( mb_strtoupper(auth()->user()->name) == $av->responsavel ){
             $av->tp = $request->chk_tp;
@@ -178,7 +180,7 @@ class AvaliacaoController extends Controller
             $av->obs_ex =  mb_strtoupper($request->obs_ex);
             $av->obs_geral = mb_strtoupper($request->obs_geral);
             $av->responsavel =  mb_strtoupper($request->responsavel);
-
+            $av->updated_at = Carbon::now();
             $update  = $av->save();
             
             if($update ){

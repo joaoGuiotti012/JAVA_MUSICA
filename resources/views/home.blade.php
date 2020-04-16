@@ -67,7 +67,7 @@ h2 {
         <br>
             <div class="row mbr-justify-content-center">
     
-                <div class="col-lg-6 mbr-col-md-10 btn disabled " aria-disabled="true" onclick="location.href='{{ url('/') }}'" title="Futuras implementações !">
+                <div class="col-lg-6 mbr-col-md-10 btn  " aria-disabled="true" onclick="location.href='{{ url('/ramais') }}'" title="Futuras implementações !">
                     <div class="wrap">
                         <div class="ico-wrap">
                             <span class="mbr-iconfont fas fa-phone-square-alt "></span>
@@ -98,7 +98,7 @@ h2 {
                         </div>
                         <div class="text-wrap vcenter">
                             <h2 class="mbr-fonts-style mbr-bold mbr-section-title3 display-5">
-                                App RH
+                                Lançamentos RH
                             </h2>
                             <p class="mbr-fonts-style text1 mbr-text display-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
                         </div>

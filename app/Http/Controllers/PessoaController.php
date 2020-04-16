@@ -8,7 +8,7 @@ use App\Cidade;
 use App\Escolaridade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+date_default_timezone_set('America/Sao_Paulo');
 class PessoaController extends Controller
 {
     /**
