@@ -88,7 +88,7 @@ class AvaliacaoController extends Controller
         //dd($av->save());
         try{
             if($av->save()){
-                return redirect('rh/lancametos')->with("success" , "Sucesso: Avaliações aplicadas com exito ! ");
+                return redirect('rh/avaliacao')->with("success" , "Sucesso: Avaliações aplicadas com exito ! ");
             }
         
         }catch( Exception $e){
@@ -145,7 +145,7 @@ class AvaliacaoController extends Controller
     {
         
         $av = Avaliacao::find($id);
-        if( auth()->user()->name == $av->responsavel ){
+        if( mb_strtoupper(auth()->user()->name) == $av->responsavel ){
             $av->tp = $request->chk_tp;
             $av->date_tp =  $request->date_tp;
             $av->obs_tp =  mb_strtoupper($request->obs_tp);
@@ -200,8 +200,8 @@ class AvaliacaoController extends Controller
     public function destroy( $id)
     {
         $av = Avaliacao::find($id);
-        
-        if( auth()->user()->name == $av->responsavel ){
+        $resp = mb_strtoupper(auth()->user()->name);
+        if( $resp == $av->responsavel ){
 
             if($av->delete()){
                 return redirect('rh/lancamentos')->with('success' , 'Deletar: Lançamento deletado com sucesso !') ;

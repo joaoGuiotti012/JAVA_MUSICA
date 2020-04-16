@@ -11,6 +11,7 @@ class Avaliacao extends Model
 {
     protected $connection = 'db3';
 
+   
 
     static function search(array $data, Avaliacao $lancamentos){
         
@@ -141,7 +142,7 @@ class Avaliacao extends Model
                         $query->where('ex' ,  '=' , null);
                 }
                 
-            })->get();
+            })->take(25)->get();
     }
 
     
@@ -174,28 +175,38 @@ class Avaliacao extends Model
             'pessoas.indicacao',
             'avaliacaos.tp',
             'avaliacaos.date_tp',
+            'avaliacaos.obs_tp',
             'avaliacaos.iac',
             'avaliacaos.date_iac',
+            'avaliacaos.obs_iac',
             'avaliacaos.rs',
             'avaliacaos.date_rs',
+            'avaliacaos.obs_rs',
             'avaliacaos.ptj',
             'avaliacaos.date_ptj',
+            'avaliacaos.obs_ptj',
             'avaliacaos.rp',
             'avaliacaos.date_rp',
+            'avaliacaos.obs_rp',
             'avaliacaos.if',
             'avaliacaos.date_if',
+            'avaliacaos.obs_if',
             'avaliacaos.ic',
             'avaliacaos.date_ic',
+            'avaliacaos.obs_ic',
             'avaliacaos.ep',
             'avaliacaos.date_ep',
+            'avaliacaos.obs_ep',
             'avaliacaos.et',
             'avaliacaos.date_et',
+            'avaliacaos.obs_et',
             'avaliacaos.ex',
             'avaliacaos.date_ex',
+            'avaliacaos.obs_ex',
             'avaliacaos.obs_geral',
             'avaliacaos.responsavel',
             'avaliacaos.updated_at'
-        )->get();
+        )->take(25)->get();
         return $query;
     }
 

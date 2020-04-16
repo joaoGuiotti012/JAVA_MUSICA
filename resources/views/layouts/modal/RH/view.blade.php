@@ -44,12 +44,16 @@
                   <b> Teste Psico.: </b>
                   @if($ls->tp == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->tp == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_tp}} 
+                  <b> obs: </b>  @if($ls->obs_tp) {{ $ls->obs_tp }} @else -- @endif
+
                 </p> 
                 <hr>
                 <p>
                     <b> Info. Criminais: </b>
                     @if($ls->iac == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->iac == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                     <b> Data: </b> {{ $ls->date_iac}} </p> 
+                    <b> obs: </b>  @if($ls->obs_iac) {{ $ls->obs_iac }} @else -- @endif
+
                 </p> 
                 <hr>
 
@@ -57,48 +61,63 @@
                   <b> Redes Sociais: </b>
                   @if($ls->rs == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->rs == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_rs}} </p> 
+                  <b> obs: </b>  @if($ls->obs_rs) {{ $ls->obs_rs }} @else -- @endif
+
                 </p> 
                 <hr>
                 <p>
                   <b> Trib. Just.: </b>
                   @if($ls->ptj == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ptj == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ptj}} </p> 
+                  <b> obs: </b>  @if($ls->obs_ptj) {{ $ls->obs_ptj }} @else -- @endif
+ 
                 </p> 
                 <hr>
                 <p>
                   <b> Ref. Profi.: </b>
                   @if($ls->rp == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->rp == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_rp}} </p> 
+                  <b> obs: </b>  @if($ls->obs_rp) {{ $ls->obs_rp }} @else -- @endif
+
                 </p> 
                 <hr>
                 <p>
                   <b> Info. Financeira: </b>
                   @if($ls->if == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->if == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_if }} </p> 
+                  <b> obs: </b>  @if($ls->obs_if) {{ $ls->obs_if }} @else -- @endif
+
                 </p> 
                 <hr>
                 <p>
                   <b> Info. CNH: </b>
                   @if($ls->ic == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ic == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ic }} </p> 
+                  <b> obs: </b>  @if($ls->obs_ic) {{ $ls->obs_ic }} @else -- @endif
                 </p> 
                 <hr>
                 <p>
                   <b> EX. Psico.: </b>
                   @if($ls->ep == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ep == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ep }} </p> 
+                  <b> obs: </b>  @if($ls->obs_ep) {{ $ls->obs_ep }} @else -- @endif
+
                 </p> 
                 <hr>
                 <p>
                   <b> EX. Tecnico: </b>
                   @if($ls->et == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->et == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_et }} </p> 
+                  <b> obs: </b>  @if($ls->obs_et) {{ $ls->obs_et }} @else -- @endif
+
                 </p> 
                 <hr>
                 <p>
                   <b> EX. Médico: </b>
                   @if($ls->ex == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ex == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                   <b> Data: </b> {{ $ls->date_ex }} </p> 
+                  <b> obs: </b>  @if($ls->obs_ex) {{ $ls->obs_ex }} @else -- @endif
+
                 </p> 
                 <hr>
                 <p> <b> Obs. Gerais: </b> {{ $ls->obs_geral }}  </p>
