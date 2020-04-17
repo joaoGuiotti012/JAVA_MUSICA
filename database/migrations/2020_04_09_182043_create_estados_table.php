@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateEstadosTable extends Migration
 {
+   
     /**
      * Run the migrations.
      *
@@ -15,7 +16,7 @@ class CreateEstadosTable extends Migration
     {
         Schema::connection('db3')->create('estados', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao', 20);
+            $table->string('descricao', 10);
             $table->timestamps();
         });
     }

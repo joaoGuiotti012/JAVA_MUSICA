@@ -15,7 +15,7 @@ class CreateCidadesTable extends Migration
     {
         Schema::connection('db3')->create('cidades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descricao' , 20);
+            $table->string('descricao' , 60);
             $table->timestamps();
         });
     }

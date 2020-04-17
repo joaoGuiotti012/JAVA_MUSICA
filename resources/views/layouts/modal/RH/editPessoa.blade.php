@@ -56,7 +56,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-5">
                         <label for="inputEmail4" >CPF</label>
                         <input type="text" class="form-control" id="cpf" name="cpf" value="{{$ls->cpf}}" required>
                     </div>
@@ -114,13 +114,12 @@
                     </div>
                 </div>
                 <br>
-                <div class="input-group mb-3 disabled" >
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" >Anexo</span>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="pdf" aria-describedby="inputGroupFileAddon01" > 
-                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                <div class="input-group mb-3" >
+                    <div class="input-group">
+                        <span class="input-group-text" ><i style="font-size: 20px;" class="fas fa-file-pdf text-danger"></i></a></span>
+                        <div class="custom-file">
+                            <input id="pdf" type="file" class="" name="pdf" aria-describedby="inputGroupFileAddon01" > 
+                        </div>
                     </div>
                 </div>
                 <br>
