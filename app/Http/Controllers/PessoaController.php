@@ -68,6 +68,7 @@ class PessoaController extends Controller
         $pessoa->data_contato = $request->data_contato;
         $pessoa->data_retorno = $request->data_retorno;
         $pessoa->indicacao = mb_strtoupper($request->indicacao);
+
         if( isset($request->pdf) ){
             $nameFile = hash('sha512',uniqid(time() + rand(-900,900))).'.'.$request->pdf->extension() ;
             $diretorio = public_path('storage/appRH/cadastros/pdf/');
@@ -106,7 +107,6 @@ class PessoaController extends Controller
         $request = Pessoa::valido($request); // valida os dados da request 
         $pessoa = Pessoa::find($id);
 
-        //dd($pessoa->pdf);
         $pessoa->nome = mb_strtoupper($request->nome);
         $pessoa->data_nasc = $request->data_nasc;
         $pessoa->cidade = $request->cidade;
@@ -127,22 +127,24 @@ class PessoaController extends Controller
         $pessoa->data_retorno = $request->data_retorno;
         $pessoa->indicacao = mb_strtoupper($request->indicacao);
         if( isset($request->pdf) ){
-            $old_pdf ='appRH/cadastros/pdf/'.$pessoa->pdf;
-            if( Storage::disk('public')->delete($old_pdf) ){
+            if( Storage::disk('public')->delete('appRH/cadastros/pdf/'.$pessoa->pdf)  ){
                 $nameFile = hash('sha512',uniqid(time() + rand(-900,900))).'.'.$request->pdf->extension() ;
                 $diretorio = public_path('storage/appRH/cadastros/pdf/');
                 if( isset($_FILES['pdf'] ) && $request->pdf->extension() == 'pdf'  ){
                     if(move_uploaded_file( $_FILES['pdf']['tmp_name'] , $diretorio.$nameFile ) ){
                         $pessoa->pdf = $nameFile;
+                        
                     }
                 }
             }
         }
-        if( $pessoa->save() ){
+        if ($pessoa->save()){
             return redirect('rh/pessoas')->with("success" , "Sucesso: Cadastro realizado exito ! ");
         }else{
-            return redirect('rh/pessoas')->with("danger" , "Falha ao gerar o cadastro! ");
+            return redirect('rh/pessoas')->with("danger" , "Falha: Erro ao editar Cadastro ! ");
         }
+       //return redirect('rh/pessoas')->with("danger" , "Falha ao gerar o cadastro! ");
+        
     }
 
     /**
@@ -166,16 +168,14 @@ class PessoaController extends Controller
     public function destroy( $id)
     {
         $pessoa = Pessoa::find($id);
-        $pdf = 'appRH/cadastros/pdf/'.$pessoa->pdf;
+       
+        if($pessoa->pdf != null){
+            Storage::disk('public')->delete('appRH/cadastros/pdf/'.$pessoa->pdf);
+        }
+        $pessoa->delete();
+        return redirect('rh/pessoas')->with('success' , 'Deletar: Cadastro deletado com exito !');
         
-        if( $pessoa->pdf )
-            if(!Storage::disk('public')->delete($pdf) )
-                return redirect('rh/pessoas')->with('danger' , 'Deletar: Erro ao deletar PDF !');
-        
-        if($pessoa->delete())
-            return redirect('rh/pessoas')->with('success' , 'Deletar: Cadastro deletado com exito !');
-        else
-            return redirect('rh/pessoas')->with('danger' , 'Deletar: Erro ao deletar cadastro !');
+            //return redirect('rh/pessoas')->with('danger' , 'Deletar: Erro ao deletar cadastro !');
 
   
 

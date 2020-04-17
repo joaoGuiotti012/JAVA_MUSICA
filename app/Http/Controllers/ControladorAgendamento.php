@@ -51,7 +51,6 @@ class ControladorAgendamento extends Controller
 
     public function confSaida($id)
     {
-       
         $agendamento = Agendamento::find($id);
         $agendamento->dataSaida = Carbon::now();
         $agendamento->hrSaida = date('H:i:s');
