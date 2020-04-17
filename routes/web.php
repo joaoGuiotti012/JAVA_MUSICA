@@ -15,11 +15,12 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function ( ) {
+ 
     /*======================== ROUTES AGENDAMENTO VISITAS ===================================*/ 
     Route::get('agendamento/saida', 'ControladorAgendamento@show')->name('agendamento.saida'); 
     Route::get('agendamento/saida/historico', 'ControladorAgendamento@showHistorico');
@@ -47,7 +48,6 @@ Route::group(['middleware' => ['auth']], function ( ) {
     Route::post('funcionarios/novo', 'ControladorFuncionario@store')->name('funcionarios.novo'); 
     Route::patch('funcionarios/editar{id}', 'ControladorFuncionario@update')->name('funcionarios.update'); 
     Route::delete('funcioanrios/delete{id}', 'ControladorFuncionario@destroy')->name('funcionarios.destroy'); 
-    Route::get('ajusteselect', 'Controller@ajusteSelect'); 
 
     /*==============================  RAMAIS  ======================================*/ 
     Route::get('ramais', 'ControladorRamais@index')->name('ramais'); 
@@ -64,10 +64,11 @@ Route::group(['middleware' => ['auth']], function ( ) {
     Route::any('rh/pessoa/editar{id}' , 'PessoaController@edit')->name('pessoa.editar');
     Route::post('rh/pessoas/novo' , 'PessoaController@store')->name('pessoas.novo');
     Route::get('rh/pessoas' , 'PessoaController@index')->name('pessoas.index');
+
+  
+
 });
 
-Route::get('/resgistrar', function () {
-    return view('auth.register');
-});
+
 
 

@@ -32,9 +32,9 @@
                 <p> <b> Data Contato: </b> @if($ls->data_contato){{ $ls->data_contato }}@else -- @endif</p>
                 <p> <b> Data Retorno: </b> @if($ls->data_retorno){{ $ls->data_retorno }}@else -- @endif</p>
                 <p> <b> Indicação: </b> @if($ls->indicacao){{ $ls->indicacao }}@else -- @endif</p>
-                <p><b>Anexo PDF: </b> 
-                  <a href="{{url("storage/appRH/cadastros/pdf/" . $ls->pdf )}}">
-                  <i style="font-size: 15px;"class="fas fa-file-pdf text-danger"></i> </a></p>
+                <p><b>Anexo PDF: </b>  
+                  <a href="{{url("storage/appRH/cadastros/pdf/" . $ls->pdf )}}"> 
+                  <i style="font-size: 22px;"class="fas fa-file-pdf text-danger"></i> </a></p>
               </div>
               <div class="col-md-6 text-left">
                 <h6 class="text-center"> Avaliações </h6>

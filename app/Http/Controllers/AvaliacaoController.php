@@ -110,7 +110,7 @@ class AvaliacaoController extends Controller
         //$itens = Itens::all();
         if( auth()->user()->status == 'RH'){
             $lancamentos = Avaliacao::selectLancamentos();
-        return view('RH.lancamentos' , compact('lancamentos'));  
+            return view('RH.lancamentos' , compact('lancamentos'));  
         }else
             return redirect('/home')->with("danger" , "Sem permissão de acesso a esta Pagina !" );  
     }
@@ -121,28 +121,17 @@ class AvaliacaoController extends Controller
         $lancamentos = $lancamentos->search($data, $lancamentos);
         //dd($lancamentos);
         return view('RH.lancamentos', compact('lancamentos'));
+        //return view()
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Avaliacao  $avaliacao
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
-        
         $ls = DB::connection('db3')->table('avaliacaos')->where('id', $id)->get();
         return view('RH.avaliacaoEditar' , compact('ls'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Avaliacao  $avaliacao
-     * @return \Illuminate\Http\Response
-     */
+   
     public function update(Request $request, $id)
     {
         //dd(Carbon::now());

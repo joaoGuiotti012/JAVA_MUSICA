@@ -23,7 +23,7 @@ class Pessoa extends Model
             'rg'            => 'required',  
             'fone1'         => 'required',
             'email'         => 'required',
-            'pdf'           => 'mimes:pdf',  
+            'pdf'           => 'mimes:pdf|max:5000',  
         ]);
         return $request;
     }

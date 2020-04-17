@@ -26,7 +26,7 @@
                     <div class="form-group col-md-3">
                         <label for="inputState">Cidade</label>
                         <select id="inputState" class="form-control" name="cidade" required>
-                        <option selected>Escolha...</option>
+                        <option selected></option>
                             @foreach ($cidades as $ls)
                             <option value="{{$ls->id}}">{{$ls->descricao}}</option>
                             @endforeach
@@ -35,7 +35,7 @@
                     <div class="form-group col-md-3">
                         <label for="inputState">Estado</label>
                         <select id="inputState" class="form-control" name="estado" required>
-                        <option selected>Escolha...</option>
+                        <option selected></option>
                             @foreach ($estados as $ls)
                             <option value="{{$ls->id}}">{{$ls->descricao}}</option>
                             @endforeach
@@ -50,7 +50,7 @@
                         <div class="form-group col-md-3">
                             <label for="inputState">Escolaridade</label>
                             <select id="inputState" class="form-control" name="escolaridade" required>
-                            <option selected>Escolha...</option>
+                            <option selected></option>
                                 @foreach ($escolaridades as $en)
                                 <option value="{{$en->id}}">{{$en->descricao}}</option>
                                 @endforeach
