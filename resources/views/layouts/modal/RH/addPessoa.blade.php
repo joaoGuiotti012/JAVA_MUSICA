@@ -58,11 +58,11 @@
                         </div>
                         <div class="form-group col-md-5">
                             <label for="inputEmail4" >CPF</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" required>
+                            <input type="number" class="form-control" id="cpf" name="cpf" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputPassword4">RG</label>
-                            <input type="text" class="form-control" id="rg" name="rg" required>
+                            <input type="number" class="form-control" id="rg" name="rg" required>
                         </div>
                     </div>
                 <div class="form-row">
@@ -157,6 +157,17 @@
                     
                 </div>
                 <br>
+                <div class="form-group">
+                    <label for="" ><b>  Tipo de Cadastro: </b> </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="curriculo" >
+                        <label class="form-check-label" for="inlineCheckbox1">Curricúlo</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="ficha" >
+                        <label class="form-check-label" for="inlineCheckbox2">Ficha</label>
+                    </div>
+                </div>
             </div>  
         </div>
         <div class="modal-footer">

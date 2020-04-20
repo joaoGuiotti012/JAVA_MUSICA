@@ -58,11 +58,11 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="inputEmail4" >CPF</label>
-                        <input type="text" class="form-control" id="cpf" name="cpf" value="{{$ls->cpf}}" required>
+                        <input type="number" class="form-control" id="cpf" name="cpf" value="{{$ls->cpf}}" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputPassword4">RG</label>
-                        <input type="text" class="form-control" id="rg" name="rg" value="{{$ls->rg}}"required>
+                        <input type="number" class="form-control" id="rg" name="rg" value="{{$ls->rg}}"required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -118,7 +118,7 @@
                     <div class="input-group">
                         <span class="input-group-text" ><i style="font-size: 20px;" class="fas fa-file-pdf text-danger"></i></a></span>
                         <div class="custom-file">
-                            <input id="pdf" type="file" class="" name="pdf" aria-describedby="inputGroupFileAddon01" > 
+                            <input id="pdf" type="file"  name="pdf" aria-describedby="inputGroupFileAddon01" > 
                         </div>
                     </div>
                 </div>
@@ -156,9 +156,19 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 <br>
+                <div class="form-group">
+                    <label for="" ><b>  Tipo de Cadastro: </b> </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="curriculo" @if( $ls->curriculo ) checked @endif>
+                        <label class="form-check-label" for="inlineCheckbox1">Curricúlo</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="ficha" @if( $ls->ficha ) checked @endif>
+                        <label class="form-check-label" for="inlineCheckbox2">Ficha</label>
+                    </div>
+                </div>
             </div>  
         </div>
         <div class="modal-footer">

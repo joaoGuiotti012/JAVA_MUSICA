@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function ( ) {
     Route::delete('rh/avaliacao/delete{id}', 'AvaliacaoController@destroy')->name('avaliacao.delete'); 
     Route::patch('rh/avaliacao/update{id}' , 'AvaliacaoController@update')->name('avaliacao.update');
     Route::get('rh/avaliacao/search' , 'AvaliacaoController@search')->name('avaliacao.search');
+    Route::get('rh/pessoa/search' , 'PessoaController@search')->name('pessoa.search');
     Route::delete('rh/pessoas/delete{id}', 'PessoaController@destroy')->name('pessoa.delete'); 
     Route::any('rh/pessoa/editar{id}' , 'PessoaController@edit')->name('pessoa.editar');
     Route::post('rh/pessoas/novo' , 'PessoaController@store')->name('pessoas.novo');

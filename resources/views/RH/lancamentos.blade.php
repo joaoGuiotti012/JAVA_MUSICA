@@ -5,7 +5,7 @@
 <br>
 
     <br>
-    <h2 class="text-center" id="historico"><i class="fas fa-list-alt"></i> Lançamestos </h2>
+    <h2 class="text-center" id="historico"><i class="fas fa-list-alt"></i> Lançamentos </h2>
     
         <button class=" btn-sm btn-primary" id="btn-filtros">
             Filtros <i class="fas fa-filter"></i>
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-row">
-                            <div class="form-group col-md-3">
+                            <div class="form-sm-group col-md-2">
                                 <select id="select" class="form-control" name="campo">
                                     <option value="responsavel">Responsável</option>
                                     <option value="indicacao">Indicação</option>
@@ -39,6 +39,18 @@
                             </div>
                         </div>
                         <hr>
+                        <!--div class="form-group">
+                            <label for="inputAddress2"> <b> Tipo Cadastro: </b></label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="curriculo">
+                                <label class="form-check-label" for="inlineCheckbox1">Curricúlo</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="ficha">
+                                <label class="form-check-label" for="inlineCheckbox2">Ficha</label>
+                            </div>
+                        </div>   
+                        <hr-->
                         <div class="form-group">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" name="tp" >
@@ -85,19 +97,19 @@
                         <div class="form-group">
                             <label for="inputAddress2"> <b> Deficiencia: </b></label><br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="deficiencia" value="auditivo">
+                                <input class="form-check-input" type="checkbox" name="def_aud" value="auditiva">
                                 <label class="form-check-label" for="inlineCheckbox1">Auditiva</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="deficiencia" value="visual">
+                                <input class="form-check-input" type="checkbox" name="def_vis" value="visual">
                                 <label class="form-check-label" for="inlineCheckbox2">Visual</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="deficiencia" value="mental" >
+                                <input class="form-check-input" type="checkbox" name="def_men" value="mental" >
                                 <label class="form-check-label" for="inlineCheckbox3">Mental</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="deficiencia" value="fisica" >
+                                <input class="form-check-input" type="checkbox" name="def_fis" value="fisica" >
                                 <label class="form-check-label" for="inlineCheckbox3">Física</label>
                             </div>
                         </div>
@@ -128,7 +140,7 @@
                     <th scope="row">E. Psicologica </th>
                     <th scope="row">E. Tecnica </th>
                     <th scope="row">Ex. Médico </th>
-                    <th scope="row">Responsavel</th>
+                    <!--th scope="row">Responsavel</th-->
                     <th scope="row">Data Modificação</th>
                     <th colspan="3" > AÇÕES </th>
                 </tr>
@@ -172,7 +184,7 @@
                     <td>
                         @if($ls->ex == 'S') <i class="fas fa-check text-success"></i> @elseif( $ls->ex == 'N') <i class="fas fa-times text-danger"></i> @else -- @endif  
                     </td> 
-                    <td>{{ $ls->responsavel }}</td>
+                    <!--td>{{ $ls->responsavel }}</td-->
                     <td>{{ $ls->updated_at }}</td>
                     <td class="text-center" > 
                         <div class="btn-group" role="group" aria-label="Basic example">

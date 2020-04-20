@@ -60,7 +60,7 @@ class CreateAvaliacaosTable extends Migration
             $table->string('obs_ex')->nullable();
             
             $table->string('obs_geral')->nullable();
-            $table->string('responsavel')->nullable();
+            $table->integer('responsavel')->unsigned();
 
             $table->timestamps();
 
@@ -68,6 +68,11 @@ class CreateAvaliacaosTable extends Migration
                   ->references('id')
                   ->on('pessoas')
                   ->onDelete('cascade');
+
+            $table->foreign('responsavel')
+                  ->references('id')
+                  ->on('bdvisitantes.users');
+                  //->onDelete('cascade');
         });
     }
 

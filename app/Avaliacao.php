@@ -75,8 +75,18 @@ class Avaliacao extends Model
             'avaliacaos.responsavel',
             'avaliacaos.updated_at'
             )->where(function ($query) use ($data) {
-                if( isset($data['deficiencia']) ){
-                    $query->where( 'pessoas.deficiencia' , $data['deficiencia'] );
+                
+                if( isset($data['def_aud']) ){
+                    $query->where( 'pessoas.deficiencia' , $data['def_aud'] );
+                }
+                if( isset($data['def_vis']) ){
+                    $query->orWhere( 'pessoas.deficiencia' , $data['def_vis'] );
+                }
+                if( isset($data['def_men']) ){
+                    $query->orWhere( 'pessoas.deficiencia' , $data['def_men'] );
+                }
+                if( isset($data['def_fis']) ){
+                    $query->orWhere( 'pessoas.deficiencia' , $data['def_fis'] );
                 }
                 if( $data['campo'] == 'responsavel' || $data['campo'] == 'obs_geral' || $data['campo'] == 'indicacao' ){
                     $query->where( $data['campo'] , 'LIKE' , '%'.$data['descricao'].'%' );

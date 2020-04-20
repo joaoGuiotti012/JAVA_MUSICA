@@ -41,15 +41,20 @@
                             </tr>
                             @endforeach
                         </table>
+                        <div class="form-group col-md-3">
+                            <label for="inputState">Responsável</label>
+                            <select id="inputState" class="form-control" name="responsavel" required>
+                            <option selected></option>
+                                @foreach ($users as $us)
+                                <option value="{{$us->id}}">{{$us->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Observações Gerais:</label>
                             <textarea class="form-control" name="obs_geral" rows="4">   </textarea>
                         </div>
                         <br>
-                        <div class="form-group col-md-3">
-                            <label for="inputPassword4" hidden>Responsável Cadastro </label>
-                            <input type="text" class="form-control" name="responsavel" value="{{ Auth::user()->name }}" hidden >
-                        </div>
                     </div>
                 </div>
                 <div class="card-footer">

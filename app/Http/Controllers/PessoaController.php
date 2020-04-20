@@ -37,7 +37,16 @@ class PessoaController extends Controller
     {
         //
     }
+    public function search( Request $request, Pessoa $pessoas )
+    {
+        $data = $request->all();
+        $pessoas = Pessoa::Search( $data , $pessoas ); 
+        $cidades = Cidade::all();
+        $estados = Estado::all();
+        $escolaridades = Escolaridade::all();
+        return view('/rh/pessoas' , compact('pessoas' , 'cidades' , 'estados', 'escolaridades'));
 
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -48,6 +57,7 @@ class PessoaController extends Controller
     {
         $request = Pessoa::valido($request); // valida os dados da request 
         $pessoa = new Pessoa();
+        //dd($request->ficha , $request->curriculo);
 
         $pessoa->nome = mb_strtoupper($request->nome);
         $pessoa->data_nasc = $request->data_nasc;
@@ -68,6 +78,10 @@ class PessoaController extends Controller
         $pessoa->data_contato = $request->data_contato;
         $pessoa->data_retorno = $request->data_retorno;
         $pessoa->indicacao = mb_strtoupper($request->indicacao);
+        $pessoa->ficha = $request->ficha;
+        $pessoa->curriculo = $request->curriculo;
+
+        //dd($pessoa->ficha , $pessoa->curriculo);
 
         if( isset($request->pdf) ){
             $nameFile = hash('sha512',uniqid(time() + rand(-900,900))).'.'.$request->pdf->extension() ;
@@ -79,6 +93,9 @@ class PessoaController extends Controller
             }
         }
         if( $pessoa->save() ){
+            if( $request->ficha ){
+                return redirect('rh/avaliacao')->with("success" , "Sucesso: Cadastro realizado exito ! ");
+            }
             return redirect('rh/pessoas')->with("success" , "Sucesso: Cadastro realizado exito ! ");
         }else{
             return redirect('rh/pessoas')->with("danger" , "Falha ao gerar o cadastro! ");
@@ -105,6 +122,7 @@ class PessoaController extends Controller
     public function edit(Request $request, $id)
     {
         $request = Pessoa::valido($request); // valida os dados da request 
+        //dd($request->pdf != null);
         $pessoa = Pessoa::find($id);
 
         $pessoa->nome = mb_strtoupper($request->nome);
@@ -126,7 +144,12 @@ class PessoaController extends Controller
         $pessoa->data_contato = $request->data_contato;
         $pessoa->data_retorno = $request->data_retorno;
         $pessoa->indicacao = mb_strtoupper($request->indicacao);
-        if( isset($request->pdf) ){
+        $pessoa->curriculo = $request->curriculo;
+        $pessoa->ficha = $request->ficha;
+
+        //dd();
+        if( $request->pdf != null && $pessoa->pdf != null ){
+           // dd('teste');
             if( Storage::disk('public')->delete('appRH/cadastros/pdf/'.$pessoa->pdf)  ){
                 $nameFile = hash('sha512',uniqid(time() + rand(-900,900))).'.'.$request->pdf->extension() ;
                 $diretorio = public_path('storage/appRH/cadastros/pdf/');
@@ -138,7 +161,18 @@ class PessoaController extends Controller
                 }
             }
         }
+        if( $pessoa->pdf == null && $request->pdf != null ){
+           // dd('aqui');
+            $nameFile = hash('sha512',uniqid(time() + rand(-900,900))).'.'.$request->pdf->extension() ;
+            $diretorio = public_path('storage/appRH/cadastros/pdf/');
+            if( isset($_FILES['pdf'] ) && $request->pdf->extension() == 'pdf'  ){
+                if(move_uploaded_file( $_FILES['pdf']['tmp_name'] , $diretorio.$nameFile ) ){
+                    $pessoa->pdf = $nameFile;
+                }
+            }
+        }
         if ($pessoa->save()){
+            
             return redirect('rh/pessoas')->with("success" , "Sucesso: Cadastro realizado exito ! ");
         }else{
             return redirect('rh/pessoas')->with("danger" , "Falha: Erro ao editar Cadastro ! ");
@@ -176,8 +210,6 @@ class PessoaController extends Controller
         return redirect('rh/pessoas')->with('success' , 'Deletar: Cadastro deletado com exito !');
         
             //return redirect('rh/pessoas')->with('danger' , 'Deletar: Erro ao deletar cadastro !');
-
-  
 
     }
 }

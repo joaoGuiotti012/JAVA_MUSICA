@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\agendamentoVisita;
 use App\Avaliacao;
+use App\HistAvaliacao;
 use App\ItensAvaliacao as Itens;
 use App\Pessoa;
 use Carbon\Carbon;
+use App\User;
 use DB;
 use Illuminate\Http\Request;
 
@@ -29,8 +31,9 @@ class AvaliacaoController extends Controller
     public function index()
     {
         $itens = Itens::all();
-        $pessoas = Pessoa::SelectPessoas();
-        return view('RH.avaliacao', compact('itens' , 'pessoas'));
+        $pessoas = Pessoa::SelectPessoasCad();
+        $users = User::all();
+        return view('RH.avaliacao', compact('itens' , 'pessoas' , 'users'));
     }
 
     /**
@@ -52,7 +55,8 @@ class AvaliacaoController extends Controller
     public function store(Request $request)
     {
         $av = new Avaliacao();
-        
+
+        //dd($request->responsavel);
         $av->pessoa_id = $request->cad_num;
         $av->tp = $request->chk_tp;
         $av->date_tp =  $request->date_tp;
@@ -85,8 +89,7 @@ class AvaliacaoController extends Controller
         $av->date_ex =  $request->date_ex;
         $av->obs_ex =  mb_strtoupper($request->obs_ex);
         $av->obs_geral = mb_strtoupper($request->obs_geral);
-        $av->responsavel =  mb_strtoupper($request->responsavel);
-    
+        $av->responsavel =  $request->responsavel;
         //dd($av->save());
         try{
             if($av->save()){
@@ -118,6 +121,7 @@ class AvaliacaoController extends Controller
 
     public function search(Request $request, Avaliacao $lancamentos){
         $data = $request->all();
+        //dd($data);
         $lancamentos = $lancamentos->search($data, $lancamentos);
         //dd($lancamentos);
         return view('RH.lancamentos', compact('lancamentos'));
@@ -128,7 +132,13 @@ class AvaliacaoController extends Controller
     public function edit($id)
     {
         $ls = DB::connection('db3')->table('avaliacaos')->where('id', $id)->get();
-        return view('RH.avaliacaoEditar' , compact('ls'));
+        $user =  DB::connection('mysql')->table('users')
+            ->select( 
+                'id',
+                'name'
+            )->where('id', $ls[0]->responsavel )->get();
+        $users = User::all();
+        return view('RH.avaliacaoEditar' , compact('ls' , 'users' , 'user'));
     }
 
    
@@ -136,7 +146,9 @@ class AvaliacaoController extends Controller
     {
         //dd(Carbon::now());
         $av = Avaliacao::find($id);
-        if( mb_strtoupper(auth()->user()->name) == $av->responsavel ){
+        //dd($id);
+        //dd($request->responsavel);
+        //if( mb_strtoupper(auth()->user()->name) == $av->responsavel ){
             $av->tp = $request->chk_tp;
             $av->date_tp =  $request->date_tp;
             $av->obs_tp =  mb_strtoupper($request->obs_tp);
@@ -168,17 +180,22 @@ class AvaliacaoController extends Controller
             $av->date_ex =  $request->date_ex;
             $av->obs_ex =  mb_strtoupper($request->obs_ex);
             $av->obs_geral = mb_strtoupper($request->obs_geral);
-            $av->responsavel =  mb_strtoupper($request->responsavel);
+            $av->responsavel =  $request->responsavel;
             $av->updated_at = Carbon::now();
             $update  = $av->save();
             
             if($update ){
+                $hist = new HistAvaliacao;
+                $hist->avaliacao_id = $id;
+                $hist->responsavel = auth()->user()->name;
+                $hist->updated_at = Carbon::now();
+                $hist->save();
                 return redirect('rh/lancamentos')->with("success" , "Sucesso: Avaliações alteradas com exito ! ");
             }else{
                 return redirect('rh/lancamentos')->with("danger" , "Falha ao aplicar atualizações ! ");
             } 
-        }
-        return redirect('rh/lancamentos')->with('danger' , 'Falha: Voce não pode editar este lançamento, não foi consedido a permissão do responsavel !' ) ;
+        //}
+        //return redirect('rh/lancamentos')->with('danger' , 'Falha: Voce não pode editar este lançamento, não foi consedido a permissão do responsavel !' ) ;
 
     }
 
@@ -191,16 +208,16 @@ class AvaliacaoController extends Controller
     public function destroy( $id)
     {
         $av = Avaliacao::find($id);
-        $resp = mb_strtoupper(auth()->user()->name);
-        if( $resp == $av->responsavel ){
+        //$resp = mb_strtoupper(auth()->user()->name);
+        //if( $resp == $av->responsavel ){
 
             if($av->delete()){
                 return redirect('rh/lancamentos')->with('success' , 'Deletar: Lançamento deletado com sucesso !') ;
             }else{
                 return redirect('rh/lancamentos')->with('danger' , 'Deletar: Falha ao deletar este lançamento !') ;
             }
-        }
-        return redirect('rh/lancamentos')->with('danger' , 'Falha: Voce não pode deletar este lançamento, não foi consedido a permissão do responsavel !' ) ;
+       // }
+        //return redirect('rh/lancamentos')->with('danger' , 'Falha: Voce não pode deletar este lançamento, não foi consedido a permissão do responsavel !' ) ;
 
         
     }

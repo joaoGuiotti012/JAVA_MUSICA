@@ -5,15 +5,109 @@
     <br><br>
     <div class="container">
         <h2 class="text-center" id="historico"><i class="fas fa-list-alt"></i> Cadastros </h2>
-
-        <button type="submit" class="text-primary"  title="deletar"   
+        <form action=" {{route('pessoa.search') }}" method="GET">
+        @csrf
+        <button type="button" class="text-primary"  title="deletar"   
         data-toggle="modal" data-target="#addPessoa">
             <i class="fas fa-user-plus"></i>
         </button> 
+        <button type="button" class="text-primary" id="btn-filtros" title="pesquisar" >
+            <i class="fas fa-filter"></i>
+        </button> 
+        
+        <button class=" btn-sm btn-primary" type="submit" style="display:none" id="btn-ocultar">
+            Buscar <i class="fas fa-search"></i>
+        </button>
+        <div class="card" id="div-filtros" style="display:none">
+            <h6 class="card-header list-inline">
+                Filtros <i class="fas fa-filter"></i>
+            </h6>
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="form-row">
+                        <div class="form-sm-group col-md-2">
+                            <select id="select" class="form-control" name="campo">
+                                <option value="indicacao" >Indicação</option>
+                                <option value="nome" >Nome</option>
+                                <option value="cargo_concorrido" >Cargo Concorrido</option>
+                                <option value="setor" >Setor</option>
+                                <option value="cidade" >Cidade</option>
+                                <option value="estado" >Estado</option>
+                                <option value="rg" >RG</option>
+                                <option value="cpf" >CPF</option>
+                                <option value="fone1" >Fone 1</option>
+                                <option value="fone2" >Fone 2</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="descricao" placeholder="Descrição">
+                        </div>
+                        
+                    </div>
+                    <hr> 
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="inputState">Cidade</label>
+                            <select id="inputState" class="form-control" name="cidade" >
+                            <option selected></option>
+                                @foreach ($cidades as $ls)
+                                <option value="{{$ls->id}}">{{$ls->descricao}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inputState">Estado</label>
+                            <select id="inputState" class="form-control" name="estado" >
+                            <option selected></option>
+                                @foreach ($estados as $es)
+                                <option value="{{$ls->es}}">{{$es->descricao}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <div class="form-group">
+                        <label><b>Tipo Cadastro: </b></label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="Curriculo" >
+                            <label class="form-check-label" for="inlineCheckbox1">Curricúlo</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="ficha" checked >
+                            <label class="form-check-label" for="inlineCheckbox2">Ficha</label>
+                        </div>
+                    </div>
+                    <hr>
+                        <div class="form-group">
+                            <label for="inputAddress2"> <b> Deficiencia: </b></label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="def_aud" value="auditiva">
+                                <label class="form-check-label" for="inlineCheckbox1">Auditiva</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="def_vis" value="visual">
+                                <label class="form-check-label" for="inlineCheckbox2">Visual</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="def_men" value="mental" >
+                                <label class="form-check-label" for="inlineCheckbox3">Mental</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="def_fis" value="fisica" >
+                                <label class="form-check-label" for="inlineCheckbox3">Física</label>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <br>
         @include('layouts.modal.RH.addPessoa')
-        <br><br>
+        
         <div class="table-responsive" style="max-height: 450px">
-            <table id="table-view" class="table table-sm table-hover table-bordered table-striped ">
+            <table id="table-vew" class="table table-sm table-hover table-bordered table-striped ">
                 <thead>
                 <tr class="text-center">
                     <th scope="col">ID</th>
