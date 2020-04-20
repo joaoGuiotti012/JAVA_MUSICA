@@ -63,10 +63,11 @@ class Pessoa extends Model
                     'pessoas.curriculo' 
                 )->where( function ($query) use ($data) {
                     if( isset($data['ficha']) ){
-                        $query->where( 'ficha' , 'on' );
+                        $query->where( 'ficha' , '!=' , null  );
                     }
                     if( isset($data['curriculo']) ){
-                        $query->where( 'curriculo' , 'on' );
+                        //dd($data['curriculo']);
+                        $query->where( 'curriculo' , '!=' , null );
                     }
                     if( isset($data['def_aud']) ){
                         $query->where( 'deficiencia' , $data['def_aud'] );

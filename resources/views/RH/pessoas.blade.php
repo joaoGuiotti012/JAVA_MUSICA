@@ -71,7 +71,7 @@
                     <div class="form-group">
                         <label><b>Tipo Cadastro: </b></label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="Curriculo" >
+                            <input class="form-check-input" type="checkbox" name="curriculo" >
                             <label class="form-check-label" for="inlineCheckbox1">Curricúlo</label>
                         </div>
                         <div class="form-check form-check-inline">

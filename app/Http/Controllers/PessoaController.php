@@ -146,7 +146,7 @@ class PessoaController extends Controller
         $pessoa->indicacao = mb_strtoupper($request->indicacao);
         $pessoa->curriculo = $request->curriculo;
         $pessoa->ficha = $request->ficha;
-
+        //dd($pessoa->ficha ,$pessoa->curriculo);
         //dd();
         if( $request->pdf != null && $pessoa->pdf != null ){
            // dd('teste');
