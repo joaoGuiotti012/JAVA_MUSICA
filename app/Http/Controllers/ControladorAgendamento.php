@@ -19,7 +19,7 @@ use Symfony\Component\VarDumper\VarDumper;
 //date_default_timezone_set('America/Sao_Paulo');
 class ControladorAgendamento extends Controller
 {
-    
+
     public function __construct()
     {
         /*$this->middleware('auth');*/
@@ -27,19 +27,14 @@ class ControladorAgendamento extends Controller
 
     public function index(Funcionario $func)
     {
-        if(auth()->user()->status == 'VISITANTES' ){
-            $func = Funcionario::all();
-            $visitantes = Visitantes::all();
-            return view('visitas.agendamento', compact('func' , 'visitantes'));
-        }
-        return redirect('/home')->with("danger" , "Sem permissão de acesso a esta Pagina !" );  
-
-        
+        $func = Funcionario::all();
+        $visitantes = Visitantes::all();
+        return view('visitas.agendamento', compact('func' , 'visitantes'));
     }
-  
+
     public function entrada($id)
     {
-       
+
         $agendamento = Agendamento::find($id);
         $agendamento->dataEntrada = Carbon::now();
         $agendamento->hrEntrada = date('H:i:s');
@@ -63,7 +58,7 @@ class ControladorAgendamento extends Controller
 
 
     public function store(Request $request)
-    {   
+    {
         $agendamento = new Agendamento();
         $request = Agendamento::valido($request);
         $agendamento->codigo = $request->codigo;
@@ -75,8 +70,8 @@ class ControladorAgendamento extends Controller
         try{
 
             if($agendamento->save()){
-                return redirect('agendamento/saida' )->with( 'success', ' Agendamento confirmado com sucesso ! ' );  
-                exit; 
+                return redirect('agendamento/saida' )->with( 'success', ' Agendamento confirmado com sucesso ! ' );
+                exit;
             }
 
         }catch( Exception $e){
@@ -94,7 +89,7 @@ class ControladorAgendamento extends Controller
         $agendamento = Agendamento::selectAll();
         $cont = count($agendamento);
         return view('visitas.saidaAgendamento', compact('agendamento'), compact('cont'));
-        
+
     }
 
     public function showHistorico( )
@@ -102,7 +97,7 @@ class ControladorAgendamento extends Controller
         $agendamento = Agendamento::selectAll();
         $cont = count($agendamento);
         return view('visitas.historicoAgendamento', compact('agendamento'), compact('cont'));
-        
+
     }
 
     public function search(Request $request){
@@ -112,9 +107,9 @@ class ControladorAgendamento extends Controller
     }
 
     public function histSearch(Request $request){
-        
+
         //$busca = Agendamento::histSearch($request);
-            
+
             $busca = Agendamento::histSearch( $request);
 
         return view('visitas.historicoAgendamento',  compact('busca'));
@@ -132,11 +127,11 @@ class ControladorAgendamento extends Controller
     {
         //
     }
-  
+
     public function update(Request $request, $id)
     {
         $request = Agendamento::valido($request);
-       
+
         $agendamento = Agendamento::find($id);
         $agendamento->nome = $request->get('nome');
         $agendamento->empresa = $request->get('empresa');
@@ -152,7 +147,7 @@ class ControladorAgendamento extends Controller
     }
 
     public function exportExcel()
-    {    
+    {
         $dadosXls  = "";
         $dadosXls .= "  <table border='1' >";
         $dadosXls .= "      <tr>";
@@ -167,9 +162,9 @@ class ControladorAgendamento extends Controller
         $dadosXls .= "          <th>Data Saida</th>";
         $dadosXls .= "      </tr>";
         $result = Agendamento::selectAll();
-       
+
         foreach($result as $res){
-            if( $res->dataSaida != null){   
+            if( $res->dataSaida != null){
                 $dadosXls .= "      <tr>";
                 $dadosXls .= "          <td>".$res->codigo."</td>";
                 $dadosXls .= "          <td>".$res->descricao."</td>";
@@ -185,29 +180,29 @@ class ControladorAgendamento extends Controller
         }
         $dadosXls .= "  </table>";
         $dadosXls = mb_convert_encoding($dadosXls , "HTML-ENTITIES", "UTF-8");
-     
+
         // Definimos o nome do arquivo que será exportado
-        $arquivo = 'historico' . date('_His').".xls"; 
-         //"MinhaPlanilha.xls";  
-        // Configurações header para forçar o download  
+        $arquivo = 'historico' . date('_His').".xls";
+         //"MinhaPlanilha.xls";
+        // Configurações header para forçar o download
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: attachment;filename="'.$arquivo.'"');
         header('Cache-Control: max-age=0');
         // Se for o IE9, isso talvez seja necessário
         header('Cache-Control: max-age=1');
-           
-        // Envia o conteúdo do arquivo  
-        echo $dadosXls;  
+
+        // Envia o conteúdo do arquivo
+        echo $dadosXls;
         exit;
     }
 
-  
+
     public function destroy( $id)
     {
         $agendamento = Agendamento::find($id);
         $agendamento->delete();
-        
+
         return redirect('agendamento/saida')->with('success', 'Agendamento deletado com sucesso !! ');
-        
+
     }
 }

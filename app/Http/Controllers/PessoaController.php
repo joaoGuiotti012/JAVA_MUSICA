@@ -18,14 +18,11 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        if( auth()->user()->status == 'RH'){
             $cidades = Cidade::all();
             $estados = Estado::all();
             $escolaridades = Escolaridade::all();
             $pessoas = Pessoa::SelectPessoas();
             return view( "RH.pessoas", compact( 'cidades', 'escolaridades', 'estados' , 'pessoas') );
-        }else
-            return redirect('/home')->with("danger" , "Sem permissão de acesso a esta Pagina !" );  
     }
 
     /**
@@ -40,7 +37,7 @@ class PessoaController extends Controller
     public function search( Request $request, Pessoa $pessoas )
     {
         $data = $request->all();
-        $pessoas = Pessoa::Search( $data , $pessoas ); 
+        $pessoas = Pessoa::Search( $data , $pessoas );
         $cidades = Cidade::all();
         $estados = Estado::all();
         $escolaridades = Escolaridade::all();
@@ -55,7 +52,7 @@ class PessoaController extends Controller
      */
     public function store(Request $request)
     {
-        $request = Pessoa::valido($request); // valida os dados da request 
+        $request = Pessoa::valido($request); // valida os dados da request
         $pessoa = new Pessoa();
         //dd($request->ficha , $request->curriculo);
 
@@ -121,7 +118,7 @@ class PessoaController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $request = Pessoa::valido($request); // valida os dados da request 
+        $request = Pessoa::valido($request); // valida os dados da request
         //dd($request->pdf != null);
         $pessoa = Pessoa::find($id);
 
@@ -156,7 +153,7 @@ class PessoaController extends Controller
                 if( isset($_FILES['pdf'] ) && $request->pdf->extension() == 'pdf'  ){
                     if(move_uploaded_file( $_FILES['pdf']['tmp_name'] , $diretorio.$nameFile ) ){
                         $pessoa->pdf = $nameFile;
-                        
+
                     }
                 }
             }
@@ -172,13 +169,13 @@ class PessoaController extends Controller
             }
         }
         if ($pessoa->save()){
-            
+
             return redirect('rh/pessoas')->with("success" , "Sucesso: Cadastro realizado exito ! ");
         }else{
             return redirect('rh/pessoas')->with("danger" , "Falha: Erro ao editar Cadastro ! ");
         }
        //return redirect('rh/pessoas')->with("danger" , "Falha ao gerar o cadastro! ");
-        
+
     }
 
     /**
@@ -202,13 +199,13 @@ class PessoaController extends Controller
     public function destroy( $id)
     {
         $pessoa = Pessoa::find($id);
-       
+
         if($pessoa->pdf != null){
             Storage::disk('public')->delete('appRH/cadastros/pdf/'.$pessoa->pdf);
         }
         $pessoa->delete();
         return redirect('rh/pessoas')->with('success' , 'Deletar: Cadastro deletado com exito !');
-        
+
             //return redirect('rh/pessoas')->with('danger' , 'Deletar: Erro ao deletar cadastro !');
 
     }
