@@ -93,11 +93,9 @@ class AvaliacaoController extends Controller
     {
         //$lancamento = DB::connection('db3')->table('avaliacaos')->where('id' , '2')->get();
         //$itens = Itens::all();
-        if( auth()->user()->status == 'RH'){
             $lancamentos = Avaliacao::selectLancamentos();
             return view('RH.lancamentos' , compact('lancamentos'));
-        }else
-            return redirect('/home')->with("danger" , "Sem permissão de acesso a esta Pagina !" );
+
     }
 
 
@@ -162,12 +160,12 @@ class AvaliacaoController extends Controller
         $av->obs_geral = mb_strtoupper($request->obs_geral);
         $av->responsavel =  $request->responsavel;
         $av->updated_at = Carbon::now();
-        $update  = $av->save();
+        $update = $av->save();
 
         if($update ){
             $hist = new HistAvaliacao;
             $hist->avaliacao_id = $id;
-            $hist->responsavel = auth()->user()->name;
+            $hist->user_id = $request->responsavel;
             $hist->updated_at = Carbon::now();
             $hist->save();
             return redirect('rh/lancamentos')->with("success" , "Sucesso: Avaliações alteradas com exito ! ");

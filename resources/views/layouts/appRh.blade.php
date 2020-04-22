@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="icon/x-icon" href="{{ asset('img/topo.png') }}"  sizes="16x16">
@@ -14,12 +14,12 @@
      <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
      <script src="{{ asset('js/datatables.min.js') }}"></script>
-     
+
 
     <!-- styles -->
      <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  
+
 </head>
 <style>
     .alert{
@@ -64,11 +64,11 @@
     }
 
     .jumbotron{
-        
+
     }
     .back-to-top {
         position: relative;
-        z-index: 2; 
+        z-index: 2;
     }
   .back-to-top .btn-dark {
         width: 35px;
@@ -84,12 +84,12 @@
         z-index: 999;
         -webkit-transition: all 0.3s linear;
         -o-transition: all 0.3s linear;
-        transition: all 0.3s linear; 
+        transition: all 0.3s linear;
     }
     .back-to-top .btn-dark:hover {
         cursor: pointer;
         background: #FA6742;
-        border-color: #FA6742; 
+        border-color: #FA6742;
     }
 </style>
 <body>
@@ -147,6 +147,9 @@
                     <li class="nav-item">
                         <a href="{{ url('rh/avaliacao') }}" class="nav-link"> Avaliação</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ url('rh/dashboard') }}" class="nav-link"> Dashbord </a>
+                    </li>
                     <!--li class="nav-item">
                         <a href="{{ url('/funcionarios') }}" class="nav-link"> Colaboradores</a>
                     </li>
@@ -180,7 +183,7 @@
                                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                               
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
@@ -207,7 +210,7 @@
 </body>
 <script>
    $(document).ready(function() {
-        $('#table-view').DataTable({ 
+        $('#table-view').DataTable({
             "bJQueryUI": true,
                 "oLanguage": {
                     "sProcessing":   "Processando...",
@@ -230,7 +233,7 @@
     });
 
     $(document).ready(function() {
-        $('#table-view02').DataTable({ 
+        $('#table-view02').DataTable({
             "bJQueryUI": true,
                 "oLanguage": {
                     "sProcessing":   "Processando...",
@@ -255,7 +258,7 @@
 
     // <+================ click table row ================+>
 
-    
+
     /*
     $(document).ready(function($) {
         $(".table-row").click(function() {
@@ -296,7 +299,7 @@
             $("#danger").hide(1000);
         });
 
-        
+
         // <+============= MASK ===================+>
         //$('#rg').mask('00.000.000-0' , {reverse: false });
         $('#rg').mask('000000000' , {reverse: false });
@@ -315,9 +318,9 @@
 
 
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/e82d6530bc.js" crossorigin="anonymous"></script>
+@yield('scripts')
 
 
 </html>

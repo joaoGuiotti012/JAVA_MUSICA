@@ -8,6 +8,4 @@ class HistAvaliacao extends Model
 {
     protected $connection = 'db3';
 
-    
-
 }

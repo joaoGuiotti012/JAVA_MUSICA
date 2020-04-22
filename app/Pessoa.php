@@ -10,20 +10,20 @@ class Pessoa extends Model
 {
     protected $connection = 'db3';
 
-   
+
 
     static function valido(Request $request){
         $request->validate([
-            'nome'          => 'required', 
+            'nome'          => 'required',
             'data_nasc'     => 'required',
             'cidade'        => 'required',
             'estado'        => 'required',
             'escolaridade'  => 'required',
             'cpf'           => 'required',
-            'rg'            => 'required',  
+            'rg'            => 'required',
             'fone1'         => 'required',
             'email'         => 'required',
-            'pdf'           => 'mimes:pdf|max:5000',  
+            'pdf'           => 'mimes:pdf|max:5000',
         ]);
         return $request;
     }
@@ -32,7 +32,7 @@ class Pessoa extends Model
             ->join('cidades', 'cidades.id', '=' , 'pessoas.cidade')
             ->join('estados', 'estados.id', '=' , 'pessoas.estado')
             ->join('escolaridades', 'escolaridades.id', '=' , 'pessoas.escolaridade')
-            ->select( 
+            ->select(
                 'pessoas.id',
                     'pessoas.nome',
                     'pessoas.data_nasc',
@@ -54,13 +54,13 @@ class Pessoa extends Model
                     'pessoas.fone2',
                     'pessoas.email',
                     'pessoas.pdf',
-                    'pessoas.indicacao',                
-                    'pessoas.data_contato',                
-                    'pessoas.data_retorno',                
-                    'pessoas.cargo_concorrido',                
-                    'pessoas.setor',             
-                    'pessoas.ficha',             
-                    'pessoas.curriculo' 
+                    'pessoas.indicacao',
+                    'pessoas.data_contato',
+                    'pessoas.data_retorno',
+                    'pessoas.cargo_concorrido',
+                    'pessoas.setor',
+                    'pessoas.ficha',
+                    'pessoas.curriculo'
                 )->where( function ($query) use ($data) {
                     if( isset($data['ficha']) ){
                         $query->where( 'ficha' , '!=' , null  );
@@ -87,12 +87,11 @@ class Pessoa extends Model
                     if( isset($data['estado']) ){
                         $query->orWhere( 'estado' , $data['estado'] );
                     }
-                    
-                    if( isset($data['campo']) && isset($data['descricao']) ){
-                        $query->where( $data['campo'] , 'LIKE' , '%'.$data['descricao'].'%' );dd("deu errado");
-                    }
 
-                })->take(30)->get();  
+                    if( isset($data['campo']) && isset($data['descricao']) ){
+                        $query->where( $data['campo'] , 'LIKE' , '%'.$data['descricao'].'%' );
+                    }
+                })->take(30)->get();
         return $pessoas;
     }
 
@@ -102,7 +101,7 @@ class Pessoa extends Model
                 ->join('cidades', 'cidades.id', '=' , 'pessoas.cidade')
                 ->join('estados', 'estados.id', '=' , 'pessoas.estado')
                 ->join('escolaridades', 'escolaridades.id', '=' , 'pessoas.escolaridade')
-                ->select( 
+                ->select(
                     'pessoas.id',
                     'pessoas.nome',
                     'pessoas.data_nasc',
@@ -124,13 +123,13 @@ class Pessoa extends Model
                     'pessoas.fone2',
                     'pessoas.email',
                     'pessoas.pdf',
-                    'pessoas.indicacao',                
-                    'pessoas.data_contato',                
-                    'pessoas.data_retorno',                
-                    'pessoas.cargo_concorrido',                
-                    'pessoas.setor',             
-                    'pessoas.ficha',             
-                    'pessoas.curriculo'             
+                    'pessoas.indicacao',
+                    'pessoas.data_contato',
+                    'pessoas.data_retorno',
+                    'pessoas.cargo_concorrido',
+                    'pessoas.setor',
+                    'pessoas.ficha',
+                    'pessoas.curriculo'
                 )->get();// dd($busca);
 
         return $busca;
@@ -143,7 +142,7 @@ class Pessoa extends Model
                 ->join('cidades', 'cidades.id', '=' , 'pessoas.cidade')
                 ->join('estados', 'estados.id', '=' , 'pessoas.estado')
                 ->join('escolaridades', 'escolaridades.id', '=' , 'pessoas.escolaridade')
-                ->select( 
+                ->select(
                     'pessoas.id',
                     'pessoas.nome',
                     'pessoas.data_nasc',
@@ -165,13 +164,13 @@ class Pessoa extends Model
                     'pessoas.fone2',
                     'pessoas.email',
                     'pessoas.pdf',
-                    'pessoas.indicacao',                
-                    'pessoas.data_contato',                
-                    'pessoas.data_retorno',                
-                    'pessoas.cargo_concorrido',                
-                    'pessoas.setor'             
+                    'pessoas.indicacao',
+                    'pessoas.data_contato',
+                    'pessoas.data_retorno',
+                    'pessoas.cargo_concorrido',
+                    'pessoas.setor'
                 )->whereNotIn( 'pessoas.id' , $av )->get();// dd($busca);
 
         return $busca;
-    }       
+    }
 }

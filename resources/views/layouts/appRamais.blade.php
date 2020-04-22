@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="icon/x-icon" href="{{ asset('img/topo.png') }}"  sizes="16x16">
@@ -14,12 +14,12 @@
      <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
      <script src="{{ asset('js/bootstrap.min.js') }}"></script>
      <script src="{{ asset('js/datatables.min.js') }}"></script>
-     
+
 
     <!-- styles -->
      <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  
+
 </head>
 <style>
     tr{
@@ -58,7 +58,7 @@
                     <li class="nav-item">
                         <a href="{{ url('/ramais') }}" class="nav-link"> Ramais</a>
                     </li>
-        
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -105,9 +105,9 @@
 
 
 <script>
-  
+
    $(document).ready(function() {
-        $('#table-view').DataTable({ 
+        $('#table-view').DataTable({
             "bJQueryUI": true,
                 "oLanguage": {
                     "sProcessing":   "Processando...",
@@ -130,7 +130,7 @@
     });
 
     $(document).ready(function() {
-        $('#table-view02').DataTable({ 
+        $('#table-view02').DataTable({
             "bJQueryUI": true,
                 "oLanguage": {
                     "sProcessing":   "Processando...",
@@ -203,12 +203,11 @@
         }, 2500); // O valor é representado em milisegundos.
     });
 
-        
-    
+
+
 
 
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/e82d6530bc.js" crossorigin="anonymous"></script>
 

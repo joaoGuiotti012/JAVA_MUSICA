@@ -17,6 +17,8 @@ Route::get('/home', function () {
     return view('home');
 })->name('home');
 
+
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function ( ) {
@@ -64,6 +66,8 @@ Route::group(['middleware' => ['auth']], function ( ) {
       Route::any('rh/pessoa/editar{id}' , 'PessoaController@edit')->name('pessoa.editar');
       Route::post('rh/pessoas/novo' , 'PessoaController@store')->name('pessoas.novo');
       Route::get('rh/pessoas' , 'PessoaController@index')->name('pessoas.index');
+      Route::get('rh/dashboard', 'RH\DashboardController@index')->name('dashboard.index');
+      Route::post('rh/grafics', 'RH\DashboardController@ajax')->name('dashboard.grafics');
     });
 
 });
